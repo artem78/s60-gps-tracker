@@ -228,7 +228,7 @@ void CTrackerInfoListBox::InitializeControlsL()
 	// add list items
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_LAT_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_LON_LISTBOX_ITEM );
-	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_ALT_LISTBOX_ITEM3 );
+	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_ALT_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_SPEED_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_SAT_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_POINTS_LISTBOX_ITEM );

@@ -128,7 +128,7 @@
           <compoundProperty id="location">
             <property id="y">106</property>
           </compoundProperty>
-          <property id="name">altListboxItem3</property>
+          <property id="name">altListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_11</property>
           <compoundProperty id="size">
             <property id="width">240</property>
@@ -257,7 +257,7 @@
   <sourceMappingState>
     <resourceMappings>
       <resourceMapping instanceName="TrackerInfoListBoxView">r_tracker_info_list_box_tracker_info_list_box_view</resourceMapping>
-      <resourceMapping instanceName="altListboxItem3">r_tracker_info_list_box_alt_listbox_item3</resourceMapping>
+      <resourceMapping instanceName="altListboxItem">r_tracker_info_list_box_alt_listbox_item</resourceMapping>
       <resourceMapping instanceName="listBox">r_tracker_info_list_box_list_box</resourceMapping>
       <resourceMapping instanceName="refreshListboxItem">r_tracker_info_list_box_refresh_listbox_item</resourceMapping>
       <resourceMapping instanceName="statusPane">r_tracker_info_list_box_status_pane</resourceMapping>
