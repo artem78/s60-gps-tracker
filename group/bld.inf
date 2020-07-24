@@ -1,0 +1,26 @@
+
+PRJ_PLATFORMS
+WINSCW ARMV5 GCCE
+
+
+#ifdef SBSV2
+
+PRJ_EXTENSIONS
+	
+	START EXTENSION s60/mifconv
+	OPTION TARGETFILE gpstracker_0xE959FFAC.mif
+	OPTION HEADERFILE gpstracker_0xE959FFAC.mbg
+	OPTION SOURCEDIR ../gfx
+	OPTION SOURCES -c32 qgn_menu_GPSTracker
+	END
+
+#else
+
+PRJ_MMPFILES
+
+	gnumakefile icons_aif_scalable_dc.mk
+
+#endif
+
+PRJ_MMPFILES
+GPSTracker.mmp

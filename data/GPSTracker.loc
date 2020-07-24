@@ -1,0 +1,11 @@
+/*
+========================================================================
+ Name        : GPSTracker.loc
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+#ifdef LANGUAGE_01
+#include "GPSTracker.l01"
+#endif

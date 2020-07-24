@@ -1,0 +1,13 @@
+/*
+========================================================================
+ Name        : GPSTracker.l01
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+// localized strings for language: UK English (01)
+#define STR_GPSTrackerApplication_1 ""
+#define STR_GPSTrackerApplication_2 ""
+#define STR_GPSTrackerApplication_3 "GPSTracker"
+#define STR_GPSTrackerApplication_4 "GPSTracker"

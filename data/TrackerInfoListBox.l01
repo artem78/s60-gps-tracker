@@ -1,0 +1,28 @@
+/*
+========================================================================
+ Name        : TrackerInfoListBox.l01
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+// localized strings for language: UK English (01)
+#define STR_TrackerInfoListBoxView_1 "Menu"
+#define STR_TrackerInfoListBoxView_2 "Exit"
+#define STR_TrackerInfoListBoxView_3 "GPS Tracker"
+#define STR_TrackerInfoListBoxView_12 ""
+#define STR_TrackerInfoListBoxView_28 "Position refresh rate:"
+#define STR_TrackerInfoListBoxView_29 ""
+#define STR_TrackerInfoListBoxView_18 "Speed:"
+#define STR_TrackerInfoListBoxView_19 ""
+#define STR_TrackerInfoListBoxView_7 "Latitude:"
+#define STR_TrackerInfoListBoxView_21 "Satellites:"
+#define STR_TrackerInfoListBoxView_8 ""
+#define STR_TrackerInfoListBoxView_22 ""
+#define STR_TrackerInfoListBoxView_9 "Longitude:"
+#define STR_TrackerInfoListBoxView_10 ""
+#define STR_TrackerInfoListBoxView_25 "Saved points:"
+#define STR_TrackerInfoListBoxView_11 "Altitude:"
+#define STR_TrackerInfoListBoxView_26 ""
+#define STR_TrackerInfoListBoxView_40 "Continue track recording"
+#define STR_TrackerInfoListBoxView_39 "Pause track recording"

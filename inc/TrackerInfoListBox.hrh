@@ -1,0 +1,13 @@
+/*
+========================================================================
+ Name        : TrackerInfoListBox.hrh
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+enum TTrackerInfoListBoxViewCommands
+	{
+	ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand = 0x6000,
+	ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand
+	};

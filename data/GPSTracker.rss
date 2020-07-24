@@ -1,0 +1,46 @@
+/*
+========================================================================
+ Name        : GPSTracker.rss
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+NAME GPST
+
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <eikon.rh>
+#include <appinfo.rh>
+#include "GPSTracker.hrh"
+#include "GPSTracker.loc"
+
+RESOURCE RSS_SIGNATURE
+	{
+	}
+RESOURCE TBUF
+	{
+	buf = "GPSTracker";
+	}
+RESOURCE EIK_APP_INFO r_application_gpstracker_app_ui
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+	status_pane = r_application_status_pane;
+	}
+RESOURCE STATUS_PANE_APP_MODEL r_application_status_pane
+	{
+	}
+RESOURCE LOCALISABLE_APP_INFO r_localisable_app_info
+	{
+	short_caption = STR_GPSTrackerApplication_4;
+	caption_and_icon = CAPTION_AND_ICON_INFO
+		{
+		caption = STR_GPSTrackerApplication_3;
+		number_of_icons = 0;
+		};
+	}
+RESOURCE TBUF r_application_akn_view_reference1
+	{
+	}
+
+#include "TrackerInfoListBox.rssi"

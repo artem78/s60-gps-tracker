@@ -1,0 +1,11 @@
+/*
+========================================================================
+ Name        : TrackerInfoListBox.loc
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+#ifdef LANGUAGE_01
+#include "TrackerInfoListBox.l01"
+#endif

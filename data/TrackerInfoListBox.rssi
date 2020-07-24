@@ -1,0 +1,177 @@
+/*
+========================================================================
+ Name        : TrackerInfoListBox.rssi
+ Author      : artem78
+ Copyright   : General Public License v3.0
+ Description : 
+========================================================================
+*/
+#include "TrackerInfoListBox.hrh"
+#include "TrackerInfoListBox.loc"
+
+RESOURCE AVKON_VIEW r_tracker_info_list_box_tracker_info_list_box_view
+	{
+	cba = r_tracker_info_list_box_control_pane;
+	menubar = r_tracker_info_list_box_options_menu;
+	toolbar = 0;
+	}
+RESOURCE MENU_BAR r_tracker_info_list_box_options_menu
+	{titles =
+			{
+			MENU_TITLE
+				{
+				menu_pane = r_tracker_info_list_box_menu_pane1_menu_pane;
+				}
+			};
+
+	}
+RESOURCE STATUS_PANE_APP_MODEL r_tracker_info_list_box_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_tracker_info_list_box_title_resource;
+			}
+		};
+	}
+RESOURCE TITLE_PANE r_tracker_info_list_box_title_resource
+	{
+	txt = STR_TrackerInfoListBoxView_3;
+	}
+RESOURCE LISTBOX r_tracker_info_list_box_list_box
+	{
+	flags = EAknListBoxSelectionList;
+	}
+RESOURCE CBA r_tracker_info_list_box_control_pane
+	{
+	buttons =
+		{
+		CBA_BUTTON
+			{
+			id = EAknSoftkeyOptions;
+			txt = STR_TrackerInfoListBoxView_1;
+			},
+		CBA_BUTTON
+			{
+			id = EAknSoftkeyExit;
+			txt = STR_TrackerInfoListBoxView_2;
+			}
+		};
+	}
+RESOURCE MENU_PANE r_tracker_info_list_box_menu_pane1_menu_pane
+	{
+	items =
+		{
+		MENU_ITEM
+			{
+			command = ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand;
+			txt = STR_TrackerInfoListBoxView_39;
+			},
+		MENU_ITEM
+			{
+			command = ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand;
+			txt = STR_TrackerInfoListBoxView_40;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_lat_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_7;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_8;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_lon_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_9;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_10;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_alt_listbox_item3
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_11;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_12;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_speed_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_18;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_19;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_sat_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_21;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_22;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_points_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_25;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_26;
+			}
+		};
+	}
+RESOURCE ARRAY r_tracker_info_list_box_refresh_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_28;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_29;
+			}
+		};
+	}
