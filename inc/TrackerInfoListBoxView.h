@@ -51,6 +51,9 @@ public:
 	CTrackerInfoListBox* CreateContainerL();
 	// ]]] end generated region [Generated Methods]
 	
+	void SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal aSpeed, TInt aSatUsed,
+			TInt aSatTotal, TInt aSavedPoints, TTimeIntervalMicroSeconds aPosRefreshRate);
+	
 	// ]]] end [Public Section]
 	
 	
@@ -69,6 +72,8 @@ protected:
 	
 	
 	// [[[ begin [User Handlers]
+	TBool HandlePauseTrackRecordingMenuItemSelectedL( TInt aCommand );
+	TBool HandleContinueTrackRecordingMenuItemSelectedL( TInt aCommand );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]
@@ -86,6 +91,17 @@ private:
 	// [[[ begin generated region: do not modify [Generated Methods]
 	// ]]] end generated region [Generated Methods]
 	
+	enum TListBoxItem
+		{
+		ELatitudeItem = 0,
+		ELongitudeItem,
+		EAltitudeItem,
+		ESpeedItem,
+		ESatellitesItem,
+		ESavedPointsItem,
+		EPositionRefreshRateItem
+		};
+
 	// ]]] end [Private Section]
 	
 	};

@@ -189,18 +189,18 @@
     <component id="com.nokia.sdt.series60.MenuBar">
       <compoundProperty id="location">
         <property id="x">6</property>
-        <property id="y">221</property>
+        <property id="y">191</property>
       </compoundProperty>
       <property id="name">optionsMenu</property>
       <compoundProperty id="size">
-        <property id="height">67</property>
+        <property id="height">97</property>
         <property id="width">228</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.MenuPane">
         <compoundProperty id="location"/>
         <property id="name">menuPane1</property>
         <compoundProperty id="size">
-          <property id="height">67</property>
+          <property id="height">97</property>
           <property id="width">228</property>
         </compoundProperty>
         <component id="com.nokia.sdt.series60.MenuItem">
@@ -214,6 +214,7 @@
             <property id="width">213</property>
             <property id="height">28</property>
           </compoundProperty>
+          <eventBinding id="selected" handlerDisplay="HandlePauseTrackRecordingMenuItemSelectedL" handlerSymbol="cpp@src//TrackerInfoListBoxView.cpp/function(CTrackerInfoListBoxView::HandlePauseTrackRecordingMenuItemSelectedL(TInt))"/>
         </component>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
@@ -226,6 +227,7 @@
             <property id="width">213</property>
             <property id="height">28</property>
           </compoundProperty>
+          <eventBinding id="selected" handlerDisplay="HandleContinueTrackRecordingMenuItemSelectedL" handlerSymbol="cpp@src//TrackerInfoListBoxView.cpp/function(CTrackerInfoListBoxView::HandleContinueTrackRecordingMenuItemSelectedL(TInt))"/>
         </component>
       </component>
     </component>
@@ -273,8 +275,8 @@
     </resourceMappings>
     <enumMappings>
       <enumMapping instanceName="continueTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand</enumMapping>
-      <enumMapping instanceName="pauseTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand</enumMapping>
       <enumMapping instanceName="TrackerInfoListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
+      <enumMapping instanceName="pauseTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand</enumMapping>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
       <enumMapping instanceName="controlPane" propertyId="leftId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyOptions</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>
@@ -289,12 +291,12 @@
     <file>inc/trackerinfolistboxview.h</file>
     <file>src/trackerinfolistbox.cpp</file>
     <file>data/gpstracker.rss</file>
-    <file>inc/gpstracker.hrh</file>
     <file>data/trackerinfolistbox.rssi</file>
+    <file>inc/gpstracker.hrh</file>
+    <file>inc/trackerinfolistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
     <file>data/trackerinfolistbox.loc</file>
     <file>data/trackerinfolistbox.l01</file>
-    <file>inc/trackerinfolistbox.hrh</file>
   </generatedFiles>
 </designerData>

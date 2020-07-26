@@ -453,3 +453,39 @@ TBool CTrackerInfoListBox::HandleMarkableListCommandL( TInt aCommand )
 
 // ]]] end generated function
 
+
+void CTrackerInfoListBox::SetItemValueL(TInt anIdx, const TDesC &aVal)
+	{	
+	CDesCArray& itemsArray = *static_cast<CDesCArray*>(iListBox->Model()->ItemTextArray());	
+	
+	
+	// Checks
+	if (anIdx < 0)
+		User::Leave(KErrArgument);
+	
+	if (anIdx >= itemsArray.Count())
+		User::Leave(KErrArgument);
+
+		
+	// Constants
+	const TChar KTab = TChar('\t');
+	
+	
+	TBuf<64> itemText;
+	itemText.Copy(itemsArray[anIdx]);
+	if (itemText.Locate(KTab) != 0)
+		User::Leave(KErrNotFound);
+	TInt pos = itemText.LocateReverse(KTab);
+	if (pos == KErrNotFound)
+		User::Leave(KErrNotFound);
+	pos++; // Next char after tab
+	TInt len = itemText.Length() - pos;
+	itemText.Replace(pos, len, aVal);
+	
+	// Set new item text to listbox
+	// (I didn`t find method for replace item, only delete and insert new one)
+	itemsArray.Delete(anIdx);
+	itemsArray.InsertL(anIdx, itemText);
+	
+	}
+

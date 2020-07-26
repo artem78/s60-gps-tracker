@@ -124,6 +124,10 @@ public:
 		// ]]] end generated region [Generated Enums]
 		
 		};
+	
+public:
+	void SetItemValueL(TInt anIdx, const TDesC &aVal);
+
 	};
 				
 #endif // TRACKERINFOLISTBOX_H

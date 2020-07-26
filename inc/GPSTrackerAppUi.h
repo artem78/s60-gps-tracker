@@ -13,6 +13,15 @@
 #include <aknviewappui.h>
 // ]]] end generated region [Generated Includes]
 
+#include <LoggingDefs.h>
+#include "Logger.h"
+#include "Positioning.h"
+#include "TrackWriter.h"
+
+// Constants
+
+_LIT(KTimeFormat, "%H:%T:%S");
+
 // [[[ begin generated region: do not modify [Generated Forward Declarations]
 class CTrackerInfoListBoxView;
 // ]]] end generated region [Generated Forward Declarations]
@@ -22,7 +31,7 @@ class CTrackerInfoListBoxView;
  * @brief The AppUi class handles application-wide aspects of the user interface, including
  *        view management and the default menu, control pane, and status pane.
  */
-class CGPSTrackerAppUi : public CAknViewAppUi
+class CGPSTrackerAppUi : public CAknViewAppUi, public MPositionListener
 	{
 public: 
 	// constructor and destructor
@@ -60,6 +69,50 @@ private:
 	// [[[ begin [User Handlers]
 protected: 
 	// ]]] end [User Handlers]
+
+	
+private:
+	CDynamicPositionRequestor* iPosRequestor;
+	CGPXTrackWriter* iTrackWriter;
+	TUint iTotalPointsCount;
+	TReal iTotalDistance;
+	TBool iIsAfterConnectionRestored;	
+	
+	/**
+	 * @return Symbian OS error code or KErrNone
+	 */
+	TInt MakeDir(const TDesC &aDir);
+	
+	/**
+	 * @return Symbian OS error code or KErrNone
+	 */
+	TInt CurrentDateTime(TDes &aDes, const TDesC &aFormat);
+	
+#if LOGGING_ENABLED
+	RFile iLogFile;
+	CLogger* iLogger;
+	void InitializeLoggingL();
+#endif
+	RFile iTrackFile;
+	void InitializeTrackL();
+	void ShowDataL();
+	void /*Get*/ProgramDataDir(TDes &aDir);
+	
+	void ShowError(const TDesC aMsg, TInt anErrCode = KErrNone);
+	
+public:	
+	void StartTracking();
+	void StopTracking();
+	
+	// Events
+	void OnPositionUpdated();
+	void OnPositionPartialUpdated();
+	void OnPositionRestored();
+	void OnPositionLost();
+	void OnPositionError(TInt aErrCode);
+	void OnPauseTracking();
+	void OnResumeTracking();
+
 	
 	};
 

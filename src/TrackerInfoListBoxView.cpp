@@ -30,6 +30,8 @@
 #include "TrackerInfoListBox.h"
 // ]]] end generated region [Generated User Includes]
 
+#include "GPSTrackerAppUi.h"
+
 // [[[ begin generated region: do not modify [Generated Constants]
 // ]]] end generated region [Generated Constants]
 
@@ -119,6 +121,12 @@ void CTrackerInfoListBoxView::HandleCommandL( TInt aCommand )
 	TBool commandHandled = EFalse;
 	switch ( aCommand )
 		{	// code to dispatch to the AknView's menu and CBA commands is generated here
+		case ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand:
+			commandHandled = HandlePauseTrackRecordingMenuItemSelectedL( aCommand );
+			break;
+		case ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand:
+			commandHandled = HandleContinueTrackRecordingMenuItemSelectedL( aCommand );
+			break;
 		default:
 			break;
 		}
@@ -248,3 +256,125 @@ CTrackerInfoListBox* CTrackerInfoListBoxView::CreateContainerL()
 	return CTrackerInfoListBox::NewL( ClientRect(), NULL, this );
 	}
 
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackerInfoListBoxView::HandlePauseTrackRecordingMenuItemSelectedL( TInt aCommand )
+	{
+	static_cast<CGPSTrackerAppUi *>(AppUi())->StopTracking();
+	
+	return ETrue;
+	}
+				
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackerInfoListBoxView::HandleContinueTrackRecordingMenuItemSelectedL( TInt aCommand )
+	{
+	static_cast<CGPSTrackerAppUi *>(AppUi())->StartTracking();
+	
+	return ETrue;
+	}
+
+void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal aSpeed,
+		TInt aSatUsed, TInt aSatTotal, TInt aSavedPoints, TTimeIntervalMicroSeconds aPosRefreshRate)
+	{
+	if (!iTrackerInfoListBox) // Check that list box created
+		return;
+	
+	// Constants
+	const TChar KForwardSlash = TChar(0x2F);
+	const TChar KSpace = TChar(0x20);
+	_LIT(KTextNoValue, "-----");
+	_LIT(KMetersUnit, "m");
+	_LIT(KKilometersPerHourUnit, "km/h");
+	_LIT(KSecondsUnit, "s");
+	const TChar KDegree = TChar(0xB0);
+	const TInt KMicroSecondsPerSecond = 1000000;
+
+	const TRealFormat KShortRealFmt = TRealFormat(10, 1);
+	const TRealFormat KLongRealFmt = TRealFormat(10, 5);
+
+
+	// Variables
+	TBuf<100> valBuff;
+
+	
+	// Latitude
+	if (!Math::IsNaN(aLat))
+		{
+		valBuff.Zero();
+		valBuff.AppendNum(aLat, KLongRealFmt);
+		valBuff.Append(KDegree);
+		}
+	else
+		valBuff.Copy(KTextNoValue);
+	iTrackerInfoListBox->SetItemValueL(ELatitudeItem, valBuff);
+
+	// Longitude
+	if (!Math::IsNaN(aLon))
+		{
+		valBuff.Zero();
+		valBuff.AppendNum(aLon, KLongRealFmt);
+		valBuff.Append(KDegree);
+		}
+	else
+		valBuff.Copy(KTextNoValue);
+	iTrackerInfoListBox->SetItemValueL(ELongitudeItem, valBuff);
+	
+	// Altitude
+	if (!Math::IsNaN(aAlt))
+		{
+		valBuff.Zero();
+		valBuff.AppendNum(aAlt, KShortRealFmt);
+		valBuff.Append(KSpace);
+		valBuff.Append(KMetersUnit);
+		}
+	else
+		valBuff.Copy(KTextNoValue);
+	iTrackerInfoListBox->SetItemValueL(EAltitudeItem, valBuff);
+		
+	// Speed
+	if (!Math::IsNaN(aSpeed))
+		{
+		valBuff.Zero();
+		valBuff.AppendNum(aSpeed, KShortRealFmt);
+		valBuff.Append(KSpace);
+		valBuff.Append(KKilometersPerHourUnit);
+		}
+	else
+		valBuff.Copy(KTextNoValue);
+	iTrackerInfoListBox->SetItemValueL(ESpeedItem, valBuff);
+	
+	// Satellites
+	valBuff.Zero();
+	valBuff.AppendNum(aSatUsed);
+	valBuff.Append(KSpace);
+	valBuff.Append(KForwardSlash);
+	valBuff.Append(KSpace);
+	valBuff.AppendNum(aSatTotal);
+	iTrackerInfoListBox->SetItemValueL(ESatellitesItem, valBuff);
+	
+	// Saved points
+	valBuff.Zero();
+	valBuff.AppendNum(aSavedPoints);
+	iTrackerInfoListBox->SetItemValueL(ESavedPointsItem, valBuff);
+	
+	// Position update interval
+	valBuff.Zero();
+	valBuff.AppendNum(aPosRefreshRate.Int64() / TReal(KMicroSecondsPerSecond), KShortRealFmt);
+	valBuff.Append(KSpace);
+	valBuff.Append(KSecondsUnit);
+	iTrackerInfoListBox->SetItemValueL(EPositionRefreshRateItem, valBuff);
+	
+	
+	// Redraw listbox component
+	iTrackerInfoListBox->DrawNow();
+	
+	}
+
+				
