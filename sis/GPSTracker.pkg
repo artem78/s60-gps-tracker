@@ -12,13 +12,13 @@
 &EN
 
 ; standard SIS file header
-#{"GPSTracker"},(0xE959FFAC),1,0,0
+#{"GPSTracker"},(0xE959FFAC),0,0,0
 
 ;Localised Vendor name
-%{"Vendor-EN"}
+%{"artem78 <megabyte1024@ya.ru>"}
 
 ;Unique Vendor name
-:"Vendor"
+:"artem78 <megabyte1024@ya.ru>"
 
 ;Supports Series 60 v 3.0
 [0x101F7961], 0, 0, 0, {"Series60ProductID"}
