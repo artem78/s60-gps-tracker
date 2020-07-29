@@ -222,7 +222,13 @@ void CGPSTrackerAppUi::InitializeLoggingL()
 	logFileName.Append(KLogFileExtension);
 	User::LeaveIfError(iLogFile.Replace(CEikonEnv::Static()->FsSession(), logFileName, EFileWrite));
 	
-	iLogger = CLogger::NewL(iLogFile);
+	// Enable logging autoflush only for emulator
+#ifndef __WINS__
+	TBool logAutoFlush = EFalse;
+#else
+	TBool logAutoFlush = ETrue;
+#endif
+	iLogger = CLogger::NewL(iLogFile, CLogger::ELevelAll, CLogger::EASCII/*EUtf8*/, logAutoFlush);
 	LoggerStatic::SetLogger(iLogger);
 	LOG(_L8("Logging started"));
 	}
