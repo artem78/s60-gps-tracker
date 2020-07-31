@@ -53,6 +53,7 @@ public:
 	 * Destructor.
 	 */
 	~CGPXTrackWriter();
+	void DeinitializeL(); // Leaving methods for destructor for using in trap
 
 	/**
 	 * Two-phased constructor.

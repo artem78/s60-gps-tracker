@@ -33,14 +33,17 @@ CGPXTrackWriter::CGPXTrackWriter(RFile &aFile, TBool anIsWriteExtendedData) :
 
 CGPXTrackWriter::~CGPXTrackWriter()
 	{
-	// FixMe: Leave may occured in destructor
+	TRAP_IGNORE(DeinitializeL());
 	
+	delete iXml;
+	}
+
+void CGPXTrackWriter::DeinitializeL()
+	{
 	CloseSegmentL();
 
 	iXml->CloseTagL(); // </trk>
 	iXml->CloseTagL(); // </gpx>
-	
-	delete iXml;
 	}
 
 CGPXTrackWriter* CGPXTrackWriter::NewLC(RFile &aFile, TBool anIsWriteExtendedData,
