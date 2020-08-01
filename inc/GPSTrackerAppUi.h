@@ -22,6 +22,10 @@
 
 _LIT(KTimeFormat, "%H:%T:%S");
 
+// Variables
+
+LOCAL_D TBool gIsExit = EFalse; // ToDo: Not good, but working solution
+
 // [[[ begin generated region: do not modify [Generated Forward Declarations]
 class CTrackerInfoListBoxView;
 // ]]] end generated region [Generated Forward Declarations]

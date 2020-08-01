@@ -52,6 +52,8 @@ CGPSTrackerAppUi::~CGPSTrackerAppUi()
 	{
 	DEBUG(_L("AppUI destructor start"));
 	
+	gIsExit = ETrue;
+	
 	delete iPosRequestor;
 	delete iTrackWriter;
 	
@@ -266,6 +268,9 @@ void CGPSTrackerAppUi::InitializeTrackL()
 
 void CGPSTrackerAppUi::ShowDataL()
 	{
+	if (gIsExit)
+		return;
+	
 	LOG(_L8("Begin show data"));
 
 	
