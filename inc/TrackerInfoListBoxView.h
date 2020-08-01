@@ -91,6 +91,9 @@ private:
 	// [[[ begin generated region: do not modify [Generated Methods]
 	// ]]] end generated region [Generated Methods]
 	
+	// From MEikMenuObserver
+	void DynInitMenuPaneL(TInt aMenuID, CEikMenuPane* aMenuPane);
+	
 	enum TListBoxItem
 		{
 		ELatitudeItem = 0,

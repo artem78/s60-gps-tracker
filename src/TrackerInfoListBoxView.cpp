@@ -284,6 +284,27 @@ TBool CTrackerInfoListBoxView::HandleContinueTrackRecordingMenuItemSelectedL( TI
 	return ETrue;
 	}
 
+void CTrackerInfoListBoxView::DynInitMenuPaneL(TInt aMenuID, CEikMenuPane* aMenuPane)
+	{
+	if (aMenuID == R_TRACKER_INFO_LIST_BOX_MENU_PANE1_MENU_PANE)
+		{
+		if (!static_cast<CGPSTrackerAppUi *>(AppUi())->IsTrackingRunning())
+			{
+			aMenuPane->SetItemDimmed(ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand, ETrue);
+			aMenuPane->SetItemDimmed(ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand, EFalse);
+			}
+		else
+			{
+			aMenuPane->SetItemDimmed(ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand, ETrue);
+			aMenuPane->SetItemDimmed(ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand, EFalse);
+			}
+		}
+	else
+		{
+		AppUi()->DynInitMenuPaneL(aMenuID, aMenuPane);
+		}
+	}
+
 void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal aSpeed,
 		TInt aSatUsed, TInt aSatTotal, TInt aSavedPoints, TTimeIntervalMicroSeconds aPosRefreshRate)
 	{

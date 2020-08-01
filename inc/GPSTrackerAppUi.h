@@ -104,6 +104,8 @@ private:
 public:	
 	void StartTracking();
 	void StopTracking();
+	inline TBool IsTrackingRunning()
+		{ return iPosRequestor->IsRunning(); }
 	
 	// Events
 	void OnPositionUpdated();
