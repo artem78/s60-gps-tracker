@@ -37,7 +37,8 @@ const TChar KSpace = TChar(0x20);
 /**
  * Construct the CGPSTrackerAppUi instance
  */ 
-CGPSTrackerAppUi::CGPSTrackerAppUi()
+CGPSTrackerAppUi::CGPSTrackerAppUi() :
+		iIsGoingToExit(EFalse)
 	{
 	// [[[ begin generated region: do not modify [Generated Contents]
 	// ]]] end generated region [Generated Contents]
@@ -52,7 +53,7 @@ CGPSTrackerAppUi::~CGPSTrackerAppUi()
 	{
 	DEBUG(_L("AppUI destructor start"));
 	
-	gIsExit = ETrue;
+	iIsGoingToExit = ETrue;
 	
 	delete iPosRequestor;
 	delete iTrackWriter;
@@ -268,7 +269,9 @@ void CGPSTrackerAppUi::InitializeTrackL()
 
 void CGPSTrackerAppUi::ShowDataL()
 	{
-	if (gIsExit)
+	// There are some problems with controls when application exiting,
+	// so skip interaction with UI in this case
+	if (iIsGoingToExit)
 		return;
 	
 	LOG(_L8("Begin show data"));
