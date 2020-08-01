@@ -50,8 +50,7 @@ CGPSTrackerAppUi::CGPSTrackerAppUi()
  */
 CGPSTrackerAppUi::~CGPSTrackerAppUi()
 	{
-	// [[[ begin generated region: do not modify [Generated Contents]
-	// ]]] end generated region [Generated Contents]
+	DEBUG(_L("AppUI destructor start"));
 	
 	delete iPosRequestor;
 	delete iTrackWriter;
@@ -71,6 +70,12 @@ CGPSTrackerAppUi::~CGPSTrackerAppUi()
 	delete iLogger;
 	iLogFile.Close();
 #endif
+	
+	
+	// [[[ begin generated region: do not modify [Generated Contents]
+	// ]]] end generated region [Generated Contents]
+	
+	DEBUG(_L("AppUi destructor end"));
 	}
 
 // [[[ begin generated function: do not modify

@@ -31,6 +31,7 @@
 // ]]] end generated region [Generated User Includes]
 
 #include "GPSTrackerAppUi.h"
+#include "Logger.h"
 
 // [[[ begin generated region: do not modify [Generated Constants]
 // ]]] end generated region [Generated Constants]
@@ -53,11 +54,14 @@ CTrackerInfoListBoxView::CTrackerInfoListBoxView()
  */
 CTrackerInfoListBoxView::~CTrackerInfoListBoxView()
 	{
+	DEBUG(_L("InfoListBoxView destructor start"));
+	
 	// [[[ begin generated region: do not modify [Generated Contents]
 	delete iTrackerInfoListBox;
 	iTrackerInfoListBox = NULL;
 	// ]]] end generated region [Generated Contents]
 	
+	DEBUG(_L("InfoListBoxView destructor end"));
 	}
 
 /**

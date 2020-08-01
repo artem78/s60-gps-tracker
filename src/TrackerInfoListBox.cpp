@@ -28,6 +28,8 @@
 // [[[ begin generated region: do not modify [Generated Constants]
 // ]]] end generated region [Generated Constants]
 
+#include "Logger.h"
+
 /**
  * First phase of Symbian two-phase construction. Should not 
  * contain any code that could leave.
@@ -44,11 +46,14 @@ CTrackerInfoListBox::CTrackerInfoListBox()
  */
 CTrackerInfoListBox::~CTrackerInfoListBox()
 	{
+	DEBUG(_L("InfoListBox destructor start"));
+	
 	// [[[ begin generated region: do not modify [Generated Contents]
 	delete iListBox;
 	iListBox = NULL;
 	// ]]] end generated region [Generated Contents]
 	
+	DEBUG(_L("InfoListBox destructor end"));
 	}
 				
 /**
