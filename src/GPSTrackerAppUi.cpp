@@ -21,6 +21,7 @@
 
 #include <lbspositioninfo.h>
 #include "LBSSatelliteExtended.h"
+#include "TrackerInfoListBox.hrh"
 
 //  Constants
 
@@ -450,12 +451,34 @@ void CGPSTrackerAppUi::OnPauseTracking()
 	{
 	TRAP_IGNORE(ShowDataL());
 	
+	CEikMenuPane* menuPane = iTrackerInfoListBoxView->MenuBar()->MenuPane(); 
+	
+	TInt pos;
+	if (menuPane->MenuItemExists(ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand, pos) &&
+			menuPane->MenuItemExists(ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand, pos))
+		{
+		// Without item exist check next 2 lines will panic with EIKCOCTL 8: No such menu item 
+		menuPane->SetItemDimmed(ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand, ETrue);
+		menuPane->SetItemDimmed(ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand, EFalse);
+		}
+	
 	//TRAP(r, iTrackWriter->StartNewSegmentL());
 	}
 
 void CGPSTrackerAppUi::OnResumeTracking()
 	{
 	TRAP_IGNORE(ShowDataL());
+	
+	CEikMenuPane* menuPane = iTrackerInfoListBoxView->MenuBar()->MenuPane(); 
+	
+	TInt pos;
+	if (menuPane->MenuItemExists(ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand, pos) &&
+			menuPane->MenuItemExists(ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand, pos))
+		{
+		// Without item exist check next 2 lines will panic with EIKCOCTL 8: No such menu item 
+		menuPane->SetItemDimmed(ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand, ETrue);
+		menuPane->SetItemDimmed(ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand, EFalse);
+		}
 	}
 
 void CGPSTrackerAppUi::ShowError(const TDesC aMsg, TInt anErrCode)
