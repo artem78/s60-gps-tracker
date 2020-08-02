@@ -25,7 +25,7 @@
 //  Constants
 
 _LIT(KProgramName, "GPS Tracker");
-_LIT(KProgramVersion, "0.0.0"); // ToDo: Change this
+_LIT(KProgramVersion, "1.0.0");
 _LIT(KTracksDir, "\\data\\GPSTracker\\tracks\\");
 _LIT(KLogsDir, "\\data\\GPSTracker\\logs\\");
 _LIT(KTimeFormatForFileName, "%F%Y%M%D_%H%T%S");

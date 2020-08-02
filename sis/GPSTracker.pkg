@@ -12,7 +12,7 @@
 &EN
 
 ; standard SIS file header
-#{"GPSTracker"},(0xE959FFAC),0,0,0
+#{"GPS Tracker"},(0xE959FFAC),1,0,0
 
 ;Localised Vendor name
 %{"artem78 <megabyte1024@ya.ru>"}
