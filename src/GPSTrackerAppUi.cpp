@@ -443,6 +443,7 @@ void CGPSTrackerAppUi::OnPositionPartialUpdated()
 
 void CGPSTrackerAppUi::OnPositionError(TInt aErrCode)
 	{
+	// test...
 	ShowError(_L("OnPositionError"), aErrCode);
 	Exit();
 	}
