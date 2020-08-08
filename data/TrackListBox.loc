@@ -1,13 +1,11 @@
 /*
 ========================================================================
- Name        : GPSTracker.hrh
+ Name        : TrackListBox.loc
  Author      : artem78
- Copyright   : General Public License v3.0
+ Copyright   : 
  Description : 
 ========================================================================
 */
-enum TGPSTrackerViewUids
-	{
-	ETrackerInfoListBoxViewId = 1,
-	ETrackListBoxViewId
-	};
+#ifdef LANGUAGE_01
+#include "TrackListBox.l01"
+#endif

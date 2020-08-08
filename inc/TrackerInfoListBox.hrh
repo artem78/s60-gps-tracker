@@ -9,5 +9,7 @@
 enum TTrackerInfoListBoxViewCommands
 	{
 	ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand = 0x6000,
-	ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand
+	ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand,
+	ETrackerInfoListBoxViewTracksMenuItemCommand,
+	ETrackerInfoListBoxViewTracksListMenuItemCommand
 	};

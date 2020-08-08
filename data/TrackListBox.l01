@@ -1,0 +1,12 @@
+/*
+========================================================================
+ Name        : TrackListBox.l01
+ Author      : artem78
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: UK English (01)
+#define STR_TrackListBoxView_1 ""
+#define STR_TrackListBoxView_2 ""
+#define STR_TrackListBoxView_3 "Tracks"

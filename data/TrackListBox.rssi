@@ -1,0 +1,39 @@
+/*
+========================================================================
+ Name        : TrackListBox.rssi
+ Author      : artem78
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+#include "TrackListBox.loc"
+
+RESOURCE AVKON_VIEW r_track_list_box_track_list_box_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+	menubar = r_track_list_box_options_menu;
+	toolbar = 0;
+	}
+RESOURCE MENU_BAR r_track_list_box_options_menu
+	{
+	}
+RESOURCE STATUS_PANE_APP_MODEL r_track_list_box_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_track_list_box_title_resource;
+			}
+		};
+	}
+RESOURCE TITLE_PANE r_track_list_box_title_resource
+	{
+	txt = STR_TrackListBoxView_3;
+	}
+RESOURCE LISTBOX r_track_list_box_list_box
+	{
+	flags = EAknListBoxSelectionList;
+	}

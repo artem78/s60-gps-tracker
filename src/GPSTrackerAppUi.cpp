@@ -16,7 +16,9 @@
 // [[[ begin generated region: do not modify [Generated User Includes]
 #include "GPSTrackerAppUi.h"
 #include "GPSTracker.hrh"
+#include "TrackerInfoListBox.hrh"
 #include "TrackerInfoListBoxView.h"
+#include "TrackListBoxView.h"
 // ]]] end generated region [Generated User Includes]
 
 #include <lbspositioninfo.h>
@@ -87,6 +89,8 @@ void CGPSTrackerAppUi::InitializeContainersL()
 	iTrackerInfoListBoxView = CTrackerInfoListBoxView::NewL();
 	AddViewL( iTrackerInfoListBoxView );
 	SetDefaultViewL( *iTrackerInfoListBoxView );
+	iTrackListBoxView = CTrackListBoxView::NewL();
+	AddViewL( iTrackListBoxView );
 	}
 // ]]] end generated function
 
@@ -497,3 +501,43 @@ void CGPSTrackerAppUi::StopTracking()
 		}
 	}
 
+void CGPSTrackerAppUi::GetTracksArrayL(CDesCArray &aTracksArr)
+	{
+	aTracksArr.Reset();
+	
+	// Read list of all saved tracks
+	TFileName path;
+	path.Copy(KTracksDir);
+	_LIT(KFileMask, "*.gpx"); // Tracks extension
+	path.Append(KFileMask);
+	CDir* files(NULL);
+	User::LeaveIfError(CCoeEnv::Static()->FsSession().GetDir(path, KEntryAttNormal, ESortByDate, files));
+	if (files != NULL)
+		{
+		CleanupStack::PushL(files);
+		
+		for (TInt i = 0; i < files->Count(); i++)
+			{
+			if ((*files)[i].IsDir())
+				continue;
+			
+			aTracksArr.AppendL((*files)[i].iName);
+			}
+		
+		CleanupStack::PopAndDestroy(files);
+		}
+	}
+
+void CGPSTrackerAppUi::UpdateTrackListL()
+	{
+	CDesCArray* trackArr = new (ELeave) CDesCArraySeg(20);
+	CleanupStack::PushL(trackArr);
+	GetTracksArrayL(*trackArr);
+	iTrackListBoxView->SetTrackArrayL(*trackArr);
+	CleanupStack::PopAndDestroy(trackArr);
+	}
+
+void CGPSTrackerAppUi::ShowTrackListL()
+	{
+	ActivateViewL(iTrackListBoxView->ViewId());
+	}

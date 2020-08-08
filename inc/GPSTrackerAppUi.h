@@ -24,6 +24,7 @@ _LIT(KTimeFormat, "%H:%T:%S");
 
 // [[[ begin generated region: do not modify [Generated Forward Declarations]
 class CTrackerInfoListBoxView;
+class CTrackListBoxView;
 // ]]] end generated region [Generated Forward Declarations]
 
 /**
@@ -63,6 +64,7 @@ public:
 	// [[[ begin generated region: do not modify [Generated Instance Variables]
 private: 
 	CTrackerInfoListBoxView* iTrackerInfoListBoxView;
+	CTrackListBoxView* iTrackListBoxView;
 	// ]]] end generated region [Generated Instance Variables]
 	
 	
@@ -106,6 +108,9 @@ public:
 	void StopTracking();
 	inline TBool IsTrackingRunning()
 		{ return iPosRequestor->IsRunning(); }
+	void GetTracksArrayL(CDesCArray &aTrackArr);
+	void UpdateTrackListL();
+	void ShowTrackListL();
 	
 	// Events
 	void OnPositionUpdated();

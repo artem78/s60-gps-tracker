@@ -26,3 +26,4 @@
 #define STR_TrackerInfoListBoxView_26 ""
 #define STR_TrackerInfoListBoxView_40 "Continue track recording"
 #define STR_TrackerInfoListBoxView_39 "Pause track recording"
+#define STR_TrackerInfoListBoxView_4 "Tracks"

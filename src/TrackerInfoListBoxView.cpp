@@ -131,6 +131,9 @@ void CTrackerInfoListBoxView::HandleCommandL( TInt aCommand )
 		case ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand:
 			commandHandled = HandleContinueTrackRecordingMenuItemSelectedL( aCommand );
 			break;
+		case ETrackerInfoListBoxViewTracksListMenuItemCommand:
+			commandHandled = HandleTracksListMenuItemSelectedL( aCommand );
+			break;
 		default:
 			break;
 		}
@@ -402,4 +405,17 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	
 	}
 
+				
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackerInfoListBoxView::HandleTracksListMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi()); 
+	appUi->ShowTrackListL();
+	
+	return ETrue;
+	}
 				

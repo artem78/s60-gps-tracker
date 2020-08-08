@@ -18,9 +18,9 @@
     <manifestEntry id="com.nokia.sdt.series60.AvkonViewReference" version="1.0.0"/>
     <manifestEntry id="com.nokia.sdt.series60.DesignReference" version="1.0.0"/>
   </componentManifest>
+  <property id="com.nokia.sdt.symbian.dm.RESOURCE_DIRECTORY_ID">data</property>
   <property id="com.nokia.sdt.component.symbian.version">3.1.0</property>
   <property id="com.nokia.sdt.component.symbian.vendor">com.nokia.series60</property>
-  <property id="com.nokia.sdt.symbian.dm.RESOURCE_DIRECTORY_ID">data</property>
   <property id="com.nokia.sdt.symbian.dm.COMPONENT_PROVIDER">com.nokia.sdt.component.symbian.Symbian-Provider</property>
   <property id="com.nokia.sdt.symbian.dm.INCLUDE_DIRECTORY_ID">inc</property>
   <property id="com.nokia.sdt.symbian.dm.ROOT_CONTAINER">GPSTrackerAppUi</property>
@@ -86,9 +86,15 @@
         </component>
         <component id="com.nokia.sdt.series60.AvkonViewReference">
           <property id="filePath">TrackerInfoListBox.uidesign</property>
-          <compoundProperty id="tabImage"/>
           <property id="baseName">TrackerInfoListBox</property>
+          <compoundProperty id="tabImage"/>
           <property id="name">aknViewReference1</property>
+        </component>
+        <component id="com.nokia.sdt.series60.AvkonViewReference">
+          <property id="filePath">TrackListBox.uidesign</property>
+          <property id="baseName">TrackListBox</property>
+          <compoundProperty id="tabImage"/>
+          <property id="name">aknViewReference2</property>
         </component>
       </component>
     </component>
@@ -104,13 +110,15 @@
   <macroTable/>
   <sourceMappingState>
     <resourceMappings>
-      <resourceMapping instanceName="GPSTrackerAppUi">r_application_gpstracker_app_ui</resourceMapping>
-      <resourceMapping instanceName="statusPane">r_application_status_pane</resourceMapping>
-      <resourceMapping instanceName="aknViewReference1" rsrcId="tabText">r_application_akn_view_reference1</resourceMapping>
       <resourceMapping instanceName="GPSTrackerAppUi" rsrcId="localisable_app_info">r_localisable_app_info</resourceMapping>
+      <resourceMapping instanceName="aknViewReference1" rsrcId="tabText">r_application_akn_view_reference1</resourceMapping>
+      <resourceMapping instanceName="GPSTrackerAppUi">r_application_gpstracker_app_ui</resourceMapping>
+      <resourceMapping instanceName="aknViewReference2" rsrcId="tabText">r_application_akn_view_reference2</resourceMapping>
+      <resourceMapping instanceName="statusPane">r_application_status_pane</resourceMapping>
     </resourceMappings>
     <enumMappings>
       <enumMapping instanceName="aknViewReference1" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
+      <enumMapping instanceName="aknViewReference2" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
     </enumMappings>
     <arrayMappings/>
   </sourceMappingState>
@@ -118,17 +126,23 @@
     <file>inc/gpstrackerdocument.h</file>
     <file>src/trackerinfolistboxview.cpp</file>
     <file>inc/gpstrackerappui.h</file>
+    <file>src/tracklistboxview.cpp</file>
+    <file>inc/tracklistboxview.h</file>
     <file>src/gpstrackerdocument.cpp</file>
     <file>inc/gpstrackerapplication.h</file>
     <file>inc/trackerinfolistboxview.h</file>
     <file>src/gpstrackerapplication.cpp</file>
     <file>src/gpstrackerappui.cpp</file>
     <file>data/gpstracker.rss</file>
-    <file>data/trackerinfolistbox.rssi</file>
-    <file>data/trackerinfolistbox.l01</file>
-    <file>data/trackerinfolistbox.loc</file>
-    <file>data/gpstracker.l01</file>
-    <file>data/gpstracker.loc</file>
     <file>inc/gpstracker.hrh</file>
+    <file>data/trackerinfolistbox.rssi</file>
+    <file>inc/trackerinfolistbox.hrh</file>
+    <file>data/tracklistbox.rssi</file>
+    <file>data/gpstracker.loc</file>
+    <file>data/gpstracker.l01</file>
+    <file>data/trackerinfolistbox.loc</file>
+    <file>data/trackerinfolistbox.l01</file>
+    <file>data/tracklistbox.loc</file>
+    <file>data/tracklistbox.l01</file>
   </generatedFiles>
 </designerData>
