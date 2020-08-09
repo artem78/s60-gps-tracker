@@ -446,6 +446,11 @@ TBool CTrackListBox::HandleMarkableListCommandL( TInt aCommand )
 // ]]] end generated function
 
 
+void CTrackListBox::AddListBoxItemChangeObserverL(MListBoxItemChangeObserver* aObserver)
+	{
+	iListBox->AddItemChangeObserverL(aObserver);
+	}
+
 void CTrackListBox::SetTrackArrayL(const CDesCArray &aTrackArr)
 	{
 	CDesCArray& itemTextArr = *static_cast<CDesCArray*>(iListBox->Model()->ItemTextArray());	

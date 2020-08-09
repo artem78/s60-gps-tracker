@@ -17,10 +17,14 @@
 // [[[ begin [Event Handler Includes]
 // ]]] end [Event Handler Includes]
 
+#include <eiklbx.h>
+
+
 // [[[ begin generated region: do not modify [Generated Constants]
 // ]]] end generated region [Generated Constants]
 
 // [[[ begin generated region: do not modify [Generated Forward Declarations]
+class CAknNavigationDecorator;
 class CTrackListBox;
 // ]]] end generated region [Generated Forward Declarations]
 
@@ -30,7 +34,7 @@ class CTrackListBox;
  * @class	CTrackListBoxView TrackListBoxView.h
  */						
 			
-class CTrackListBoxView : public CAknView
+class CTrackListBoxView : public CAknView, public MListBoxItemChangeObserver
 	{
 	
 	
@@ -80,6 +84,8 @@ private:
 	void CleanupStatusPane();
 	
 	// [[[ begin generated region: do not modify [Generated Instance Variables]
+	// any current navi decorator
+	CAknNavigationDecorator* iNaviDecorator_;
 	CTrackListBox* iTrackListBox;
 	// ]]] end generated region [Generated Instance Variables]
 	
@@ -88,10 +94,17 @@ private:
 	
 	// ]]] end [Private Section]
 	
+	
+	// From MListBoxItemChangeObserver
+public:
+	void ListBoxItemsChanged(CEikListBox* aListBox);
+	
+	
 private:
 	TVwsViewId iPrevViewId;
 	
 public:
+	void SetNaviPaneTextL(const TDesC& aNaviText);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
 	
 	};

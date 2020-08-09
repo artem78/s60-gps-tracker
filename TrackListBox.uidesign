@@ -8,6 +8,8 @@
     <manifestEntry id="com.nokia.sdt.series60.ControlBase" version="1.0.0"/>
     <manifestEntry id="com.nokia.sdt.series60.StatusPaneTitle" version="1.0.0"/>
     <manifestEntry id="com.nokia.sdt.series60.StatusPaneTitleBase" version="1.0.0"/>
+    <manifestEntry id="com.nokia.sdt.series60.NaviText" version="1.0.0"/>
+    <manifestEntry id="com.nokia.sdt.series60.NaviBase" version="1.0.0"/>
     <manifestEntry id="com.nokia.sdt.series60.CBA" version="1.0.0"/>
     <manifestEntry id="com.nokia.sdt.series60.CBABase" version="1.0.0"/>
     <manifestEntry id="com.nokia.sdt.series60.CCoeControl" version="1.2.0"/>
@@ -57,6 +59,18 @@
           <property id="height">43</property>
         </compoundProperty>
         <compoundProperty id="image"/>
+      </component>
+      <component id="com.nokia.sdt.series60.NaviText">
+        <compoundProperty id="location">
+          <property id="x">60</property>
+          <property id="y">43</property>
+        </compoundProperty>
+        <property id="name">naviText</property>
+        <property id="text" type="i18n">STR_TrackListBoxView_4</property>
+        <compoundProperty id="size">
+          <property id="width">144</property>
+          <property id="height">20</property>
+        </compoundProperty>
       </component>
     </component>
     <component id="com.nokia.sdt.series60.CBA">
@@ -114,6 +128,7 @@
       <string id="STR_TrackListBoxView_1"/>
       <string id="STR_TrackListBoxView_2"/>
       <string id="STR_TrackListBoxView_3">Tracks</string>
+      <string id="STR_TrackListBoxView_4">%N tracks</string>
     </stringTable>
   </stringBundle>
   <macroTable/>
@@ -122,12 +137,16 @@
       <resourceMapping instanceName="statusPane">r_track_list_box_status_pane</resourceMapping>
       <resourceMapping instanceName="listBox">r_track_list_box_list_box</resourceMapping>
       <resourceMapping instanceName="title">r_track_list_box_title_resource</resourceMapping>
+      <resourceMapping instanceName="naviText" rsrcId="text">r_track_list_box_navi_text</resourceMapping>
       <resourceMapping instanceName="TrackListBoxView">r_track_list_box_track_list_box_view</resourceMapping>
+      <resourceMapping instanceName="naviText">r_track_list_box_navi_text_resource</resourceMapping>
       <resourceMapping instanceName="optionsMenu">r_track_list_box_options_menu</resourceMapping>
     </resourceMappings>
     <enumMappings>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
       <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
+      <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidNavi</enumMapping>
+      <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtNaviPane</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtTitlePane</enumMapping>
     </enumMappings>

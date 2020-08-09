@@ -125,6 +125,7 @@ public:
 		};
 	
 public:
+	void AddListBoxItemChangeObserverL(MListBoxItemChangeObserver* aObserver);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
 	};
 				

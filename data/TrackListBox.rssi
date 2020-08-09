@@ -26,6 +26,12 @@ RESOURCE STATUS_PANE_APP_MODEL r_track_list_box_status_pane
 			id = EEikStatusPaneUidTitle;
 			type = EAknCtTitlePane;
 			resource = r_track_list_box_title_resource;
+			},
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidNavi;
+			type = EAknCtNaviPane;
+			resource = r_track_list_box_navi_text_resource;
 			}
 		};
 	}
@@ -36,4 +42,16 @@ RESOURCE TITLE_PANE r_track_list_box_title_resource
 RESOURCE LISTBOX r_track_list_box_list_box
 	{
 	flags = EAknListBoxSelectionList;
+	}
+RESOURCE NAVI_DECORATOR r_track_list_box_navi_text_resource
+	{
+	type = ENaviDecoratorLabel;
+	control = NAVI_LABEL
+		{
+		txt = STR_TrackListBoxView_4;
+		};
+	}
+RESOURCE TBUF r_track_list_box_navi_text
+	{
+	buf = STR_TrackListBoxView_4;
 	}

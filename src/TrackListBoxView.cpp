@@ -18,6 +18,8 @@
 #include <eikclbd.h>
 #include <akncontext.h>
 #include <akntitle.h>
+#include <aknnavide.h>
+#include <aknnavi.h>
 #include <eikbtgpc.h>
 #include <GPSTracker.rsg>
 // ]]] end generated region [Generated System Includes]
@@ -42,6 +44,7 @@
 CTrackListBoxView::CTrackListBoxView()
 	{
 	// [[[ begin generated region: do not modify [Generated Contents]
+	iNaviDecorator_ = NULL;
 	iTrackListBox = NULL;
 	// ]]] end generated region [Generated Contents]
 	
@@ -54,6 +57,11 @@ CTrackListBoxView::CTrackListBoxView()
 CTrackListBoxView::~CTrackListBoxView()
 	{
 	// [[[ begin generated region: do not modify [Generated Contents]
+	if ( iNaviDecorator_ != NULL )
+		{
+		delete iNaviDecorator_;
+		iNaviDecorator_ = NULL;
+		}
 	delete iTrackListBox;
 	iTrackListBox = NULL;
 	// ]]] end generated region [Generated Contents]
@@ -232,6 +240,28 @@ void CTrackListBoxView::SetupStatusPaneL()
 		CleanupStack::PopAndDestroy(); // reader internal state
 		}
 				
+	// set the navi pane content
+	TUid naviPaneUid = TUid::Uid( EEikStatusPaneUidNavi );
+	CEikStatusPaneBase::TPaneCapabilities subPaneNavi = 
+		StatusPane()->PaneCapabilities( naviPaneUid );
+	if ( subPaneNavi.IsPresent() && subPaneNavi.IsAppOwned() )
+		{
+		CAknNavigationControlContainer* naviPane = 
+			static_cast< CAknNavigationControlContainer* >( 
+				StatusPane()->ControlL( naviPaneUid ) );
+		if ( iNaviDecorator_ != NULL )
+			{
+			delete iNaviDecorator_;
+			iNaviDecorator_ = NULL;
+			}
+				
+		HBufC* labelText = StringLoader::LoadLC( R_TRACK_LIST_BOX_NAVI_TEXT );
+		iNaviDecorator_ = naviPane->CreateNavigationLabelL( *labelText );
+		CleanupStack::PopAndDestroy( labelText );			
+				
+		naviPane->PushL( *iNaviDecorator_ );
+		}
+				
 	}
 
 // ]]] end generated function
@@ -239,6 +269,23 @@ void CTrackListBoxView::SetupStatusPaneL()
 // [[[ begin generated function: do not modify
 void CTrackListBoxView::CleanupStatusPane()
 	{
+	// reset the navi pane 
+	TUid naviPaneUid = TUid::Uid( EEikStatusPaneUidNavi );
+	CEikStatusPaneBase::TPaneCapabilities subPaneNavi = 
+		StatusPane()->PaneCapabilities( naviPaneUid );
+	if ( subPaneNavi.IsPresent() && subPaneNavi.IsAppOwned() )
+		{
+		CAknNavigationControlContainer* naviPane = 
+			static_cast< CAknNavigationControlContainer* >( 
+				StatusPane()->ControlL( naviPaneUid ) );
+		if ( iNaviDecorator_ != NULL )
+			{
+			naviPane->Pop( iNaviDecorator_ );
+			delete iNaviDecorator_;
+			iNaviDecorator_ = NULL;
+			}
+		}
+	
 	}
 
 // ]]] end generated function
@@ -251,9 +298,36 @@ void CTrackListBoxView::CleanupStatusPane()
  */
 CTrackListBox* CTrackListBoxView::CreateContainerL()
 	{
-	return CTrackListBox::NewL( ClientRect(), NULL, this );
+	CTrackListBox* lb = CTrackListBox::NewL( ClientRect(), NULL, this );
+	
+	// Add observer for items change
+	lb->AddListBoxItemChangeObserverL(this);
+	
+	return lb;
 	}
 
+void CTrackListBoxView::ListBoxItemsChanged(CEikListBox* aListBox)
+	{
+	TInt count = aListBox->Model()->NumberOfItems();
+	
+	HBufC* naviText = StringLoader::LoadLC(R_TRACK_LIST_BOX_NAVI_TEXT, count, iEikonEnv);
+	SetNaviPaneTextL(*naviText);
+	CleanupStack::PopAndDestroy(naviText);
+	}
+
+void CTrackListBoxView::SetNaviPaneTextL(const TDesC& aNaviText)
+	{
+	// ToDo: Is it possible to change pane text without recreate label component?
+	
+	delete iNaviDecorator_;
+	iNaviDecorator_ = NULL;
+	
+	CAknNavigationControlContainer* naviPane = static_cast<CAknNavigationControlContainer*>(
+				StatusPane()->ControlL(TUid::Uid(EEikStatusPaneUidNavi)));
+	
+	iNaviDecorator_ = naviPane->CreateNavigationLabelL(aNaviText);
+	naviPane->PushL(*iNaviDecorator_);
+	}
 
 void CTrackListBoxView::SetTrackArrayL(const CDesCArray &aTrackArr)
 	{
