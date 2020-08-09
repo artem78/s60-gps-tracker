@@ -88,6 +88,7 @@
         <property id="width">240</property>
         <property id="height">32</property>
       </compoundProperty>
+      <eventBinding id="rightSoftKeyPressed" handlerDisplay="HandleControlPaneRightSoftKeyPressedL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleControlPaneRightSoftKeyPressedL(TInt))"/>
     </component>
     <component id="com.nokia.sdt.series60.CCoeControl">
       <property id="initialFocus" type="componentRef">listBox</property>
@@ -144,8 +145,8 @@
     </resourceMappings>
     <enumMappings>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
-      <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidNavi</enumMapping>
+      <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtNaviPane</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtTitlePane</enumMapping>

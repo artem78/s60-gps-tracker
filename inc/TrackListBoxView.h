@@ -73,6 +73,7 @@ protected:
 	
 	
 	// [[[ begin [User Handlers]
+	TBool HandleControlPaneRightSoftKeyPressedL( TInt aCommand );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]

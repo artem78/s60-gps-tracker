@@ -129,6 +129,10 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 	TBool commandHandled = EFalse;
 	switch ( aCommand )
 		{	// code to dispatch to the AknView's menu and CBA commands is generated here
+	
+		case EAknSoftkeyBack:
+			commandHandled = HandleControlPaneRightSoftKeyPressedL( aCommand );
+			break;
 		default:
 			break;
 		}
@@ -139,8 +143,7 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 	
 		if ( aCommand == EAknSoftkeyBack )
 			{
-			// Go back to previous view
-			AppUi()->ActivateViewL(iPrevViewId);
+			AppUi()->HandleCommandL( EEikCmdExit );
 			}
 	
 		}
@@ -336,3 +339,15 @@ void CTrackListBoxView::SetTrackArrayL(const CDesCArray &aTrackArr)
 	
 	iTrackListBox->SetTrackArrayL(aTrackArr);
 	}
+/** 
+ * Handle the rightSoftKeyPressed event.
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleControlPaneRightSoftKeyPressedL( TInt aCommand )
+	{
+	// Go back to previous view
+	AppUi()->ActivateViewL(iPrevViewId);
+	
+	return ETrue;
+	}
+				
