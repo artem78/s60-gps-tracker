@@ -466,8 +466,9 @@ void CGPSTrackerAppUi::OnResumeTracking()
 	TRAP_IGNORE(ShowDataL());
 	}
 
-void CGPSTrackerAppUi::ShowError(const TDesC aMsg, TInt anErrCode)
+void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
 	{
+	// ToDo: Use error icon instead info
 	_LIT(KErrCodeText, " (Error code: %d)");
 	
 	if (anErrCode == KErrNone)

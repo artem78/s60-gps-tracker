@@ -101,7 +101,8 @@ private:
 	void ShowDataL();
 	void /*Get*/ProgramDataDir(TDes &aDir);
 	
-	void ShowError(const TDesC aMsg, TInt anErrCode = KErrNone);
+public:
+	void ShowError(const TDesC &aMsg, TInt anErrCode = KErrNone);
 	
 public:	
 	void StartTracking();
