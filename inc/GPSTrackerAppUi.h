@@ -111,6 +111,8 @@ public:
 	void GetTracksArrayL(CDesCArray &aTrackArr);
 	void UpdateTrackListL();
 	void ShowTrackListL();
+	void TrackDir(TDes &aDes);
+	void LogDir(TDes &aDes);
 	
 	// Events
 	void OnPositionUpdated();

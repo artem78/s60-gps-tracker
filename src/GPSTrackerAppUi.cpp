@@ -28,8 +28,8 @@
 
 _LIT(KProgramName, "GPS Tracker");
 _LIT(KProgramVersion, "1.0.0");
-_LIT(KTracksDir, "\\data\\GPSTracker\\tracks\\");
-_LIT(KLogsDir, "\\data\\GPSTracker\\logs\\");
+_LIT(KTracksDirRel, "tracks\\");
+_LIT(KLogsDirRel, "logs\\");
 _LIT(KTimeFormatForFileName, "%F%Y%M%D_%H%T%S");
 const TChar KSpace = TChar(0x20);
 
@@ -214,11 +214,13 @@ TInt CGPSTrackerAppUi::CurrentDateTime(TDes &aDes, const TDesC &aFormat)
 void CGPSTrackerAppUi::InitializeLoggingL()
 	{
 	// Create dir
-	User::LeaveIfError(MakeDir(KLogsDir));
+	TFileName logDir;
+	LogDir(logDir);
+	User::LeaveIfError(MakeDir(logDir));
 	
 	// Configure logging file
 	TFileName logFileName;
-	logFileName.Append(KLogsDir);
+	logFileName.Append(logDir);
 #ifndef __WINS__
 	TBuf<20> timeBuff;
 	CurrentDateTime(timeBuff, KTimeFormatForFileName);
@@ -249,14 +251,16 @@ void CGPSTrackerAppUi::InitializeLoggingL()
 void CGPSTrackerAppUi::InitializeTrackL()
 	{
 	// Create dir
-	User::LeaveIfError(MakeDir(KTracksDir));
+	TFileName trackDir;
+	TrackDir(trackDir);
+	User::LeaveIfError(MakeDir(trackDir));
 	
 	TBuf<20> timeBuff;
 	CurrentDateTime(timeBuff, KTimeFormatForFileName);
 	
 	// Create gpx file for writing track
 	TFileName gpxFileName;
-	gpxFileName.Append(KTracksDir);
+	gpxFileName.Append(trackDir);
 	_LIT(KTrackFilePrefix, "track_");
 	gpxFileName.Append(KTrackFilePrefix);
 	gpxFileName.Append(timeBuff);
@@ -507,7 +511,7 @@ void CGPSTrackerAppUi::GetTracksArrayL(CDesCArray &aTracksArr)
 	
 	// Read list of all saved tracks
 	TFileName path;
-	path.Copy(KTracksDir);
+	TrackDir(path);
 	_LIT(KFileMask, "*.gpx"); // Tracks extension
 	path.Append(KFileMask);
 	CDir* files(NULL);
@@ -540,4 +544,16 @@ void CGPSTrackerAppUi::UpdateTrackListL()
 void CGPSTrackerAppUi::ShowTrackListL()
 	{
 	ActivateViewL(iTrackListBoxView->ViewId());
+	}
+
+void CGPSTrackerAppUi::TrackDir(TDes &aDes)
+	{
+	ProgramDataDir(aDes);
+	aDes.Append(KTracksDirRel);
+	}
+
+void CGPSTrackerAppUi::LogDir(TDes &aDes)
+	{
+	ProgramDataDir(aDes);
+	aDes.Append(KLogsDirRel);
 	}
