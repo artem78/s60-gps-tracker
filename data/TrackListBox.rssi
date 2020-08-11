@@ -6,6 +6,7 @@
  Description : 
 ========================================================================
 */
+#include "TrackListBox.hrh"
 #include "TrackListBox.loc"
 
 RESOURCE AVKON_VIEW r_track_list_box_track_list_box_view
@@ -15,7 +16,14 @@ RESOURCE AVKON_VIEW r_track_list_box_track_list_box_view
 	toolbar = 0;
 	}
 RESOURCE MENU_BAR r_track_list_box_options_menu
-	{
+	{titles =
+			{
+			MENU_TITLE
+				{
+				menu_pane = r_track_list_box_menu_pane1_menu_pane;
+				}
+			};
+
 	}
 RESOURCE STATUS_PANE_APP_MODEL r_track_list_box_status_pane
 	{
@@ -54,4 +62,23 @@ RESOURCE NAVI_DECORATOR r_track_list_box_navi_text_resource
 RESOURCE TBUF r_track_list_box_navi_text
 	{
 	buf = STR_TrackListBoxView_4;
+	}
+RESOURCE MENU_PANE r_track_list_box_menu_pane1_menu_pane
+	{
+	items =
+		{
+		MENU_ITEM
+			{
+			command = ETrackListBoxViewTrackDetailsMenuItemCommand;
+			txt = STR_TrackListBoxView_5;
+			}
+		};
+	}
+RESOURCE TBUF r_track_list_box_track_details_title
+	{
+	buf = STR_TrackListBoxView_6;
+	}
+RESOURCE TBUF r_track_list_box_track_details_text
+	{
+	buf = STR_TrackListBoxView_7;
 	}

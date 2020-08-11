@@ -29,6 +29,7 @@
 #include "GPSTracker.hrh"
 #include "TrackListBoxView.h"
 #include "TrackerInfoListBox.hrh"
+#include "TrackListBox.hrh"
 #include "TrackListBox.h"
 // ]]] end generated region [Generated User Includes]
 
@@ -132,6 +133,9 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 	
 		case EAknSoftkeyBack:
 			commandHandled = HandleControlPaneRightSoftKeyPressedL( aCommand );
+			break;
+		case ETrackListBoxViewTrackDetailsMenuItemCommand:
+			commandHandled = HandleTrackDetailsMenuItemSelectedL( aCommand );
 			break;
 		default:
 			break;
@@ -347,6 +351,57 @@ TBool CTrackListBoxView::HandleControlPaneRightSoftKeyPressedL( TInt aCommand )
 	{
 	// Go back to previous view
 	AppUi()->ActivateViewL(iPrevViewId);
+	
+	return ETrue;
+	}
+				
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	// Read track file information
+	HBufC* fileName = iTrackListBox->GetCurrentListBoxItemTextLC();
+	/*if (fileName == NULL)
+		return; // No selected item, exit*/
+	TFileName fileFullName;
+	static_cast<CGPSTrackerAppUi *>(AppUi())->TrackDir(fileFullName);
+	fileFullName.Append(*fileName);
+	TEntry fileEntry;
+	User::LeaveIfError(iEikonEnv->FsSession().Entry(fileFullName, fileEntry));
+	
+	
+	// Prepare strings
+	// ToDo: Add points count, distance info
+	TBuf<64> tmp;	
+	CDesCArrayFlat* strings = new CDesCArrayFlat(3);
+	CleanupStack::PushL(strings);
+	// File name
+	strings->AppendL(fileEntry.iName);
+	// File size
+	// ToDo: Show size in kb/mb
+	tmp.Num(fileEntry.iSize);
+	strings->AppendL(tmp);
+	// File modify date
+	// ToDo: I think, it will be better to get time from first (or last?) <trkpt> tag in GPX
+	_LIT(KDateFmt, "%F%Y-%M-%D %H:%T:%S"); // ToDo: Use locale-specific format
+	TTime modTime = fileEntry.iModified;
+	// Convert UTC to local time
+	TLocale locale;
+	modTime += locale.UniversalTimeOffset();
+	modTime.FormatL(tmp, KDateFmt);
+	strings->AppendL(tmp);
+	
+	
+	// Create and show message window
+	HBufC* titleBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TITLE, iEikonEnv);
+	HBufC* textBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TEXT, *strings, iEikonEnv);
+	//iEikonEnv->AlertWin(*titleBuff, *textBuff);
+	iEikonEnv->InfoWinL(*titleBuff, *textBuff);
+	CleanupStack::PopAndDestroy(4, fileName);	
+	
 	
 	return ETrue;
 	}

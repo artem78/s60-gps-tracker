@@ -23,6 +23,7 @@
 #include "TrackListBoxView.h"
 #include "GPSTracker.hrh"
 #include "TrackerInfoListBox.hrh"
+#include "TrackListBox.hrh"
 // ]]] end generated region [Generated User Includes]
 
 // [[[ begin generated region: do not modify [Generated Constants]
@@ -446,6 +447,17 @@ TBool CTrackListBox::HandleMarkableListCommandL( TInt aCommand )
 // ]]] end generated function
 
 
+void CTrackListBox::ParseListBoxItemL(TDes& aItemValue, const TDesC& aItemText)
+	{
+	if (aItemText.Length() > 0 && aItemText[0] == '\t')
+		{
+		TPtrC val = aItemText.Mid(1, aItemText.Length() - 1);
+		aItemValue.Copy(val);
+		}
+	else
+		User::Leave(KErrBadDescriptor);
+	}
+
 void CTrackListBox::AddListBoxItemChangeObserverL(MListBoxItemChangeObserver* aObserver)
 	{
 	iListBox->AddItemChangeObserverL(aObserver);
@@ -474,3 +486,41 @@ void CTrackListBox::SetTrackArrayL(const CDesCArray &aTrackArr)
 		iListBox->DrawNow();
 
 	}
+
+//HBufC* CTrackListBox::GetSelectedListBoxItemTextLC() const
+//	{
+//	RArray<TInt>* orderedSelectedIndices = GetSelectedListBoxItemsLC(iListBox);		
+//	if (!orderedSelectedIndices)
+//		return NULL;
+//	
+//	HBufC* itemText = NULL;
+//	if (orderedSelectedIndices->Count() == 1) // If only one item selected
+//		{
+//		CDesCArray* itemArray = static_cast<CDesCArray*> (iListBox->Model()->ItemTextArray());
+//		TInt selectedItemIdx = (*orderedSelectedIndices)[0];
+//		itemText = (*itemArray)[selectedItemIdx].AllocLC();
+//		}
+//	
+//	// dispose the orderedSelectedIndices array resources
+//	CleanupStack::PopAndDestroy();
+//	
+//	// dispose the orderedSelectedIndices array pointer
+//	CleanupStack::PopAndDestroy(orderedSelectedIndices);
+//	
+//	// Return result
+//	return itemText;
+//	}
+
+HBufC* CTrackListBox::GetCurrentListBoxItemTextLC() const
+	{
+	TInt idx = iListBox->CurrentItemIndex();
+	CDesCArray* itemArray = static_cast<CDesCArray*> (iListBox->Model()->ItemTextArray());
+	TPtrC itemText = (*itemArray)[idx];
+	HBufC* buff = HBufC::NewL(itemText.Length());
+	CleanupStack::PushL(buff);
+	//RBuf rbuff(buff);
+	TPtr pbuff(buff->Des());
+	ParseListBoxItemL(pbuff, itemText);
+	return buff;
+	}
+

@@ -74,6 +74,7 @@ protected:
 	
 	// [[[ begin [User Handlers]
 	TBool HandleControlPaneRightSoftKeyPressedL( TInt aCommand );
+	TBool HandleTrackDetailsMenuItemSelectedL( TInt aCommand );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]

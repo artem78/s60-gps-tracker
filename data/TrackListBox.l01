@@ -11,3 +11,6 @@
 #define STR_TrackListBoxView_2 ""
 #define STR_TrackListBoxView_3 "Tracks"
 #define STR_TrackListBoxView_4 "%N tracks"
+#define STR_TrackListBoxView_5 "Details"
+#define STR_TrackListBoxView_6 "Track details:"
+#define STR_TrackListBoxView_7 "File: %0U\nSize: %1U bytes\nDate: %2U"

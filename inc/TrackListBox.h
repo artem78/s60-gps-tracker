@@ -123,10 +123,15 @@ public:
 		// ]]] end generated region [Generated Enums]
 		
 		};
+
+private:
+	static void ParseListBoxItemL(TDes& aItemValue, const TDesC& aItemText);
 	
 public:
 	void AddListBoxItemChangeObserverL(MListBoxItemChangeObserver* aObserver);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
+	//HBufC* GetSelectedListBoxItemTextLC() const;
+	HBufC* GetCurrentListBoxItemTextLC() const;
 	};
 				
 #endif // TRACKLISTBOX_H

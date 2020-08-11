@@ -1,0 +1,12 @@
+/*
+========================================================================
+ Name        : TrackListBox.hrh
+ Author      : artem78
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+enum TTrackListBoxViewCommands
+	{
+	ETrackListBoxViewTrackDetailsMenuItemCommand = 0x6000
+	};
