@@ -524,3 +524,15 @@ HBufC* CTrackListBox::GetCurrentListBoxItemTextLC() const
 	return buff;
 	}
 
+void CTrackListBox::DeleteListBoxItemL(TInt aIdx)
+	{
+	CTextListBoxModel* model = iListBox->Model();
+	
+	if (aIdx < 0 || aIdx >= model->NumberOfItems())
+		User::Leave(KErrArgument);
+	
+	CDesCArray* itemArray = static_cast<CDesCArray*>(model->ItemTextArray());
+	itemArray->Delete(aIdx);
+	//itemArray->Compress();
+	}
+

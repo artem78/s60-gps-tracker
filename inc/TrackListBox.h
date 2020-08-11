@@ -132,6 +132,9 @@ public:
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
 	//HBufC* GetSelectedListBoxItemTextLC() const;
 	HBufC* GetCurrentListBoxItemTextLC() const;
+	inline TInt GetCurrentListBoxItemIdx()
+		{ return iListBox->CurrentItemIndex(); }
+	void DeleteListBoxItemL(TInt aIdx);
 	};
 				
 #endif // TRACKLISTBOX_H

@@ -137,6 +137,9 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 		case ETrackListBoxViewTrackDetailsMenuItemCommand:
 			commandHandled = HandleTrackDetailsMenuItemSelectedL( aCommand );
 			break;
+		case ETrackListBoxViewDeleteTrackMenuItemCommand:
+			commandHandled = HandleDeleteTrackMenuItemSelectedL( aCommand );
+			break;
 		default:
 			break;
 		}
@@ -402,6 +405,54 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	iEikonEnv->InfoWinL(*titleBuff, *textBuff);
 	CleanupStack::PopAndDestroy(4, fileName);	
 	
+	
+	return ETrue;
+	}
+				
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	// ToDo: Allow to mark multiple items for deletion
+	// ToDo: Delete with "C" key
+	// ToDo: Add "Delete all" in menu
+	// ToDo: Add confirmation
+	
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	
+	HBufC* fileName = iTrackListBox->GetCurrentListBoxItemTextLC();
+	/*if (fileName == NULL)
+		return; // No selected item, exit*/	
+	TFileName fileFullName;
+	appUi->TrackDir(fileFullName);
+	fileFullName.Append(*fileName);
+	
+	TInt r = iCoeEnv->FsSession().Delete(fileFullName);
+	if (r == KErrNone)
+		{
+		TInt idx = iTrackListBox->GetCurrentListBoxItemIdx();
+		iTrackListBox->DeleteListBoxItemL(idx);
+		}
+	else
+		{
+		if (r == KErrInUse)
+			{
+			_LIT(KErrMsg, "Can`t delete active track file!");
+			appUi->ShowError(KErrMsg);
+			}
+		else
+			{
+			_LIT(KErrMsgFmt, "Can`t delete file \"%S\"!");
+			RBuf msg;
+			msg.CreateL(KErrMsgFmt().Length() + fileName->Length());
+			msg.Format(KErrMsgFmt, &(*fileName));
+			appUi->ShowError(msg, r);
+			msg.Close();
+			}
+		}
 	
 	return ETrue;
 	}

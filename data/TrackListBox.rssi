@@ -71,6 +71,11 @@ RESOURCE MENU_PANE r_track_list_box_menu_pane1_menu_pane
 			{
 			command = ETrackListBoxViewTrackDetailsMenuItemCommand;
 			txt = STR_TrackListBoxView_5;
+			},
+		MENU_ITEM
+			{
+			command = ETrackListBoxViewDeleteTrackMenuItemCommand;
+			txt = STR_TrackListBoxView_8;
 			}
 		};
 	}
