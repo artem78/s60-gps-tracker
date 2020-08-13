@@ -534,5 +534,6 @@ void CTrackListBox::DeleteListBoxItemL(TInt aIdx)
 	CDesCArray* itemArray = static_cast<CDesCArray*>(model->ItemTextArray());
 	itemArray->Delete(aIdx);
 	//itemArray->Compress();
+	iListBox->HandleItemRemovalL();	
 	}
 
