@@ -21,6 +21,9 @@
 #include <aknnavide.h>
 #include <aknnavi.h>
 #include <eikbtgpc.h>
+#include <gdi.h>
+#include <eikedwin.h>
+#include <aknquerydialog.h>
 #include <GPSTracker.rsg>
 // ]]] end generated region [Generated System Includes]
 
@@ -136,6 +139,9 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 			break;
 		case ETrackListBoxViewTrackDetailsMenuItemCommand:
 			commandHandled = HandleTrackDetailsMenuItemSelectedL( aCommand );
+			break;
+		case ETrackListBoxViewRenameTrackMenuItemCommand:
+			commandHandled = HandleRenameTrackMenuItemSelectedL( aCommand );
 			break;
 		case ETrackListBoxViewDeleteTrackMenuItemCommand:
 			commandHandled = HandleDeleteTrackMenuItemSelectedL( aCommand );
@@ -457,3 +463,91 @@ TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
 	return ETrue;
 	}
 				
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleRenameTrackMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	RFs fs = iEikonEnv->FsSession();
+	
+	HBufC* oldFileName = iTrackListBox->GetCurrentListBoxItemTextLC();
+	/*if (fileName == NULL)
+		return; // No selected item, exit*/	
+	
+	TFileName newFileName;
+	newFileName.Copy(*oldFileName);
+	
+	
+	if (RunRenameQueryL(newFileName, /*ETrue*/ EFalse, NULL) == EAknSoftkeyOk)
+		{
+		TFileName oldFileFullName;
+		appUi->TrackDir(oldFileFullName);
+		oldFileFullName.Append(*oldFileName);
+		
+		TFileName newFileFullName;
+		appUi->TrackDir(newFileFullName);
+		newFileFullName.Append(newFileName);
+		
+		TInt r = fs.Rename(oldFileFullName, newFileFullName);
+		if (r == KErrNone)
+			{
+			appUi->UpdateTrackListL();
+			}
+		else
+			{
+			if (r == KErrInUse)
+				{
+				_LIT(KErrMsg, "Can`t rename active track file!");
+				appUi->ShowError(KErrMsg);
+				}
+			else
+				{
+				_LIT(KErrMsgFmt, "Can`t rename file \"%S\"!");
+				RBuf msg;
+				msg.CreateL(KErrMsgFmt().Length() + oldFileName->Length());
+				msg.Format(KErrMsgFmt, &(*oldFileName));
+				appUi->ShowError(msg, r);
+				msg.Close();
+				}
+			}
+		}
+	
+	return ETrue;
+	}
+				
+// [[[ begin generated function: do not modify
+/**
+ * Show the popup dialog for renameQuery
+ * @param aData in-out TDes data
+ * @param aUseDefaults TBool use designer default editor data if ETrue
+ * @param aOverridePrompt optional override prompt text
+ * @return EAknSoftkeyOk (left soft key id) or 0
+ */
+TInt CTrackListBoxView::RunRenameQueryL( 
+		TDes& aData, 
+		TBool aUseDefaults, 
+		const TDesC* aOverridePrompt )
+	{
+	if ( aUseDefaults )
+		{
+		HBufC* text = StringLoader::LoadLC( R_TRACK_LIST_BOX_EDIT1 );
+		aData.Copy( *text );
+		CleanupStack::PopAndDestroy( text );
+		}
+				
+	CAknTextQueryDialog* queryDialog = CAknTextQueryDialog::NewL( aData );	
+	
+	if ( aOverridePrompt != NULL )
+		{
+		CleanupStack::PushL( queryDialog );
+		queryDialog->SetPromptL( *aOverridePrompt );
+		CleanupStack::Pop(); // queryDialog
+		}
+	
+	return queryDialog->ExecuteLD( R_TRACK_LIST_BOX_RENAME_QUERY );
+	}
+// ]]] end generated function
+

@@ -74,6 +74,11 @@ RESOURCE MENU_PANE r_track_list_box_menu_pane1_menu_pane
 			},
 		MENU_ITEM
 			{
+			command = ETrackListBoxViewRenameTrackMenuItemCommand;
+			txt = STR_TrackListBoxView_9;
+			},
+		MENU_ITEM
+			{
 			command = ETrackListBoxViewDeleteTrackMenuItemCommand;
 			txt = STR_TrackListBoxView_8;
 			}
@@ -86,4 +91,35 @@ RESOURCE TBUF r_track_list_box_track_details_title
 RESOURCE TBUF r_track_list_box_track_details_text
 	{
 	buf = STR_TrackListBoxView_7;
+	}
+RESOURCE DIALOG r_track_list_box_rename_query
+	{
+	flags = EAknGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = ETrackListBoxViewEdit1;
+			control = AVKON_DATA_QUERY
+				{
+				layout = EDataLayout;
+				label = STR_TrackListBoxView_10;
+				control = EDWIN
+					{
+					maxlength = 255;
+					default_case = EAknEditorTextCase;
+					allowed_case_modes = EAknEditorAllCaseModes;
+					numeric_keymap = EAknEditorStandardNumberModeKeymap;
+					default_input_mode = EAknEditorTextInputMode;
+					allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;
+					};
+				};
+			}
+		};
+	}
+RESOURCE TBUF r_track_list_box_edit1
+	{
+	buf = STR_TrackListBoxView_11;
 	}

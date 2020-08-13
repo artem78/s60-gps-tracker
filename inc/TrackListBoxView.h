@@ -53,6 +53,10 @@ public:
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
 	CTrackListBox* CreateContainerL();
+	static TInt RunRenameQueryL( 
+			TDes& aData, 
+			TBool aUseDefaults = ETrue, 
+			const TDesC* aOverridePrompt = NULL );
 	// ]]] end generated region [Generated Methods]
 	
 	// ]]] end [Public Section]
@@ -76,6 +80,7 @@ protected:
 	TBool HandleControlPaneRightSoftKeyPressedL( TInt aCommand );
 	TBool HandleTrackDetailsMenuItemSelectedL( TInt aCommand );
 	TBool HandleDeleteTrackMenuItemSelectedL( TInt aCommand );
+	TBool HandleRenameTrackMenuItemSelectedL( TInt aCommand );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]

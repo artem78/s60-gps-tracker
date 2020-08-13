@@ -15,3 +15,6 @@
 #define STR_TrackListBoxView_6 "Track details:"
 #define STR_TrackListBoxView_7 "File: %0U\nSize: %1U bytes\nDate: %2U"
 #define STR_TrackListBoxView_8 "Delete"
+#define STR_TrackListBoxView_9 "Rename"
+#define STR_TrackListBoxView_10 "Enter file name:"
+#define STR_TrackListBoxView_11 ""
