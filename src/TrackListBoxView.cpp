@@ -491,26 +491,36 @@ TBool CTrackListBoxView::HandleRenameTrackMenuItemSelectedL( TInt /*aCommand*/ )
 		appUi->TrackDir(newFileFullName);
 		newFileFullName.Append(newFileName);
 		
-		TInt r = fs.Rename(oldFileFullName, newFileFullName);
-		if (r == KErrNone)
+		// Check if filename is correct
+		if (!fs.IsValidName(/*newFileFullName*/ newFileName))
 			{
-			appUi->UpdateTrackListL();
+			_LIT(KErrMsg, "Incorrect file name!");
+			appUi->ShowError(KErrMsg);
 			}
 		else
 			{
-			if (r == KErrInUse)
+			// Try to rename file
+			TInt r = fs.Rename(oldFileFullName, newFileFullName);
+			if (r == KErrNone)
 				{
-				_LIT(KErrMsg, "Can`t rename active track file!");
-				appUi->ShowError(KErrMsg);
+				appUi->UpdateTrackListL();
 				}
 			else
 				{
-				_LIT(KErrMsgFmt, "Can`t rename file \"%S\"!");
-				RBuf msg;
-				msg.CreateL(KErrMsgFmt().Length() + oldFileName->Length());
-				msg.Format(KErrMsgFmt, &(*oldFileName));
-				appUi->ShowError(msg, r);
-				msg.Close();
+				if (r == KErrInUse)
+					{
+					_LIT(KErrMsg, "Can`t rename active track file!");
+					appUi->ShowError(KErrMsg);
+					}
+				else
+					{
+					_LIT(KErrMsgFmt, "Can`t rename file \"%S\"!");
+					RBuf msg;
+					msg.CreateL(KErrMsgFmt().Length() + oldFileName->Length());
+					msg.Format(KErrMsgFmt, &(*oldFileName));
+					appUi->ShowError(msg, r);
+					msg.Close();
+					}
 				}
 			}
 		}
