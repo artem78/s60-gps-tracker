@@ -428,7 +428,10 @@ TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
 	{
 	// ToDo: Allow to mark multiple items for deletion
 	// ToDo: Delete with "C" key
-	// ToDo: Add confirmation
+	
+	// Confirmation dialog
+	if (RunDeleteConfQueryL(NULL) != EAknSoftkeyYes)
+		return ETrue;
 	
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 	
@@ -572,7 +575,10 @@ TInt CTrackListBoxView::RunRenameQueryL(
 TBool CTrackListBoxView::HandleDeleteAllTracksMenuItemSelectedL( TInt /*aCommand*/ )
 	{
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
-	appUi->DeleteAllTracks();
+	
+	// Confirmation dialog
+	if (RunDeleteConfQueryL(NULL) == EAknSoftkeyYes)
+		appUi->DeleteAllTracks();
 	
 	return ETrue;
 	}
@@ -642,3 +648,22 @@ void CTrackListBoxView::HandleDeletionWaitDialogCanceledL( CAknProgressDialog* /
 	appUi->CancelCurrentFManOperation();
 	}
 				
+// [[[ begin generated function: do not modify
+/**
+ * Show the popup dialog for deleteConfQuery
+ * @param aOverrideText optional override text
+ * @return EAknSoftkeyYes (left soft key id) or 0
+ */
+TInt CTrackListBoxView::RunDeleteConfQueryL( const TDesC* aOverrideText )
+	{
+				
+	CAknQueryDialog* queryDialog = CAknQueryDialog::NewL();	
+	
+	if ( aOverrideText != NULL )
+		{
+		queryDialog->SetPromptL( *aOverrideText );
+		}
+	return queryDialog->ExecuteLD( R_TRACK_LIST_BOX_DELETE_CONF_QUERY );
+	}
+// ]]] end generated function
+

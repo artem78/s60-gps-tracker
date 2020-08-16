@@ -147,3 +147,21 @@ RESOURCE DIALOG r_track_list_box_deletion_wait_dialog
 			}
 		};
 	}
+RESOURCE DIALOG r_track_list_box_delete_conf_query
+	{
+	flags = EAknGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_YES_NO;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = ETrackListBoxViewDeleteConfQuery;
+			control = AVKON_CONFIRMATION_QUERY
+				{
+				layout = EConfirmationQueryLayout;
+				label = STR_TrackListBoxView_14;
+				};
+			}
+		};
+	}

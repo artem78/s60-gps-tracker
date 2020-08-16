@@ -60,6 +60,7 @@ public:
 			const TDesC* aOverridePrompt = NULL );
 	void ExecuteDeletionWaitDialogLD( const TDesC* aOverrideText = NULL );
 	void RemoveDeletionWaitDialogL();
+	static TInt RunDeleteConfQueryL( const TDesC* aOverrideText = NULL );
 	// ]]] end generated region [Generated Methods]
 	
 	// ]]] end [Public Section]

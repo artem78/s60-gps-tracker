@@ -16,5 +16,6 @@ enum TTrackListBoxViewCommands
 enum TTrackListBoxViewControls
 	{
 	ETrackListBoxViewEdit1 = 1,
-	ETrackListBoxViewDeletionWaitDialog
+	ETrackListBoxViewDeletionWaitDialog,
+	ETrackListBoxViewDeleteConfQuery
 	};
