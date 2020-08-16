@@ -32,7 +32,7 @@ class CTrackListBoxView;
  * @brief The AppUi class handles application-wide aspects of the user interface, including
  *        view management and the default menu, control pane, and status pane.
  */
-class CGPSTrackerAppUi : public CAknViewAppUi, public MPositionListener
+class CGPSTrackerAppUi : public CAknViewAppUi, public MPositionListener, public MFileManObserver
 	{
 public: 
 	// constructor and destructor
@@ -80,6 +80,8 @@ private:
 	TReal iTotalDistance;
 	TBool iIsAfterConnectionRestored;	
 	TBool iIsGoingToExit;
+	CFileMan* iFileMan;
+	TBool iCancelFManOperation; // Used for cancel current operation in file manager
 	
 	/**
 	 * @return Symbian OS error code or KErrNone
@@ -114,6 +116,9 @@ public:
 	void ShowTrackListL();
 	void TrackDir(TDes &aDes);
 	void LogDir(TDes &aDes);
+	void DeleteAllTracks/*L*/();
+	inline void CancelCurrentFManOperation()
+		{ iCancelFManOperation = ETrue; }
 	
 	// Events
 	void OnPositionUpdated();
@@ -124,6 +129,12 @@ public:
 	void OnPauseTracking();
 	void OnResumeTracking();
 
+	
+	// from MFileManObserver
+public:
+	MFileManObserver::TControl NotifyFileManStarted();
+	MFileManObserver::TControl NotifyFileManOperation();
+	MFileManObserver::TControl NotifyFileManEnded();
 	
 	};
 

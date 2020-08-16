@@ -10,9 +10,11 @@ enum TTrackListBoxViewCommands
 	{
 	ETrackListBoxViewTrackDetailsMenuItemCommand = 0x6000,
 	ETrackListBoxViewDeleteTrackMenuItemCommand,
-	ETrackListBoxViewRenameTrackMenuItemCommand
+	ETrackListBoxViewRenameTrackMenuItemCommand,
+	ETrackListBoxViewDeleteAllTracksMenuItemCommand
 	};
 enum TTrackListBoxViewControls
 	{
-	ETrackListBoxViewEdit1 = 1
+	ETrackListBoxViewEdit1 = 1,
+	ETrackListBoxViewDeletionWaitDialog
 	};
