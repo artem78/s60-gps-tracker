@@ -81,6 +81,11 @@ RESOURCE MENU_PANE r_track_list_box_menu_pane1_menu_pane
 			{
 			command = ETrackListBoxViewDeleteTrackMenuItemCommand;
 			txt = STR_TrackListBoxView_8;
+			},
+		MENU_ITEM
+			{
+			command = ETrackListBoxViewDeleteAllTracksMenuItemCommand;
+			txt = STR_TrackListBoxView_12;
 			}
 		};
 	}
@@ -122,4 +127,23 @@ RESOURCE DIALOG r_track_list_box_rename_query
 RESOURCE TBUF r_track_list_box_edit1
 	{
 	buf = STR_TrackListBoxView_11;
+	}
+RESOURCE DIALOG r_track_list_box_deletion_wait_dialog
+	{
+	flags = EAknWaitNoteFlags;
+	buttons = R_AVKON_SOFTKEYS_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtNote;
+			id = ETrackListBoxViewDeletionWaitDialog;
+			control = AVKON_NOTE
+				{
+				layout = EWaitLayout;
+				singular_label = STR_TrackListBoxView_13;
+				animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+				};
+			}
+		};
 	}

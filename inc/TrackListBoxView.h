@@ -11,6 +11,7 @@
 
 // [[[ begin generated region: do not modify [Generated Includes]
 #include <aknview.h>
+#include <aknwaitdialog.h>
 // ]]] end generated region [Generated Includes]
 
 
@@ -57,6 +58,8 @@ public:
 			TDes& aData, 
 			TBool aUseDefaults = ETrue, 
 			const TDesC* aOverridePrompt = NULL );
+	void ExecuteDeletionWaitDialogLD( const TDesC* aOverrideText = NULL );
+	void RemoveDeletionWaitDialogL();
 	// ]]] end generated region [Generated Methods]
 	
 	// ]]] end [Public Section]
@@ -81,6 +84,8 @@ protected:
 	TBool HandleTrackDetailsMenuItemSelectedL( TInt aCommand );
 	TBool HandleDeleteTrackMenuItemSelectedL( TInt aCommand );
 	TBool HandleRenameTrackMenuItemSelectedL( TInt aCommand );
+	TBool HandleDeleteAllTracksMenuItemSelectedL( TInt aCommand );
+	void HandleDeletionWaitDialogCanceledL( CAknProgressDialog* aDialog );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]
@@ -95,6 +100,9 @@ private:
 	// any current navi decorator
 	CAknNavigationDecorator* iNaviDecorator_;
 	CTrackListBox* iTrackListBox;
+	CAknWaitDialog* iDeletionWaitDialog;
+	class CProgressDialogCallback;
+	CProgressDialogCallback* iDeletionWaitDialogCallback;
 	// ]]] end generated region [Generated Instance Variables]
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
@@ -114,6 +122,42 @@ private:
 public:
 	void SetNaviPaneTextL(const TDesC& aNaviText);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
+	
+	void ShowDeletionDialogL();
+	void HideDeletionDialogL();
+	//void SetTrackDeletionProgress(TInt aCount);
+	
+	
+	// [[[ begin [MProgressDialogCallback support]
+private: 
+	typedef void ( CTrackListBoxView::*ProgressDialogEventHandler )( 
+			CAknProgressDialog* aProgressDialog );
+	
+	/**
+	 * This is a helper class for progress/wait dialog callbacks. It routes the dialog's
+	 * cancel notification to the handler function for the cancel event.
+	 */
+	class CProgressDialogCallback : public CBase, public MProgressDialogCallback
+		{ 
+		public:
+			CProgressDialogCallback( 
+					CTrackListBoxView* aHandlerObj, 
+					CAknProgressDialog* aDialog, 
+					ProgressDialogEventHandler aHandler ) :
+				handlerObj( aHandlerObj ), dialog( aDialog ), handler( aHandler )
+				{}
+				
+			void DialogDismissedL( TInt aButtonId ) 
+				{
+				( handlerObj->*handler )( dialog );
+				}
+		private:
+			CTrackListBoxView* handlerObj;
+			CAknProgressDialog* dialog;
+			ProgressDialogEventHandler handler;
+		};
+		
+	// ]]] end [MProgressDialogCallback support]
 	
 	};
 

@@ -70,6 +70,8 @@ CGPSTrackerAppUi::~CGPSTrackerAppUi()
 			CCoeEnv::Static()->FsSession().Delete(gpxFileName);
 		}
 	
+	delete iFileMan;
+	
 #if LOGGING_ENABLED
 	LOG(_L8("Logging ended"));
 	delete iLogger;
@@ -182,6 +184,9 @@ void CGPSTrackerAppUi::ConstructL()
 	/*Get*/ProgramDataDir(programDataDir);
 	User::LeaveIfError(MakeDir(programDataDir));
 	User::LeaveIfError(CCoeEnv::Static()->FsSession().SetSessionPath(programDataDir)); // ToDo: Is this operation safe?
+	
+	iFileMan = CFileMan::NewL(CCoeEnv::Static()->FsSession(), this);
+	
 #if LOGGING_ENABLED
 	InitializeLoggingL();
 #endif
@@ -466,6 +471,94 @@ void CGPSTrackerAppUi::OnResumeTracking()
 	TRAP_IGNORE(ShowDataL());
 	}
 
+MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManStarted()
+	{
+	if (iCancelFManOperation)
+		{
+		DEBUG(_L("FMan operation cancelled"));
+		return MFileManObserver::EAbort;
+		}
+	else
+		{
+		DEBUG(_L("FMan started"));
+		return MFileManObserver::EContinue;
+		}
+	}
+
+MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManOperation()
+	{	
+	if (iCancelFManOperation)
+		{
+		DEBUG(_L("FMan operation cancelled"));
+		return MFileManObserver::EAbort;
+		}
+	else
+		{
+		DEBUG(_L("FMan operation"));
+		return MFileManObserver::EContinue;
+		}
+
+	
+//	
+//	switch (iFileMan->CurrentAction())
+//		{
+//		case CFileMan::EDelete:
+//			{
+//			if (iFileMan->GetLastError() != KErrNone)
+//				{
+//				_LIT(KErrMsg, "Failed to delete file %S!");
+//				RBuf msg;
+//				msg.Create(KErrMsg().Length() + iFileMan->CurrentEntry().iName.Length());
+//				msg.Format(KErrMsg, &iFileMan->CurrentEntry().iName);
+//				ShowError(msg);
+//				msg.Close();
+//				}
+//
+//			//TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
+//			return MFileManObserver::EContinue;
+//			}
+//			break;
+//			
+//			default:
+//			return MFileManObserver::EContinue;
+//		}
+//	
+//	return MFileManObserver::EContinue;
+	}
+
+MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManEnded()
+	{
+	iFManProcessedFiles++;
+	
+	if (iFManProcessedFiles == iFManTotalFiles)
+		NotifyFileManTotallyEnded();
+	
+	if (iCancelFManOperation)
+		{
+		DEBUG(_L("FMan operation cancelled"));
+		return MFileManObserver::EAbort;
+		}
+	else
+		{
+		DEBUG(_L("FMan ended"));
+		//iFManProcessedFiles++;
+		INFO(_L("File %S deleted"), &iFileMan->CurrentEntry().iName);
+		DEBUG(_L("Processed files: %d/%d"), iFManProcessedFiles, iFManTotalFiles);
+		return MFileManObserver::EContinue;
+		}
+	}
+
+void CGPSTrackerAppUi::NotifyFileManTotallyEnded()
+	{
+	DEBUG(_L("FMan totally ended"));
+	
+	if (iFileMan->CurrentAction() == CFileMan::EDelete)
+		{
+		TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
+		UpdateTrackListL();
+		}
+	}
+
 void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
 	{
 	// ToDo: Use error icon instead info
@@ -557,4 +650,37 @@ void CGPSTrackerAppUi::LogDir(TDes &aDes)
 	{
 	ProgramDataDir(aDes);
 	aDes.Append(KLogsDirRel);
+	}
+
+void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
+	{
+	TFileName path;
+	TrackDir(path);
+	_LIT(KTrackFileMask, "*.gpx");
+	path.Append(KTrackFileMask);
+	
+	// Get total amount of files for deletion
+	iFManTotalFiles = 0;
+	CDir* files(NULL);
+	TInt r = CCoeEnv::Static()->FsSession().GetDir(path, KEntryAttNormal, ESortNone, files);
+	/*if (r != KErrNone)
+		User::Leave(r);*/
+	if (files != NULL)
+		{		
+		for (TInt i = 0; i < files->Count(); i++)
+			{
+			if ((*files)[i].IsDir())
+				continue; // Skip dirs
+			
+			iFManTotalFiles++;
+			}
+		
+		delete files;
+		}
+	
+	// Start delete files	
+	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL());
+	iCancelFManOperation = EFalse;
+	iFManProcessedFiles = 0;
+	iFileMan->Delete(path);
 	}

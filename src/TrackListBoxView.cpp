@@ -68,6 +68,7 @@ CTrackListBoxView::~CTrackListBoxView()
 		}
 	delete iTrackListBox;
 	iTrackListBox = NULL;
+	TRAPD( err_DeletionWaitDialog, RemoveDeletionWaitDialogL() );
 	// ]]] end generated region [Generated Contents]
 	
 	}
@@ -145,6 +146,9 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 			break;
 		case ETrackListBoxViewDeleteTrackMenuItemCommand:
 			commandHandled = HandleDeleteTrackMenuItemSelectedL( aCommand );
+			break;
+		case ETrackListBoxViewDeleteAllTracksMenuItemCommand:
+			commandHandled = HandleDeleteAllTracksMenuItemSelectedL( aCommand );
 			break;
 		default:
 			break;
@@ -424,7 +428,6 @@ TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
 	{
 	// ToDo: Allow to mark multiple items for deletion
 	// ToDo: Delete with "C" key
-	// ToDo: Add "Delete all" in menu
 	// ToDo: Add confirmation
 	
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
@@ -561,3 +564,81 @@ TInt CTrackListBoxView::RunRenameQueryL(
 	}
 // ]]] end generated function
 
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleDeleteAllTracksMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	appUi->DeleteAllTracks();
+	
+	return ETrue;
+	}
+				
+// [[[ begin generated function: do not modify
+/**
+ * Execute the wait dialog for deletionWaitDialog. This routine returns
+ * while the dialog is showing. It will be closed and destroyed when
+ * RemoveDeletionWaitDialogL() or the user selects the Cancel soft key.
+ * @param aOverrideText optional override text. When null the text configured
+ * in the UI Designer is used.
+ */
+void CTrackListBoxView::ExecuteDeletionWaitDialogLD( const TDesC* aOverrideText )
+	{
+	iDeletionWaitDialog = new ( ELeave ) CAknWaitDialog( 
+			reinterpret_cast< CEikDialog** >( &iDeletionWaitDialog ), EFalse );
+	if ( aOverrideText != NULL )
+		{
+		iDeletionWaitDialog->SetTextL( *aOverrideText );
+		}
+	iDeletionWaitDialog->ExecuteLD( R_TRACK_LIST_BOX_DELETION_WAIT_DIALOG );
+	iDeletionWaitDialogCallback = new ( ELeave ) CProgressDialogCallback( 
+		this, iDeletionWaitDialog, &CTrackListBoxView::HandleDeletionWaitDialogCanceledL );
+	iDeletionWaitDialog->SetCallback( iDeletionWaitDialogCallback );
+	}
+// ]]] end generated function
+
+// [[[ begin generated function: do not modify
+/**
+ * Close and dispose of the wait dialog for deletionWaitDialog
+ */
+void CTrackListBoxView::RemoveDeletionWaitDialogL()
+	{
+	if ( iDeletionWaitDialog != NULL )
+		{
+		iDeletionWaitDialog->SetCallback( NULL );
+		iDeletionWaitDialog->ProcessFinishedL();    // deletes the dialog
+		iDeletionWaitDialog = NULL;
+		}
+	delete iDeletionWaitDialogCallback;
+	iDeletionWaitDialogCallback = NULL;
+	
+	}
+// ]]] end generated function
+
+void CTrackListBoxView::ShowDeletionDialogL()
+	{
+	ExecuteDeletionWaitDialogLD(NULL);
+	}
+
+void CTrackListBoxView::HideDeletionDialogL()
+	{
+	RemoveDeletionWaitDialogL();
+	}
+
+/*void CTrackListBoxView::SetTrackDeletionProgress(TInt aCount)
+	{
+	
+	}*/
+
+/** 
+ * Handle the canceled event.
+ */
+void CTrackListBoxView::HandleDeletionWaitDialogCanceledL( CAknProgressDialog* /* aDialog */ )
+	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	appUi->CancelCurrentFManOperation();
+	}
+				

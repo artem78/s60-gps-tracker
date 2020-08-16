@@ -18,3 +18,5 @@
 #define STR_TrackListBoxView_9 "Rename"
 #define STR_TrackListBoxView_10 "Enter file name:"
 #define STR_TrackListBoxView_11 ""
+#define STR_TrackListBoxView_12 "Delete all"
+#define STR_TrackListBoxView_13 "Deleting files (%N)..."
