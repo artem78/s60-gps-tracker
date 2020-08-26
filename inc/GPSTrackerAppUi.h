@@ -17,6 +17,7 @@
 #include "Logger.h"
 #include "Positioning.h"
 #include "TrackWriter.h"
+#include "AsyncFileMan.h"
 
 // Constants
 
@@ -32,7 +33,8 @@ class CTrackListBoxView;
  * @brief The AppUi class handles application-wide aspects of the user interface, including
  *        view management and the default menu, control pane, and status pane.
  */
-class CGPSTrackerAppUi : public CAknViewAppUi, public MPositionListener, public MFileManObserver
+class CGPSTrackerAppUi : public CAknViewAppUi, public MPositionListener,
+		public MAsyncFileManObserver
 	{
 public: 
 	// constructor and destructor
@@ -80,10 +82,12 @@ private:
 	TReal iTotalDistance;
 	TBool iIsAfterConnectionRestored;	
 	TBool iIsGoingToExit;
-	CFileMan* iFileMan;
-	TBool iCancelFManOperation; // Used for cancel current operation in file manager
-	TInt iFManProcessedFiles;
-	TInt iFManTotalFiles;
+	CAsyncFileMan* iAsyncFileMan;
+//	CFileMan* iFileMan;
+//	TBool iCancelFManOperation; // Used for cancel current operation in file manager
+//	TInt iFManProcessedFiles;
+//	TInt iFManTotalFiles;
+//	TRequestStatus iFManOperationReqStatus;
 	
 	/**
 	 * @return Symbian OS error code or KErrNone
@@ -120,7 +124,7 @@ public:
 	void LogDir(TDes &aDes);
 	void DeleteAllTracks/*L*/();
 	inline void CancelCurrentFManOperation()
-		{ iCancelFManOperation = ETrue; }
+		{ iAsyncFileMan->Cancel(); }
 	
 	// Events
 	void OnPositionUpdated();
@@ -133,13 +137,20 @@ public:
 
 	
 	// from MFileManObserver
+//public:
+//	MFileManObserver::TControl NotifyFileManStarted();
+//	MFileManObserver::TControl NotifyFileManOperation();
+//	MFileManObserver::TControl NotifyFileManEnded();
+	
+//	void NotifyFileManTotallyEnded();
+	
+	
+	// From MAsyncFileManObserver
 public:
-	MFileManObserver::TControl NotifyFileManStarted();
-	MFileManObserver::TControl NotifyFileManOperation();
-	MFileManObserver::TControl NotifyFileManEnded();
-	
-	
-	void NotifyFileManTotallyEnded();
+//	MFileManObserver::TControl OnFileManStarted();
+//	MFileManObserver::TControl OnFileManOperation();
+	MFileManObserver::TControl OnFileManEnded();
+	void OnFileManFinished(TInt aStatus);
 	
 	};
 
