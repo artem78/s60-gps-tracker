@@ -269,7 +269,7 @@
       <string id="STR_TrackListBoxView_10">Enter file name:</string>
       <string id="STR_TrackListBoxView_11"/>
       <string id="STR_TrackListBoxView_12">Delete all</string>
-      <string id="STR_TrackListBoxView_13">Deleting files (%N)...</string>
+      <string id="STR_TrackListBoxView_13">Deleting files...</string>
       <string id="STR_TrackListBoxView_14">Are you sure to delete file(s)?</string>
     </stringTable>
   </stringBundle>
@@ -284,8 +284,8 @@
       <resourceMapping instanceName="statusPane">r_track_list_box_status_pane</resourceMapping>
       <resourceMapping instanceName="listBox">r_track_list_box_list_box</resourceMapping>
       <resourceMapping instanceName="menuPane1">r_track_list_box_menu_pane1_menu_pane</resourceMapping>
-      <resourceMapping instanceName="TrackListBoxView">r_track_list_box_track_list_box_view</resourceMapping>
       <resourceMapping instanceName="renameQuery">r_track_list_box_rename_query</resourceMapping>
+      <resourceMapping instanceName="TrackListBoxView">r_track_list_box_track_list_box_view</resourceMapping>
       <resourceMapping instanceName="deletionWaitDialog">r_track_list_box_deletion_wait_dialog</resourceMapping>
       <resourceMapping instanceName="deleteConfQuery">r_track_list_box_delete_conf_query</resourceMapping>
     </resourceMappings>
@@ -302,10 +302,10 @@
       <enumMapping instanceName="deletionWaitDialog" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_DIALOG_LINE_ID">ETrackListBoxViewDeletionWaitDialog</enumMapping>
       <enumMapping instanceName="deleteTrackMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewDeleteTrackMenuItemCommand</enumMapping>
       <enumMapping instanceName="edit1" propertyId="defaultCase">EAknEditorTextCase</enumMapping>
-      <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidNavi</enumMapping>
-      <enumMapping instanceName="edit1" propertyId="defaultInputMode">EAknEditorTextInputMode</enumMapping>
+      <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
       <enumMapping instanceName="edit1" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_DIALOG_LINE_ID">ETrackListBoxViewEdit1</enumMapping>
+      <enumMapping instanceName="edit1" propertyId="defaultInputMode">EAknEditorTextInputMode</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtTitlePane</enumMapping>
     </enumMappings>
     <arrayMappings>

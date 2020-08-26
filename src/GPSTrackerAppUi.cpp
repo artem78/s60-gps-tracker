@@ -70,7 +70,7 @@ CGPSTrackerAppUi::~CGPSTrackerAppUi()
 			CCoeEnv::Static()->FsSession().Delete(gpxFileName);
 		}
 	
-	delete iFileMan;
+	delete iAsyncFileMan;
 	
 #if LOGGING_ENABLED
 	LOG(_L8("Logging ended"));
@@ -185,7 +185,7 @@ void CGPSTrackerAppUi::ConstructL()
 	User::LeaveIfError(MakeDir(programDataDir));
 	User::LeaveIfError(CCoeEnv::Static()->FsSession().SetSessionPath(programDataDir)); // ToDo: Is this operation safe?
 	
-	iFileMan = CFileMan::NewL(CCoeEnv::Static()->FsSession(), this);
+	iAsyncFileMan = CAsyncFileMan::NewL(CCoeEnv::Static()->FsSession(), this);
 	
 #if LOGGING_ENABLED
 	InitializeLoggingL();
@@ -471,32 +471,42 @@ void CGPSTrackerAppUi::OnResumeTracking()
 	TRAP_IGNORE(ShowDataL());
 	}
 
-MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManStarted()
-	{
-	if (iCancelFManOperation)
-		{
-		DEBUG(_L("FMan operation cancelled"));
-		return MFileManObserver::EAbort;
-		}
-	else
-		{
-		DEBUG(_L("FMan started"));
-		return MFileManObserver::EContinue;
-		}
-	}
+//MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManStarted()
+//	{
+//	if (iCancelFManOperation)
+//		{
+//		DEBUG(_L("FMan operation cancelled"));
+//		return MFileManObserver::EAbort;
+//		}
+//	else
+//		{
+//		DEBUG(_L("FMan started"));
+//		return MFileManObserver::EContinue;
+//		}
+//	}
 
-MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManOperation()
-	{	
-	if (iCancelFManOperation)
-		{
-		DEBUG(_L("FMan operation cancelled"));
-		return MFileManObserver::EAbort;
-		}
-	else
-		{
-		DEBUG(_L("FMan operation"));
-		return MFileManObserver::EContinue;
-		}
+//MFileManObserver::TControl CGPSTrackerAppUi::OnFileManStarted()
+//	{
+//	return MFileManObserver::EContinue;
+//	}
+
+//MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManOperation()
+//	{	
+//	if (iCancelFManOperation)
+//		{
+//		DEBUG(_L("FMan operation cancelled"));
+//		return MFileManObserver::EAbort;
+//		}
+//	else
+//		{
+//		DEBUG(_L("FMan operation"));
+//		return MFileManObserver::EContinue;
+//		}
+
+//MFileManObserver::TControl CGPSTrackerAppUi::OnFileManOperation()
+//	{
+//	return MFileManObserver::EContinue;
+//	}
 
 	
 //	
@@ -524,39 +534,65 @@ MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManOperation()
 //		}
 //	
 //	return MFileManObserver::EContinue;
-	}
+//	}
 
-MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManEnded()
-	{
-	iFManProcessedFiles++;
-	
-	if (iFManProcessedFiles == iFManTotalFiles)
-		NotifyFileManTotallyEnded();
-	
-	if (iCancelFManOperation)
-		{
-		DEBUG(_L("FMan operation cancelled"));
-		return MFileManObserver::EAbort;
-		}
-	else
-		{
-		DEBUG(_L("FMan ended"));
-		//iFManProcessedFiles++;
-		INFO(_L("File %S deleted"), &iFileMan->CurrentEntry().iName);
-		DEBUG(_L("Processed files: %d/%d"), iFManProcessedFiles, iFManTotalFiles);
-		return MFileManObserver::EContinue;
-		}
-	}
+//MFileManObserver::TControl CGPSTrackerAppUi::NotifyFileManEnded()
+//	{
+//	iFManProcessedFiles++;
+//	
+//	if (iFManProcessedFiles == iFManTotalFiles)
+//		NotifyFileManTotallyEnded();
+//	
+//	if (iCancelFManOperation)
+//		{
+//		DEBUG(_L("FMan operation cancelled"));
+//		return MFileManObserver::EAbort;
+//		}
+//	else
+//		{
+//		DEBUG(_L("FMan ended"));
+//		//iFManProcessedFiles++;
+//		INFO(_L("File %S deleted"), &iFileMan->CurrentEntry().iName);
+//		DEBUG(_L("Processed files: %d/%d"), iFManProcessedFiles, iFManTotalFiles);
+//		return MFileManObserver::EContinue;
+//		}
+//	}
 
-void CGPSTrackerAppUi::NotifyFileManTotallyEnded()
+MFileManObserver::TControl CGPSTrackerAppUi::OnFileManEnded()
 	{
-	DEBUG(_L("FMan totally ended"));
+	//	if (iFileMan->CurrentAction() == CFileMan::EDelete)
+#ifdef __WINS__
+		// Delay for testing wait window on emulator
+		User::After(20*1000);
+#endif
 	
-	if (iFileMan->CurrentAction() == CFileMan::EDelete)
-		{
-		TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
-		UpdateTrackListL();
-		}
+		INFO(_L("File deleted"));
+	//
+	
+	return MFileManObserver::EContinue;
+	}
+	
+//void CGPSTrackerAppUi::NotifyFileManTotallyEnded()
+//	{
+//	DEBUG(_L("FMan totally ended"));
+//	
+//	if (iFileMan->CurrentAction() == CFileMan::EDelete)
+//		{
+//		DEBUG(_L("Deletion ended"));
+//		TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
+//		UpdateTrackListL();
+//		}
+//	}
+
+void CGPSTrackerAppUi::OnFileManFinished(TInt aStatus)
+	{
+	//	if (iFileMan->CurrentAction() == CFileMan::EDelete)
+	//		{
+			DEBUG(_L("Deletion ended"));
+			if (aStatus != KErrCancel)
+				TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
+			UpdateTrackListL();
+	//		}
 	}
 
 void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
@@ -609,7 +645,8 @@ void CGPSTrackerAppUi::GetTracksArrayL(CDesCArray &aTracksArr)
 	_LIT(KFileMask, "*.gpx"); // Tracks extension
 	path.Append(KFileMask);
 	CDir* files(NULL);
-	User::LeaveIfError(CCoeEnv::Static()->FsSession().GetDir(path, KEntryAttNormal, ESortByDate, files));
+	TInt r = CCoeEnv::Static()->FsSession().GetDir(path, KEntryAttNormal, ESortByDate, files);
+	User::LeaveIfError(r);
 	if (files != NULL)
 		{
 		CleanupStack::PushL(files);
@@ -659,28 +696,8 @@ void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
 	_LIT(KTrackFileMask, "*.gpx");
 	path.Append(KTrackFileMask);
 	
-	// Get total amount of files for deletion
-	iFManTotalFiles = 0;
-	CDir* files(NULL);
-	TInt r = CCoeEnv::Static()->FsSession().GetDir(path, KEntryAttNormal, ESortNone, files);
-	/*if (r != KErrNone)
-		User::Leave(r);*/
-	if (files != NULL)
-		{		
-		for (TInt i = 0; i < files->Count(); i++)
-			{
-			if ((*files)[i].IsDir())
-				continue; // Skip dirs
-			
-			iFManTotalFiles++;
-			}
-		
-		delete files;
-		}
-	
 	// Start delete files	
-	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL());
-	iCancelFManOperation = EFalse;
-	iFManProcessedFiles = 0;
-	iFileMan->Delete(path);
+	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL()); // ToDo: Also show progress
+	TInt r = iAsyncFileMan->Delete(path);
+	// ToDo: check r ...
 	}

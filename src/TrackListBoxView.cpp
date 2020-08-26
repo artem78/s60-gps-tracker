@@ -41,6 +41,8 @@
 
 #include "GPSTrackerAppUi.h"
 
+#include "Logger.h"
+
 /**
  * First phase of Symbian two-phase construction. Should not contain any
  * code that could leave.
@@ -626,11 +628,13 @@ void CTrackListBoxView::RemoveDeletionWaitDialogL()
 
 void CTrackListBoxView::ShowDeletionDialogL()
 	{
+	DEBUG(_L("Show waiting dialog"));
 	ExecuteDeletionWaitDialogLD(NULL);
 	}
 
 void CTrackListBoxView::HideDeletionDialogL()
 	{
+	DEBUG(_L("Hide waiting dialog"));
 	RemoveDeletionWaitDialogL();
 	}
 
