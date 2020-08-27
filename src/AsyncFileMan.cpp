@@ -62,6 +62,9 @@ void CAsyncFileMan::DoCancel()
 	
 //    TRequestStatus* status = &iStatus;
 //    User::RequestComplete(status, KErrCancel);
+	
+	// RunL won`t be called later, therefore call observer`s method here 
+	iObserver->OnFileManFinished(KErrCancel);
 	}
 
 //void CAsyncFileMan::StartL()
@@ -105,11 +108,11 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManStarted()
 		{
 		DEBUG(_L("Operation cancelled"));
 		//iObserver->OnFileManFinished(KErrCancel);
-		TRequestStatus* s = &iStatus;
-		RThread thread;
-		thread.Open(iOutsideThread);
-		thread.RequestComplete(s, KErrCancel);
-		thread.Close();
+//		TRequestStatus* s = &iStatus;
+//		RThread thread;
+//		thread.Open(iOutsideThread);
+//		thread.RequestComplete(s, KErrCancel);
+//		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -123,11 +126,11 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManOperation()
 		{
 		DEBUG(_L("Operation cancelled"));
 		//iObserver->OnFileManFinished(KErrCancel);
-		TRequestStatus* s = &iStatus;
-		RThread thread;
-		thread.Open(iOutsideThread);
-		thread.RequestComplete(s, KErrCancel);
-		thread.Close();
+//		TRequestStatus* s = &iStatus;
+//		RThread thread;
+//		thread.Open(iOutsideThread);
+//		thread.RequestComplete(s, KErrCancel);
+//		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -141,11 +144,11 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 		{
 		DEBUG(_L("Operation cancelled"));
 		//iObserver->OnFileManFinished(KErrCancel);
-		TRequestStatus* s = &iStatus;
-		RThread thread;
-		thread.Open(iOutsideThread);
-		thread.RequestComplete(s, KErrCancel);
-		thread.Close();
+//		TRequestStatus* s = &iStatus;
+//		RThread thread;
+//		thread.Open(iOutsideThread);
+//		thread.RequestComplete(s, KErrCancel);
+//		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -165,9 +168,10 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 
 TInt CAsyncFileMan::Delete(const TDesC& aName, TUint aSwitch)
 	{
-	/*if (IsActive())
-		return;*/
-	Cancel();
+	//Cancel();
+	if (IsActive())
+		return KErrInUse;
+	iCancelOperation = EFalse;
 	TInt r = iFileMan->Delete(aName, aSwitch, iStatus);
 	SetActive();
 	INFO(_L("Delete operation started"));

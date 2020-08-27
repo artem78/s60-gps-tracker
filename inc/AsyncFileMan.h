@@ -24,6 +24,7 @@ class MAsyncFileManObserver;
 // Classes
 
 class CAsyncFileMan : public CActive, public MFileManObserver
+// FixMe: Memory leak when cancel delete operation
 	{
 public:
 	// Cancel and destroy
