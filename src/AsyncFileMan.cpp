@@ -37,6 +37,9 @@ CAsyncFileMan* CAsyncFileMan::NewL(RFs &aFs, MAsyncFileManObserver* aObserver)
 
 void CAsyncFileMan::ConstructL(RFs &aFs)
 	{
+	RThread thread;
+	iOutsideThread = thread.Id();
+	
 	iFileMan = CFileMan::NewL(aFs, this);
 	
 	CActiveScheduler::Add(this); // Add to scheduler
@@ -56,6 +59,9 @@ void CAsyncFileMan::DoCancel()
 	//iTimer.Cancel();
 	DEBUG(_L("Operation goes to cancell"));
 	iCancelOperation = ETrue;
+	
+//    TRequestStatus* status = &iStatus;
+//    User::RequestComplete(status, KErrCancel);
 	}
 
 //void CAsyncFileMan::StartL()
@@ -99,6 +105,11 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManStarted()
 		{
 		DEBUG(_L("Operation cancelled"));
 		//iObserver->OnFileManFinished(KErrCancel);
+		TRequestStatus* s = &iStatus;
+		RThread thread;
+		thread.Open(iOutsideThread);
+		thread.RequestComplete(s, KErrCancel);
+		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -112,6 +123,11 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManOperation()
 		{
 		DEBUG(_L("Operation cancelled"));
 		//iObserver->OnFileManFinished(KErrCancel);
+		TRequestStatus* s = &iStatus;
+		RThread thread;
+		thread.Open(iOutsideThread);
+		thread.RequestComplete(s, KErrCancel);
+		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -125,6 +141,11 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 		{
 		DEBUG(_L("Operation cancelled"));
 		//iObserver->OnFileManFinished(KErrCancel);
+		TRequestStatus* s = &iStatus;
+		RThread thread;
+		thread.Open(iOutsideThread);
+		thread.RequestComplete(s, KErrCancel);
+		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -144,6 +165,8 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 
 TInt CAsyncFileMan::Delete(const TDesC& aName, TUint aSwitch)
 	{
+	/*if (IsActive())
+		return;*/
 	Cancel();
 	TInt r = iFileMan->Delete(aName, aSwitch, iStatus);
 	SetActive();

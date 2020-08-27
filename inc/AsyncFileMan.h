@@ -82,6 +82,7 @@ private:
 	//TInt iFManProcessedFiles;
 	//TInt iFManTotalFiles;
 //	TRequestStatus iFManOperationReqStatus;
+	TThreadId iOutsideThread;	
 
 	//MFileManObserver::TControl CheckCancell();
 	
