@@ -696,31 +696,8 @@ void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
 	_LIT(KTrackFileMask, "*.gpx");
 	path.Append(KTrackFileMask);
 	
-//	// Get total amount of files for deletion
-//	iFManTotalFiles = 0;
-//	CDir* files(NULL);
-//	TInt r = CCoeEnv::Static()->FsSession().GetDir(path, KEntryAttNormal, ESortNone, files);
-//	/*if (r != KErrNone)
-//		User::Leave(r);*/
-//	if (files != NULL)
-//		{		
-//		for (TInt i = 0; i < files->Count(); i++)
-//			{
-//			if ((*files)[i].IsDir())
-//				continue; // Skip dirs
-//			
-//			iFManTotalFiles++;
-//			}
-//		
-//		delete files;
-//		}
-	
 	// Start delete files	
-	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL());
-//	iCancelFManOperation = EFalse;
-//	iFManProcessedFiles = 0;
+	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL()); // ToDo: Also show progress
 	TInt r = iAsyncFileMan->Delete(path);
 	// ToDo: check r ...
-	
-//	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL());
 	}

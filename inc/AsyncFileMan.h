@@ -67,25 +67,9 @@ public:
 	MFileManObserver::TControl NotifyFileManEnded();
 
 private:
-	/*enum TAsyncFileManState
-		{
-		EUninitialized, // Uninitialized
-		EInitialized, // Initalized
-		EError
-		// Error condition
-		};*/
-
-private:
-	//TInt iState; // State of the active object
 	CFileMan* iFileMan;
 	MAsyncFileManObserver* iObserver;
 	TBool iCancelOperation; // Used for cancel current operation in file manager
-	//TInt iFManProcessedFiles;
-	//TInt iFManTotalFiles;
-//	TRequestStatus iFManOperationReqStatus;
-	TThreadId iOutsideThread;	
-
-	//MFileManObserver::TControl CheckCancell();
 	
 public:
 	// ToDo: Add other operations (rename, copy, etc...)

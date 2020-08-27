@@ -36,10 +36,7 @@ CAsyncFileMan* CAsyncFileMan::NewL(RFs &aFs, MAsyncFileManObserver* aObserver)
 	}
 
 void CAsyncFileMan::ConstructL(RFs &aFs)
-	{
-	RThread thread;
-	iOutsideThread = thread.Id();
-	
+	{	
 	iFileMan = CFileMan::NewL(aFs, this);
 	
 	CActiveScheduler::Add(this); // Add to scheduler
@@ -48,50 +45,25 @@ void CAsyncFileMan::ConstructL(RFs &aFs)
 CAsyncFileMan::~CAsyncFileMan()
 	{
 	Cancel(); // Cancel any request, if outstanding
-	//iTimer.Close(); // Destroy the RTimer object
-	// Delete instance variables if any
 	
 	delete iFileMan;
 	}
 
 void CAsyncFileMan::DoCancel()
 	{
-	//iTimer.Cancel();
 	DEBUG(_L("Operation goes to cancell"));
 	iCancelOperation = ETrue;
 	
-//    TRequestStatus* status = &iStatus;
-//    User::RequestComplete(status, KErrCancel);
-	
-	// RunL won`t be called later, therefore call observer`s method here 
+	// When cancelling, RunL won`t be called later,
+	// therefore call observer`s method here 
 	iObserver->OnFileManFinished(KErrCancel);
 	}
-
-//void CAsyncFileMan::StartL()
-//	{
-//	Cancel(); // Cancel any request, just to be sure
-//	//iState = EUninitialized;
-//	//iTimer.After(iStatus, aDelay); // Set for later
-//	SetActive(); // Tell scheduler a request is active
-//	}
 
 void CAsyncFileMan::RunL()
 	{
 	DEBUG(_L("RunL status=%d"), iStatus.Int());
 	
 	iObserver->OnFileManFinished(iStatus.Int());
-	
-//	if (iState == EUninitialized)
-//		{
-//		// Do something the first time RunL() is called
-//		iState = EInitialized;
-//		}
-//	else if (iState != EError)
-//		{
-//		// Do something
-//		}
-//	iTimer.After(iStatus, 1000000); // Set for 1 sec later
-//	SetActive(); // Tell scheduler a request is active
 	}
 
 TInt CAsyncFileMan::RunError(TInt aError)
@@ -99,7 +71,7 @@ TInt CAsyncFileMan::RunError(TInt aError)
 	if (aError != KErrNone)
 		ERROR(_L("Error, code=%d"), aError);
 	
-	return aError;
+	return /*aError*/ KErrNone;
 	}
 
 MFileManObserver::TControl CAsyncFileMan::NotifyFileManStarted()
@@ -107,12 +79,6 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManStarted()
 	if (iCancelOperation)
 		{
 		DEBUG(_L("Operation cancelled"));
-		//iObserver->OnFileManFinished(KErrCancel);
-//		TRequestStatus* s = &iStatus;
-//		RThread thread;
-//		thread.Open(iOutsideThread);
-//		thread.RequestComplete(s, KErrCancel);
-//		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -125,12 +91,6 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManOperation()
 	if (iCancelOperation)
 		{
 		DEBUG(_L("Operation cancelled"));
-		//iObserver->OnFileManFinished(KErrCancel);
-//		TRequestStatus* s = &iStatus;
-//		RThread thread;
-//		thread.Open(iOutsideThread);
-//		thread.RequestComplete(s, KErrCancel);
-//		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -143,12 +103,6 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 	if (iCancelOperation)
 		{
 		DEBUG(_L("Operation cancelled"));
-		//iObserver->OnFileManFinished(KErrCancel);
-//		TRequestStatus* s = &iStatus;
-//		RThread thread;
-//		thread.Open(iOutsideThread);
-//		thread.RequestComplete(s, KErrCancel);
-//		thread.Close();
 		return MFileManObserver::EAbort;
 		}
 	
@@ -156,23 +110,13 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 	return iObserver->OnFileManEnded();
 	}
 
-
-
-/*MFileManObserver::TControl CAsyncFileMan::CheckCancell()
-	{
-	if (iCancelOperation)
-		return MFileManObserver::EAbort;
-	else
-		return MFileManObserver::EContinue;
-	}*/
-
 TInt CAsyncFileMan::Delete(const TDesC& aName, TUint aSwitch)
 	{
 	//Cancel();
 	if (IsActive())
 		return KErrInUse;
 	iCancelOperation = EFalse;
-	TInt r = iFileMan->Delete(aName, aSwitch, iStatus);
+	TInt r = iFileMan->Delete(aName, aSwitch, iStatus); // ToDo: Check r
 	SetActive();
 	INFO(_L("Delete operation started"));
 	return r;
