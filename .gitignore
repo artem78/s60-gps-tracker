@@ -4,3 +4,4 @@ sis/*.sisx
 sis/**/*.sis
 sis/**/*.sisx
 *.bak
+/MY
