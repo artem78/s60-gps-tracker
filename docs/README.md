@@ -1,6 +1,9 @@
-GUI fork of [console GPS Tracker](https://github.com/artem78/s60-gps-tracker-cli)
+GUI fork of [console GPS Tracker](https://github.com/artem78/s60-gps-tracker-cli) for Symbian OS.
 
-![](images/screenshot.png)
+![](images/tracking_info.png) ![](images/track_list_with_menu.png)
+
+## Track samples
+* Car driving - [https://www.openstreetmap.org/user/artem78/traces/3391464](https://www.openstreetmap.org/user/artem78/traces/3391464)
 
 ## Tasks
 * List of tracks
