@@ -132,9 +132,14 @@ void CGPXTrackWriter::AddPointL(const TPositionInfo* aPosInfo)
 	iXml->AddAttributeL(KLat, pos.Latitude(), iGeneralRealFormat);
 	iXml->AddAttributeL(KLon, pos.Longitude(), iGeneralRealFormat);
 
-	iXml->OpenTagL(KEle);
-	iXml->AddTextL(pos.Altitude(), iGeneralRealFormat);
-	iXml->CloseTagL(); // </ele>
+	if (!Math::IsNaN(pos.Altitude()))
+		{
+		// Sometimes Altitude() may be NAN. Seems when real elevation about 0m.
+		
+		iXml->OpenTagL(KEle);
+		iXml->AddTextL(pos.Altitude(), iGeneralRealFormat);
+		iXml->CloseTagL(); // </ele>
+		}
 	
 	iXml->OpenTagL(KTime);
 	iXml->AddTextL(timeBuff);
