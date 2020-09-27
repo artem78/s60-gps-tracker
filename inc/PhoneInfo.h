@@ -4,7 +4,7 @@
  Author	  : artem78
  Version	 : 1.0
  Copyright   : 
- Description : 
+ Description : Phone and system version information
  ============================================================================
  */
 

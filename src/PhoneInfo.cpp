@@ -4,7 +4,7 @@
  Author	  : artem78
  Version	 : 1.0
  Copyright   : 
- Description : PhoneInfo implementation
+ Description : My own implementation (see more: https://discord.com/channels/431429574975422464/743412813279526914/759488730166853722)
  ============================================================================
  */
 
