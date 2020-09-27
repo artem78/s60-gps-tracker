@@ -48,4 +48,4 @@ CAPABILITY Location
 SOURCEPATH ..\modules\Positioning
 SOURCE Positioning.cpp
 SOURCEPATH ..\src
-SOURCE TrackListBox.cpp TrackListBoxView.cpp AsyncFileMan.cpp
+SOURCE TrackListBox.cpp TrackListBoxView.cpp AsyncFileMan.cpp PhoneInfo.cpp

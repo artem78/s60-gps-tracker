@@ -23,11 +23,14 @@
 
 #include <lbspositioninfo.h>
 #include "LBSSatelliteExtended.h"
+#include "PhoneInfo.h"
 
 //  Constants
 
 _LIT(KProgramName, "GPS Tracker");
 _LIT(KProgramVersion, "1.1.0");
+_LIT(KProgramNameS60Addition, "for S60");
+_LIT(KProgramWebPage, "https://github.com/artem78/s60-gps-tracker#readme");
 _LIT(KTracksDirRel, "tracks\\");
 _LIT(KLogsDirRel, "logs\\");
 _LIT(KTimeFormatForFileName, "%F%Y%M%D_%H%T%S");
@@ -273,11 +276,22 @@ void CGPSTrackerAppUi::InitializeTrackL()
 	gpxFileName.Append(KTrackFileExtension);
 	User::LeaveIfError(iTrackFile.Create(CEikonEnv::Static()->FsSession(), gpxFileName, EFileWrite));
 	
-	TBuf<100> programFullName;
-	programFullName.Append(KProgramName);
-	programFullName.Append(KSpace);
-	programFullName.Append(KProgramVersion);
-	iTrackWriter = CGPXTrackWriter::NewL(iTrackFile, ETrue, programFullName);
+	_LIT(KUnknown, "unknown");
+	TBuf<32> phoneModel, phonePlatform;
+	CPhoneInfo* phoneInfo = new (ELeave) CPhoneInfo(CEikonEnv::Static()->FsSession());
+	CleanupStack::PushL(phoneInfo);
+	if (!phoneInfo->GetModel(phoneModel))
+		phoneModel.Copy(KUnknown);
+	if (!phoneInfo->GetPlatform(phonePlatform))
+		phonePlatform.Copy(KUnknown);
+	RBuf creator;
+	creator.Create(/*256*/512);
+	creator.CleanupClosePushL();
+	_LIT(KCreatorFmt, "%S %S %S (%S) / %S / %S");
+	creator.Format(KCreatorFmt, &KProgramName, &KProgramVersion, 
+			&KProgramNameS60Addition, &KProgramWebPage, &phoneModel, &phonePlatform);
+	iTrackWriter = CGPXTrackWriter::NewL(iTrackFile, ETrue, creator);
+	CleanupStack::PopAndDestroy(2, phoneInfo);
 	}
 
 void CGPSTrackerAppUi::ShowDataL()
