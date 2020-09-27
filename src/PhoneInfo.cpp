@@ -133,17 +133,22 @@ TBool CPhoneInfo::ParseS60Version(const TDesC &aDes, TVersion2 &aVer)
 	_LIT(KStrStart, "series60v");
 	_LIT(KStrEnd, ".sis");
 	
+	// Convert source string to lower case
+	TBuf<64> str;
+	str.Copy(aDes);
+	str.LowerCase();
+	
 	// Some checks
-	if (aDes.Find(KStrStart) != 0)
+	if (str.Find(KStrStart) != 0)
 		return EFalse;
-	if (aDes.Find(KStrEnd) != aDes.Length() - KStrEnd().Length())
+	if (str.Find(KStrEnd) != str.Length() - KStrEnd().Length())
 		return EFalse;
 	
 	TInt posStart = KStrStart().Length();
-	TInt posEnd = aDes.Length() - KStrEnd().Length() - 1;
+	TInt posEnd = str.Length() - KStrEnd().Length() - 1;
 	TInt len = posEnd - posStart + 1;
 	
-	TPtrC numPtr = aDes.Mid(posStart, len);
+	TPtrC numPtr = str.Mid(posStart, len);
 	TLex lex(numPtr);
 	
 	// Parse major
