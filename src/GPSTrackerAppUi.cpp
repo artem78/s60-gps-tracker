@@ -23,6 +23,7 @@
 
 #include <lbspositioninfo.h>
 #include "LBSSatelliteExtended.h"
+#include <bautils.h>
 
 //  Constants
 
@@ -182,7 +183,7 @@ void CGPSTrackerAppUi::ConstructL()
 	
 	TFileName programDataDir;
 	/*Get*/ProgramDataDir(programDataDir);
-	User::LeaveIfError(MakeDir(programDataDir));
+	BaflUtils::EnsurePathExistsL(CCoeEnv::Static()->FsSession(), programDataDir);
 	User::LeaveIfError(CCoeEnv::Static()->FsSession().SetSessionPath(programDataDir)); // ToDo: Is this operation safe?
 	
 	iAsyncFileMan = CAsyncFileMan::NewL(CCoeEnv::Static()->FsSession(), this);
@@ -195,16 +196,6 @@ void CGPSTrackerAppUi::ConstructL()
 	iPosRequestor = CDynamicPositionRequestor::NewL(this, KProgramName);
 	iPosRequestor->Start();
 	
-	}
-
-
-
-TInt CGPSTrackerAppUi::MakeDir(const TDesC &aDir)
-	{
-	TInt res = CEikonEnv::Static()->FsSession().MkDirAll(aDir);
-	if (res == KErrNone || res == KErrAlreadyExists)
-		return KErrNone;
-	return res;
 	}
 
 TInt CGPSTrackerAppUi::CurrentDateTime(TDes &aDes, const TDesC &aFormat)
@@ -221,7 +212,7 @@ void CGPSTrackerAppUi::InitializeLoggingL()
 	// Create dir
 	TFileName logDir;
 	LogDir(logDir);
-	User::LeaveIfError(MakeDir(logDir));
+	BaflUtils::EnsurePathExistsL(CCoeEnv::Static()->FsSession(), logDir);
 	
 	// Configure logging file
 	TFileName logFileName;
@@ -258,7 +249,7 @@ void CGPSTrackerAppUi::InitializeTrackL()
 	// Create dir
 	TFileName trackDir;
 	TrackDir(trackDir);
-	User::LeaveIfError(MakeDir(trackDir));
+	BaflUtils::EnsurePathExistsL(CCoeEnv::Static()->FsSession(), trackDir);
 	
 	TBuf<20> timeBuff;
 	CurrentDateTime(timeBuff, KTimeFormatForFileName);

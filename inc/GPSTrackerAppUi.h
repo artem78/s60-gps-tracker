@@ -92,11 +92,6 @@ private:
 	/**
 	 * @return Symbian OS error code or KErrNone
 	 */
-	TInt MakeDir(const TDesC &aDir);
-	
-	/**
-	 * @return Symbian OS error code or KErrNone
-	 */
 	TInt CurrentDateTime(TDes &aDes, const TDesC &aFormat);
 	
 #if LOGGING_ENABLED
