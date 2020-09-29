@@ -648,6 +648,11 @@ void CTrackListBoxView::HideDeletionDialogL()
  */
 void CTrackListBoxView::HandleDeletionWaitDialogCanceledL( CAknProgressDialog* /* aDialog */ )
 	{
+	// iDeletionWaitDialog destroys automatically when cancelled, but not iDeletionWaitDialogCallback
+	// ToDo: Is it safe to delete callback here? Current method has been called from it.
+	delete iDeletionWaitDialogCallback;
+	iDeletionWaitDialogCallback = NULL;
+	
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 	appUi->CancelCurrentFManOperation();
 	}
