@@ -26,6 +26,8 @@
 #include "TrackListBox.hrh"
 // ]]] end generated region [Generated User Includes]
 
+#include <GPSTrackerAppUi.h>
+
 // [[[ begin generated region: do not modify [Generated Constants]
 // ]]] end generated region [Generated Constants]
 
@@ -187,6 +189,19 @@ TKeyResponse CTrackListBox::OfferKeyEventL(
 		const TKeyEvent& aKeyEvent, 
 		TEventCode aType )
 	{
+	switch (aKeyEvent.iCode)
+		{
+		case EKeyDelete:
+		case EKeyBackspace:
+			{ // Delete list item with "C" key
+			CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi*>(CCoeEnv::Static()->AppUi());
+			CAknView* view = appUi->View(TUid::Uid(ETrackListBoxViewId)); 
+			view->HandleCommandL(ETrackListBoxViewDeleteTrackMenuItemCommand);
+			return EKeyWasConsumed;
+			}
+			break;
+		}
+	
 	// [[[ begin generated region: do not modify [Generated Contents]
 	if ( aKeyEvent.iCode == EKeyLeftArrow 
 		|| aKeyEvent.iCode == EKeyRightArrow )
@@ -197,6 +212,7 @@ TKeyResponse CTrackListBox::OfferKeyEventL(
 	
 	// ]]] end generated region [Generated Contents]
 	
+
 	if ( iFocusControl != NULL
 		&& iFocusControl->OfferKeyEventL( aKeyEvent, aType ) == EKeyWasConsumed )
 		{
