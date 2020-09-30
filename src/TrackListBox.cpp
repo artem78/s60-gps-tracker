@@ -468,6 +468,7 @@ void CTrackListBox::SetTrackArrayL(const CDesCArray &aTrackArr)
 	CDesCArray& itemTextArr = *static_cast<CDesCArray*>(iListBox->Model()->ItemTextArray());	
 		
 	TInt oldCount = itemTextArr.Count();
+	TInt selectedIdx = iListBox->CurrentItemIndex();
 	
 	itemTextArr.Reset();
 	/*TFileName*/ TBuf<100> listItem;
@@ -481,9 +482,13 @@ void CTrackListBox::SetTrackArrayL(const CDesCArray &aTrackArr)
 	if (count > oldCount)
 		iListBox->HandleItemAdditionL();
 	else if (count < oldCount)
+		{
+		if (count > 0 && selectedIdx >= count)
+			iListBox->SetCurrentItemIndex(count - 1); // Select last item when list reduced
 		iListBox->HandleItemRemovalL();
-	else
-		iListBox->DrawNow();
+		}
+	
+	iListBox->DrawNow();
 
 	}
 
