@@ -22,7 +22,7 @@
     <manifestEntry id="com.nokia.sdt.series60.MenuItemBase" version="1.0.0"/>
   </componentManifest>
   <property id="com.nokia.sdt.symbian.dm.RESOURCE_DIRECTORY_ID">data</property>
-  <property id="com.nokia.sdt.component.symbian.version">3.1.0</property>
+  <property id="com.nokia.sdt.component.symbian.version">3.0.0</property>
   <property id="com.nokia.sdt.component.symbian.vendor">com.nokia.series60</property>
   <property id="com.nokia.sdt.symbian.dm.COMPONENT_PROVIDER">com.nokia.sdt.component.symbian.Symbian-Provider</property>
   <property id="com.nokia.sdt.symbian.dm.INCLUDE_DIRECTORY_ID">inc</property>
@@ -32,8 +32,8 @@
   <component id="com.nokia.sdt.series60.CAknView">
     <property id="className">CTrackerInfoListBoxView</property>
     <compoundProperty id="location">
-      <property id="x">51</property>
-      <property id="y">44</property>
+      <property id="x">52</property>
+      <property id="y">45</property>
     </compoundProperty>
     <property id="optionsMenu" type="componentRef">optionsMenu</property>
     <property id="name">TrackerInfoListBoxView</property>
@@ -48,7 +48,7 @@
       <property id="name">statusPane</property>
       <compoundProperty id="size">
         <property id="width">204</property>
-        <property id="height">63</property>
+        <property id="height">66</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.StatusPaneTitle">
         <compoundProperty id="location">
@@ -108,79 +108,79 @@
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_7</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_8</property>
         </component>
         <component id="com.nokia.sdt.series60.ListBoxItem">
           <compoundProperty id="location">
-            <property id="y">53</property>
+            <property id="y">55</property>
           </compoundProperty>
           <property id="name">lonListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_9</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_10</property>
         </component>
         <component id="com.nokia.sdt.series60.ListBoxItem">
           <compoundProperty id="location">
-            <property id="y">106</property>
+            <property id="y">110</property>
           </compoundProperty>
           <property id="name">altListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_11</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_12</property>
         </component>
         <component id="com.nokia.sdt.series60.ListBoxItem">
           <compoundProperty id="location">
-            <property id="y">159</property>
+            <property id="y">165</property>
           </compoundProperty>
           <property id="name">speedListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_18</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_19</property>
         </component>
         <component id="com.nokia.sdt.series60.ListBoxItem">
           <compoundProperty id="location">
-            <property id="y">212</property>
+            <property id="y">220</property>
           </compoundProperty>
           <property id="name">satListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_21</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_22</property>
         </component>
         <component id="com.nokia.sdt.series60.ListBoxItem">
           <compoundProperty id="location">
-            <property id="y">265</property>
+            <property id="y">275</property>
           </compoundProperty>
           <property id="name">pointsListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_25</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_26</property>
         </component>
         <component id="com.nokia.sdt.series60.ListBoxItem">
           <compoundProperty id="location">
-            <property id="y">318</property>
+            <property id="y">330</property>
           </compoundProperty>
           <property id="name">refreshListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_28</property>
           <compoundProperty id="size">
             <property id="width">240</property>
-            <property id="height">53</property>
+            <property id="height">55</property>
           </compoundProperty>
           <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_29</property>
         </component>
@@ -188,20 +188,20 @@
     </component>
     <component id="com.nokia.sdt.series60.MenuBar">
       <compoundProperty id="location">
-        <property id="x">6</property>
-        <property id="y">161</property>
+        <property id="x">5</property>
+        <property id="y">194</property>
       </compoundProperty>
       <property id="name">optionsMenu</property>
       <compoundProperty id="size">
-        <property id="height">127</property>
-        <property id="width">228</property>
+        <property id="height">94</property>
+        <property id="width">229</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.MenuPane">
         <compoundProperty id="location"/>
         <property id="name">menuPane1</property>
         <compoundProperty id="size">
-          <property id="height">127</property>
-          <property id="width">228</property>
+          <property id="height">94</property>
+          <property id="width">229</property>
         </compoundProperty>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
@@ -211,34 +211,34 @@
           <property id="name">pauseTrackRecordingMenuItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_39</property>
           <compoundProperty id="size">
-            <property id="width">213</property>
-            <property id="height">28</property>
+            <property id="width">214</property>
+            <property id="height">27</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandlePauseTrackRecordingMenuItemSelectedL" handlerSymbol="cpp@src//TrackerInfoListBoxView.cpp/function(CTrackerInfoListBoxView::HandlePauseTrackRecordingMenuItemSelectedL(TInt))"/>
         </component>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">32</property>
+            <property id="y">31</property>
           </compoundProperty>
           <property id="name">continueTrackRecordingMenuItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_40</property>
           <compoundProperty id="size">
-            <property id="width">213</property>
-            <property id="height">28</property>
+            <property id="width">214</property>
+            <property id="height">27</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandleContinueTrackRecordingMenuItemSelectedL" handlerSymbol="cpp@src//TrackerInfoListBoxView.cpp/function(CTrackerInfoListBoxView::HandleContinueTrackRecordingMenuItemSelectedL(TInt))"/>
         </component>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">62</property>
+            <property id="y">60</property>
           </compoundProperty>
           <property id="name">tracksListMenuItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_4</property>
           <compoundProperty id="size">
-            <property id="width">213</property>
-            <property id="height">28</property>
+            <property id="width">214</property>
+            <property id="height">27</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandleTracksListMenuItemSelectedL" handlerSymbol="cpp@src//TrackerInfoListBoxView.cpp/function(CTrackerInfoListBoxView::HandleTracksListMenuItemSelectedL(TInt))"/>
         </component>
@@ -288,11 +288,11 @@
       <resourceMapping instanceName="title">r_tracker_info_list_box_title_resource</resourceMapping>
     </resourceMappings>
     <enumMappings>
-      <enumMapping instanceName="tracksListMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewTracksListMenuItemCommand</enumMapping>
       <enumMapping instanceName="continueTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand</enumMapping>
-      <enumMapping instanceName="TrackerInfoListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
-      <enumMapping instanceName="pauseTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand</enumMapping>
+      <enumMapping instanceName="tracksListMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewTracksListMenuItemCommand</enumMapping>
       <enumMapping instanceName="tracksMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewTracksMenuItemCommand</enumMapping>
+      <enumMapping instanceName="pauseTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand</enumMapping>
+      <enumMapping instanceName="TrackerInfoListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
       <enumMapping instanceName="controlPane" propertyId="leftId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyOptions</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>
@@ -307,10 +307,11 @@
     <file>inc/trackerinfolistboxview.h</file>
     <file>src/trackerinfolistbox.cpp</file>
     <file>data/gpstracker.rss</file>
-    <file>data/trackerinfolistbox.rssi</file>
-    <file>inc/gpstracker.hrh</file>
-    <file>inc/trackerinfolistbox.hrh</file>
     <file>data/tracklistbox.rssi</file>
+    <file>inc/gpstracker.hrh</file>
+    <file>data/trackerinfolistbox.rssi</file>
+    <file>inc/trackerinfolistbox.hrh</file>
+    <file>inc/tracklistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
     <file>data/trackerinfolistbox.loc</file>

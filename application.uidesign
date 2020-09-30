@@ -19,7 +19,7 @@
     <manifestEntry id="com.nokia.sdt.series60.DesignReference" version="1.0.0"/>
   </componentManifest>
   <property id="com.nokia.sdt.symbian.dm.RESOURCE_DIRECTORY_ID">data</property>
-  <property id="com.nokia.sdt.component.symbian.version">3.1.0</property>
+  <property id="com.nokia.sdt.component.symbian.version">3.0.0</property>
   <property id="com.nokia.sdt.component.symbian.vendor">com.nokia.series60</property>
   <property id="com.nokia.sdt.symbian.dm.COMPONENT_PROVIDER">com.nokia.sdt.component.symbian.Symbian-Provider</property>
   <property id="com.nokia.sdt.symbian.dm.INCLUDE_DIRECTORY_ID">inc</property>
@@ -110,8 +110,8 @@
   <macroTable/>
   <sourceMappingState>
     <resourceMappings>
-      <resourceMapping instanceName="GPSTrackerAppUi" rsrcId="localisable_app_info">r_localisable_app_info</resourceMapping>
       <resourceMapping instanceName="aknViewReference1" rsrcId="tabText">r_application_akn_view_reference1</resourceMapping>
+      <resourceMapping instanceName="GPSTrackerAppUi" rsrcId="localisable_app_info">r_localisable_app_info</resourceMapping>
       <resourceMapping instanceName="GPSTrackerAppUi">r_application_gpstracker_app_ui</resourceMapping>
       <resourceMapping instanceName="aknViewReference2" rsrcId="tabText">r_application_akn_view_reference2</resourceMapping>
       <resourceMapping instanceName="statusPane">r_application_status_pane</resourceMapping>
@@ -134,10 +134,11 @@
     <file>src/gpstrackerapplication.cpp</file>
     <file>src/gpstrackerappui.cpp</file>
     <file>data/gpstracker.rss</file>
+    <file>data/tracklistbox.rssi</file>
     <file>inc/gpstracker.hrh</file>
     <file>data/trackerinfolistbox.rssi</file>
     <file>inc/trackerinfolistbox.hrh</file>
-    <file>data/tracklistbox.rssi</file>
+    <file>inc/tracklistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
     <file>data/trackerinfolistbox.loc</file>

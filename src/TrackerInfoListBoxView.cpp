@@ -27,6 +27,7 @@
 #include "GPSTracker.hrh"
 #include "TrackerInfoListBoxView.h"
 #include "TrackerInfoListBox.hrh"
+#include "TrackListBox.hrh"
 #include "TrackerInfoListBox.h"
 // ]]] end generated region [Generated User Includes]
 
