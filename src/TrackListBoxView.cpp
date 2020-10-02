@@ -42,6 +42,7 @@
 #include "GPSTrackerAppUi.h"
 
 #include "Logger.h"
+#include "MiscUtils.h"
 
 /**
  * First phase of Symbian two-phase construction. Should not contain any
@@ -396,8 +397,7 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	// File name
 	strings->AppendL(fileEntry.iName);
 	// File size
-	// ToDo: Show size in kb/mb
-	tmp.Num(fileEntry.iSize);
+	MiscUtils::FileSizeToReadableString(fileEntry.iSize, tmp);
 	strings->AppendL(tmp);
 	// File modify date
 	// ToDo: I think, it will be better to get time from first (or last?) <trkpt> tag in GPX
