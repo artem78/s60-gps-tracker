@@ -189,25 +189,13 @@ TKeyResponse CTrackListBox::OfferKeyEventL(
 		const TKeyEvent& aKeyEvent, 
 		TEventCode aType )
 	{
-	
-	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi*>(CCoeEnv::Static()->AppUi());
-	CAknView* view = appUi->View(TUid::Uid(ETrackListBoxViewId));
-	
-	switch (aKeyEvent.iScanCode)
-		{
-		case EStdKeyDevice3:
-			{ // Show track details with center soft key
-			view->HandleCommandL(ETrackListBoxViewTrackDetailsMenuItemCommand);
-			return EKeyWasConsumed;
-			}
-			break;
-		}
-	
 	switch (aKeyEvent.iCode)
 		{
 		case EKeyDelete:
 		case EKeyBackspace:
-			{ // Delete list item with "C" key 
+			{ // Delete list item with "C" key
+			CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi*>(CCoeEnv::Static()->AppUi());
+			CAknView* view = appUi->View(TUid::Uid(ETrackListBoxViewId)); 
 			view->HandleCommandL(ETrackListBoxViewDeleteTrackMenuItemCommand);
 			return EKeyWasConsumed;
 			}
