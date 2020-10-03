@@ -41,8 +41,8 @@
   <component id="com.nokia.sdt.series60.CAknView">
     <property id="className">CTrackListBoxView</property>
     <compoundProperty id="location">
-      <property id="x">52</property>
-      <property id="y">45</property>
+      <property id="x">51</property>
+      <property id="y">44</property>
     </compoundProperty>
     <property id="optionsMenu" type="componentRef">optionsMenu</property>
     <property id="name">TrackListBoxView</property>
@@ -57,7 +57,7 @@
       <property id="name">statusPane</property>
       <compoundProperty id="size">
         <property id="width">204</property>
-        <property id="height">66</property>
+        <property id="height">63</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.StatusPaneTitle">
         <compoundProperty id="location">
@@ -80,7 +80,7 @@
         <property id="text" type="i18n">STR_TrackListBoxView_4</property>
         <compoundProperty id="size">
           <property id="width">144</property>
-          <property id="height">23</property>
+          <property id="height">20</property>
         </compoundProperty>
       </component>
     </component>
@@ -128,20 +128,20 @@
     </component>
     <component id="com.nokia.sdt.series60.MenuBar">
       <compoundProperty id="location">
-        <property id="x">5</property>
-        <property id="y">165</property>
+        <property id="x">6</property>
+        <property id="y">161</property>
       </compoundProperty>
       <property id="name">optionsMenu</property>
       <compoundProperty id="size">
-        <property id="height">123</property>
-        <property id="width">229</property>
+        <property id="height">127</property>
+        <property id="width">228</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.MenuPane">
         <compoundProperty id="location"/>
         <property id="name">menuPane1</property>
         <compoundProperty id="size">
-          <property id="height">123</property>
-          <property id="width">229</property>
+          <property id="height">127</property>
+          <property id="width">228</property>
         </compoundProperty>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
@@ -151,47 +151,47 @@
           <property id="name">trackDetailsMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_5</property>
           <compoundProperty id="size">
-            <property id="width">214</property>
-            <property id="height">27</property>
+            <property id="width">213</property>
+            <property id="height">28</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandleTrackDetailsMenuItemSelectedL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL(TInt))"/>
         </component>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">31</property>
+            <property id="y">32</property>
           </compoundProperty>
           <property id="name">renameTrackMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_9</property>
           <compoundProperty id="size">
-            <property id="width">214</property>
-            <property id="height">27</property>
+            <property id="width">213</property>
+            <property id="height">28</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandleRenameTrackMenuItemSelectedL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleRenameTrackMenuItemSelectedL(TInt))"/>
         </component>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">60</property>
+            <property id="y">62</property>
           </compoundProperty>
           <property id="name">deleteTrackMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_8</property>
           <compoundProperty id="size">
-            <property id="width">214</property>
-            <property id="height">27</property>
+            <property id="width">213</property>
+            <property id="height">28</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandleDeleteTrackMenuItemSelectedL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL(TInt))"/>
         </component>
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">89</property>
+            <property id="y">92</property>
           </compoundProperty>
           <property id="name">deleteAllTracksMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_12</property>
           <compoundProperty id="size">
-            <property id="width">214</property>
-            <property id="height">27</property>
+            <property id="width">213</property>
+            <property id="height">28</property>
           </compoundProperty>
           <eventBinding id="selected" handlerDisplay="HandleDeleteAllTracksMenuItemSelectedL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleDeleteAllTracksMenuItemSelectedL(TInt))"/>
         </component>
@@ -199,13 +199,13 @@
     </component>
     <component id="com.nokia.sdt.series60.SingleLineDataQuery">
       <compoundProperty id="location">
-        <property id="y">185</property>
+        <property id="y">189</property>
       </compoundProperty>
       <property id="name">renameQuery</property>
       <property id="text" type="i18n">STR_TrackListBoxView_10</property>
       <compoundProperty id="size">
         <property id="width">240</property>
-        <property id="height">135</property>
+        <property id="height">131</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.CEikEdwin">
         <compoundProperty id="size">
@@ -215,7 +215,7 @@
         <compoundProperty id="avkonFlags"/>
         <compoundProperty id="location">
           <property id="x">19</property>
-          <property id="y">44</property>
+          <property id="y">40</property>
         </compoundProperty>
         <compoundProperty id="flags"/>
         <compoundProperty id="allowedCaseModes"/>
@@ -234,26 +234,26 @@
     <component id="com.nokia.sdt.series60.WaitDialog">
       <compoundProperty id="location">
         <property id="x">0</property>
-        <property id="y">171</property>
+        <property id="y">186</property>
       </compoundProperty>
       <property id="name">deletionWaitDialog</property>
       <property id="text" type="i18n">STR_TrackListBoxView_13</property>
       <compoundProperty id="size">
         <property id="width">240</property>
-        <property id="height">149</property>
+        <property id="height">134</property>
       </compoundProperty>
       <eventBinding id="canceled" handlerDisplay="HandleDeletionWaitDialogCanceledL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleDeletionWaitDialogCanceledL(CAknProgressDialog*))"/>
     </component>
     <component id="com.nokia.sdt.series60.ConfirmationQuery">
       <compoundProperty id="location">
         <property id="x">0</property>
-        <property id="y">171</property>
+        <property id="y">186</property>
       </compoundProperty>
       <property id="name">deleteConfQuery</property>
       <property id="text" type="i18n">STR_TrackListBoxView_14</property>
       <compoundProperty id="size">
         <property id="width">240</property>
-        <property id="height">149</property>
+        <property id="height">134</property>
       </compoundProperty>
     </component>
   </component>
@@ -271,6 +271,20 @@
       <string id="STR_TrackListBoxView_12">Delete all</string>
       <string id="STR_TrackListBoxView_13">Deleting files...</string>
       <string id="STR_TrackListBoxView_14">Are you sure to delete file(s)?</string>
+    </stringTable>
+    <stringTable language="LANG_Russian">
+      <string id="STR_TrackListBoxView_1"/>
+      <string id="STR_TrackListBoxView_2"/>
+      <string id="STR_TrackListBoxView_3">Треки</string>
+      <string id="STR_TrackListBoxView_4">%N треков</string>
+      <string id="STR_TrackListBoxView_5">Детали</string>
+      <string id="STR_TrackListBoxView_8">Удалить</string>
+      <string id="STR_TrackListBoxView_9">Переименовать</string>
+      <string id="STR_TrackListBoxView_10">Введите имя файла:</string>
+      <string id="STR_TrackListBoxView_11"/>
+      <string id="STR_TrackListBoxView_12">Удалить все</string>
+      <string id="STR_TrackListBoxView_13">Удаление...</string>
+      <string id="STR_TrackListBoxView_14">Вы действительно хотите удалить файл(ы)?</string>
     </stringTable>
   </stringBundle>
   <macroTable/>
@@ -293,6 +307,7 @@
       <enumMapping instanceName="renameTrackMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewRenameTrackMenuItemCommand</enumMapping>
       <enumMapping instanceName="deleteAllTracksMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewDeleteAllTracksMenuItemCommand</enumMapping>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
+      <enumMapping instanceName="controlPane" propertyId="leftId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyOptions</enumMapping>
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtNaviPane</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>
       <enumMapping instanceName="renameQuery" propertyId="[parent].type">EDataLayout</enumMapping>
@@ -306,6 +321,7 @@
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidNavi</enumMapping>
       <enumMapping instanceName="edit1" propertyId="defaultInputMode">EAknEditorTextInputMode</enumMapping>
       <enumMapping instanceName="edit1" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_DIALOG_LINE_ID">ETrackListBoxViewEdit1</enumMapping>
+      <enumMapping instanceName="controlPane" propertyId="rightId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyBack</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtTitlePane</enumMapping>
     </enumMappings>
     <arrayMappings>
@@ -320,16 +336,19 @@
     <file>src/tracklistboxview.cpp</file>
     <file>inc/tracklistboxview.h</file>
     <file>data/gpstracker.rss</file>
-    <file>data/tracklistbox.rssi</file>
-    <file>inc/gpstracker.hrh</file>
     <file>data/trackerinfolistbox.rssi</file>
+    <file>inc/gpstracker.hrh</file>
     <file>inc/trackerinfolistbox.hrh</file>
+    <file>data/tracklistbox.rssi</file>
     <file>inc/tracklistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
+    <file>data/gpstracker.l16</file>
     <file>data/trackerinfolistbox.loc</file>
     <file>data/trackerinfolistbox.l01</file>
+    <file>data/trackerinfolistbox.l16</file>
     <file>data/tracklistbox.loc</file>
     <file>data/tracklistbox.l01</file>
+    <file>data/tracklistbox.l16</file>
   </generatedFiles>
 </designerData>

@@ -9,14 +9,15 @@ SYSTEMINCLUDE \epoc32\include \epoc32\include\variant \epoc32\include\ecom
 USERINCLUDE	   ..\inc ..\data ..\modules\Logger ..\modules\Positioning
 
 SOURCEPATH		..\data
-START RESOURCE	GPSTracker.rss
-HEADER
-TARGETPATH resource\apps
-END //RESOURCE
+START RESOURCE GPSTracker.rss
+	HEADER
+	TARGETPATH resource\apps
+	LANG 01 16
+END
 
-START RESOURCE	GPSTracker_reg.rss
-TARGETPATH 	  \private\10003a3f\apps
-END //RESOURCE
+START RESOURCE GPSTracker_reg.rss
+	TARGETPATH \private\10003a3f\apps
+END
 
 LIBRARY			euser.lib apparc.lib cone.lib eikcore.lib avkon.lib
 LIBRARY			commonengine.lib efsrv.lib estor.lib eikcoctl.lib eikdlg.lib 
@@ -24,7 +25,7 @@ LIBRARY			eikctl.lib bafl.lib fbscli.lib aknnotify.lib aknicon.lib
 LIBRARY			etext.lib gdi.lib egul.lib insock.lib
 LIBRARY			ecom.lib InetProtUtil.lib http.lib esock.lib lbs.lib charconv.lib
 
-LANG 				01
+LANG 				01 16
 
 START BITMAP	GPSTracker.mbm
 HEADER

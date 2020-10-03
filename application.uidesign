@@ -40,8 +40,8 @@
         <property id="initialDesign" type="componentRef">aknViewReference1</property>
         <property id="className">CGPSTrackerAppUi</property>
         <compoundProperty id="location">
-          <property id="x">51</property>
-          <property id="y">44</property>
+          <property id="x">52</property>
+          <property id="y">45</property>
         </compoundProperty>
         <property id="name">GPSTrackerAppUi</property>
         <compoundProperty id="size">
@@ -55,7 +55,7 @@
           <property id="name">statusPane</property>
           <compoundProperty id="size">
             <property id="width">204</property>
-            <property id="height">63</property>
+            <property id="height">66</property>
           </compoundProperty>
           <component id="com.nokia.sdt.series60.StatusPaneCaption">
             <property id="shortCaption" type="i18n">STR_GPSTrackerApplication_4</property>
@@ -106,6 +106,12 @@
       <string id="STR_GPSTrackerApplication_3">GPSTracker</string>
       <string id="STR_GPSTrackerApplication_4">GPSTracker</string>
     </stringTable>
+    <stringTable language="LANG_Russian">
+      <string id="STR_GPSTrackerApplication_1"/>
+      <string id="STR_GPSTrackerApplication_2"/>
+      <string id="STR_GPSTrackerApplication_3">GPSTracker</string>
+      <string id="STR_GPSTrackerApplication_4">GPSTracker</string>
+    </stringTable>
   </stringBundle>
   <macroTable/>
   <sourceMappingState>
@@ -119,6 +125,8 @@
     <enumMappings>
       <enumMapping instanceName="aknViewReference1" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
       <enumMapping instanceName="aknViewReference2" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
+      <enumMapping instanceName="controlPane" propertyId="leftId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyOptions</enumMapping>
+      <enumMapping instanceName="controlPane" propertyId="rightId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyBack</enumMapping>
     </enumMappings>
     <arrayMappings/>
   </sourceMappingState>
@@ -134,16 +142,19 @@
     <file>src/gpstrackerapplication.cpp</file>
     <file>src/gpstrackerappui.cpp</file>
     <file>data/gpstracker.rss</file>
-    <file>data/tracklistbox.rssi</file>
-    <file>inc/gpstracker.hrh</file>
     <file>data/trackerinfolistbox.rssi</file>
+    <file>inc/gpstracker.hrh</file>
     <file>inc/trackerinfolistbox.hrh</file>
+    <file>data/tracklistbox.rssi</file>
     <file>inc/tracklistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
+    <file>data/gpstracker.l16</file>
     <file>data/trackerinfolistbox.loc</file>
     <file>data/trackerinfolistbox.l01</file>
+    <file>data/trackerinfolistbox.l16</file>
     <file>data/tracklistbox.loc</file>
     <file>data/tracklistbox.l01</file>
+    <file>data/tracklistbox.l16</file>
   </generatedFiles>
 </designerData>

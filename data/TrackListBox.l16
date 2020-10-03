@@ -1,0 +1,25 @@
+/*
+========================================================================
+ Name        : TrackListBox.l16
+ Author      : artem78
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: Russian (16)
+CHARACTER_SET UTF8
+
+#define STR_TrackListBoxView_1 ""
+#define STR_TrackListBoxView_2 ""
+#define STR_TrackListBoxView_3 "Треки"
+#define STR_TrackListBoxView_10 "Введите имя файла:"
+#define STR_TrackListBoxView_4 "%N треков"
+#define STR_TrackListBoxView_11 ""
+#define STR_TrackListBoxView_5 "Детали"
+#define STR_TrackListBoxView_12 "Удалить все"
+#define STR_TrackListBoxView_13 "Удаление..."
+#define STR_TrackListBoxView_6 "Детали трека:"
+#define STR_TrackListBoxView_14 "Вы действительно хотите удалить файл(ы)?"
+#define STR_TrackListBoxView_7 "Файл: %0U\nРазмер: %1U\nДата: %2U"
+#define STR_TrackListBoxView_8 "Удалить"
+#define STR_TrackListBoxView_9 "Переименовать"

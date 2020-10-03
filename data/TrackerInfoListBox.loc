@@ -9,3 +9,6 @@
 #ifdef LANGUAGE_01
 #include "TrackerInfoListBox.l01"
 #endif
+#ifdef LANGUAGE_16
+#include "TrackerInfoListBox.l16"
+#endif
