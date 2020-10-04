@@ -11,3 +11,5 @@
 #define STR_GPSTrackerApplication_2 ""
 #define STR_GPSTrackerApplication_3 "GPSTracker"
 #define STR_GPSTrackerApplication_4 "GPSTracker"
+#define STR_GPSTrackerApplication_ErrorCode "Error code: %N"
+#define STR_GPSTrackerApplication_GPXWriteError "GPX file write error"

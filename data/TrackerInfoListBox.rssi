@@ -180,3 +180,18 @@ RESOURCE ARRAY r_tracker_info_list_box_refresh_listbox_item
 			}
 		};
 	}
+
+RESOURCE TBUF r_tracker_info_list_box_meters_unit_text
+	{
+	buf = STR_TrackerInfoListBoxView_MetersUnit;
+	}
+
+RESOURCE TBUF r_tracker_info_list_box_kilometers_per_hour_unit_text
+	{
+	buf = STR_TrackerInfoListBoxView_KilometersPerHourUnit;
+	}
+
+RESOURCE TBUF r_tracker_info_list_box_seconds_unit_text
+	{
+	buf = STR_TrackerInfoListBoxView_SecondsUnit;
+	}

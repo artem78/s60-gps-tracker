@@ -29,3 +29,6 @@ CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_7 "Широта:"
 #define STR_TrackerInfoListBoxView_8 ""
 #define STR_TrackerInfoListBoxView_9 "Долгота:"
+#define STR_TrackerInfoListBoxView_MetersUnit "м"
+#define STR_TrackerInfoListBoxView_KilometersPerHourUnit "км/ч"
+#define STR_TrackerInfoListBoxView_SecondsUnit "с"

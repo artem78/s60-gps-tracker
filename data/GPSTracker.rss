@@ -47,6 +47,16 @@ RESOURCE TBUF r_application_akn_view_reference2
 	{
 	}
 
+RESOURCE TBUF r_application_error_code_text
+	{
+	buf = STR_GPSTrackerApplication_ErrorCode; 
+	}
+
+RESOURCE TBUF r_application_gpx_write_error_text
+	{
+	buf = STR_GPSTrackerApplication_GPXWriteError; 
+	}
+
 
 #include "TrackerInfoListBox.rssi"
 #include "TrackListBox.rssi"

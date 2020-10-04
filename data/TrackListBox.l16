@@ -23,3 +23,8 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_7 "Файл: %0U\nРазмер: %1U\nДата: %2U"
 #define STR_TrackListBoxView_8 "Удалить"
 #define STR_TrackListBoxView_9 "Переименовать"
+#define STR_TrackListBoxView_ActiveFileDeletionError "Невозможно удалить активный файл трека!"
+#define STR_TrackListBoxView_FileDeletionError "Невозможно удалить файл \"%U\"!"
+#define STR_TrackListBoxView_ActiveFileRenamingError "Невозможно переименовать активный файл трека!"
+#define STR_TrackListBoxView_FileRenamingError "Невозможно переименовать файл \"%U\"!"
+#define STR_TrackListBoxView_IncorrectFileNameError "Неправильное имя файла!"

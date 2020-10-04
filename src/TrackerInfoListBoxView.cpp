@@ -319,9 +319,6 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	const TChar KForwardSlash = TChar(0x2F);
 	const TChar KSpace = TChar(0x20);
 	_LIT(KTextNoValue, "-----");
-	_LIT(KMetersUnit, "m");
-	_LIT(KKilometersPerHourUnit, "km/h");
-	_LIT(KSecondsUnit, "s");
 	const TChar KDegree = TChar(0xB0);
 	const TInt KMicroSecondsPerSecond = 1000000;
 
@@ -331,6 +328,11 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 
 	// Variables
 	TBuf<100> valBuff;
+	
+	// Localization strings
+	HBufC* metersUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_METERS_UNIT_TEXT, iEikonEnv);
+	HBufC* kilometersPerHourUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_KILOMETERS_PER_HOUR_UNIT_TEXT, iEikonEnv);
+	HBufC* secondsUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_SECONDS_UNIT_TEXT, iEikonEnv);
 
 	
 	// Latitude
@@ -361,7 +363,7 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 		valBuff.Zero();
 		valBuff.AppendNum(aAlt, KShortRealFmt);
 		valBuff.Append(KSpace);
-		valBuff.Append(KMetersUnit);
+		valBuff.Append(*metersUnit);
 		}
 	else
 		valBuff.Copy(KTextNoValue);
@@ -373,7 +375,7 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 		valBuff.Zero();
 		valBuff.AppendNum(aSpeed, KShortRealFmt);
 		valBuff.Append(KSpace);
-		valBuff.Append(KKilometersPerHourUnit);
+		valBuff.Append(*kilometersPerHourUnit);
 		}
 	else
 		valBuff.Copy(KTextNoValue);
@@ -397,13 +399,16 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	valBuff.Zero();
 	valBuff.AppendNum(aPosRefreshRate.Int64() / TReal(KMicroSecondsPerSecond), KShortRealFmt);
 	valBuff.Append(KSpace);
-	valBuff.Append(KSecondsUnit);
+	valBuff.Append(*secondsUnit);
 	iTrackerInfoListBox->SetItemValueL(EPositionRefreshRateItem, valBuff);
 	
 	
 	// Redraw listbox component
 	iTrackerInfoListBox->DrawNow();
 	
+	
+	// Frees resources
+	CleanupStack::PopAndDestroy(3, metersUnit);
 	}
 
 				

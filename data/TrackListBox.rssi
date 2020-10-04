@@ -165,3 +165,28 @@ RESOURCE DIALOG r_track_list_box_delete_conf_query
 			}
 		};
 	}
+
+RESOURCE TBUF r_track_list_box_active_file_deletion_error_text
+	{
+	buf = STR_TrackListBoxView_ActiveFileDeletionError;
+	}
+
+RESOURCE TBUF r_track_list_box_file_deletion_error_text
+	{
+	buf = STR_TrackListBoxView_FileDeletionError;
+	}
+
+RESOURCE TBUF r_track_list_box_active_file_renaming_error_text
+	{
+	buf = STR_TrackListBoxView_ActiveFileRenamingError;
+	}
+
+RESOURCE TBUF r_track_list_box_file_renaming_error_text
+	{
+	buf = STR_TrackListBoxView_FileRenamingError;
+	}
+
+RESOURCE TBUF r_track_list_box_incorrect_file_name_error_text
+	{
+	buf = STR_TrackListBoxView_IncorrectFileNameError;
+	}

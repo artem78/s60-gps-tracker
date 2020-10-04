@@ -27,3 +27,6 @@
 #define STR_TrackerInfoListBoxView_40 "Continue track recording"
 #define STR_TrackerInfoListBoxView_39 "Pause track recording"
 #define STR_TrackerInfoListBoxView_4 "Tracks"
+#define STR_TrackerInfoListBoxView_MetersUnit "m"
+#define STR_TrackerInfoListBoxView_KilometersPerHourUnit "km/h"
+#define STR_TrackerInfoListBoxView_SecondsUnit "s"

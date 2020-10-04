@@ -21,3 +21,8 @@
 #define STR_TrackListBoxView_12 "Delete all"
 #define STR_TrackListBoxView_13 "Deleting files..."
 #define STR_TrackListBoxView_14 "Are you sure to delete file(s)?"
+#define STR_TrackListBoxView_ActiveFileDeletionError "Can`t delete active track file!"
+#define STR_TrackListBoxView_FileDeletionError "Can`t delete file \"%U\"!"
+#define STR_TrackListBoxView_ActiveFileRenamingError "Can`t rename active track file!"
+#define STR_TrackListBoxView_FileRenamingError "Can`t rename file \"%U\"!"
+#define STR_TrackListBoxView_IncorrectFileNameError "Incorrect file name!"

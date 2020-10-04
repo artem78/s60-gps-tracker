@@ -25,6 +25,7 @@
 #include <lbspositioninfo.h>
 #include "LBSSatelliteExtended.h"
 #include <bautils.h>
+#include <stringloader.h>
 
 //  Constants
 
@@ -380,11 +381,19 @@ void CGPSTrackerAppUi::OnPositionLost()
 	LOG(_L8("Position lost"));
 	TRAP_IGNORE(ShowDataL());
 	
-	TRAPD(r, iTrackWriter->StartNewSegmentL());
-	if (r != KErrNone)
+	TRAPD(ret, iTrackWriter->StartNewSegmentL());
+	if (ret != KErrNone)
 		{
-		LOG(_L8("Error start new segment in gpx with code %d"), r);
-		ShowError(_L("Error start new segment in gpx"), r);
+		LOG(_L8("Error start new segment in gpx with code %d"), ret);
+		
+		HBufC* errMsg;
+		TRAPD(r, errMsg = StringLoader::LoadL(R_APPLICATION_GPX_WRITE_ERROR_TEXT, iEikonEnv));
+		if (r == KErrNone)
+			{
+			ShowError(*errMsg, ret);
+			delete errMsg;
+			}
+		
 		Exit();
 		}
 	}
@@ -417,12 +426,20 @@ void CGPSTrackerAppUi::OnPositionUpdated()
 	
 	// Write position to file
 	LOG(_L8("Before add point"));
-	TRAPD(r, iTrackWriter->AddPointL(posInfo));
+	TRAPD(ret, iTrackWriter->AddPointL(posInfo));
 	LOG(_L8("After add point"));
-	if (r != KErrNone)
+	if (ret != KErrNone)
 		{
-		LOG(_L8("Error write position to the file with code %d"), r);
-		ShowError(_L("Error write position to the file"), r);
+		LOG(_L8("Error write position to the file with code %d"), ret);
+
+		HBufC* errMsg;
+		TRAPD(r, errMsg = StringLoader::LoadL(R_APPLICATION_GPX_WRITE_ERROR_TEXT, iEikonEnv));
+		if (r == KErrNone)
+			{
+			ShowError(*errMsg, ret);
+			delete errMsg;
+			}
+		
 		Exit();
 		}
 	
@@ -590,7 +607,6 @@ void CGPSTrackerAppUi::OnFileManFinished(TInt aStatus)
 void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
 	{
 	// ToDo: Use error icon instead info
-	_LIT(KErrCodeText, " (Error code: %d)");
 	
 	if (anErrCode == KErrNone)
 		{
@@ -598,14 +614,24 @@ void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
 		}
 	else
 		{
+		HBufC* errCodeText;
+		TRAPD(r, errCodeText = StringLoader::LoadL(R_APPLICATION_ERROR_CODE_TEXT, anErrCode, iEikonEnv));
+		if (r != KErrNone)
+			return;
+		
 		RBuf buff;
-		if (buff.Create(aMsg.Length() + 30) == KErrNone)
+		if (buff.Create(aMsg.Length() + 3 + errCodeText->Length()) == KErrNone)
 			{
 			buff.Copy(aMsg);
-			buff.AppendFormat(KErrCodeText, anErrCode);
+			buff.Append(' ');
+			buff.Append('(');
+			buff.Append(*errCodeText);
+			buff.Append(')');
 			iEikonEnv->AlertWin(buff);
 			buff.Close();
 			}
+		
+		delete errCodeText;		
 		}
 	}
 

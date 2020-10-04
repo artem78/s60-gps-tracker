@@ -454,17 +454,15 @@ TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
 		{
 		if (r == KErrInUse)
 			{
-			_LIT(KErrMsg, "Can`t delete active track file!");
-			appUi->ShowError(KErrMsg);
+			HBufC* errMsg = StringLoader::LoadL(R_TRACK_LIST_BOX_ACTIVE_FILE_DELETION_ERROR_TEXT, iEikonEnv);
+			appUi->ShowError(*errMsg);
+			delete errMsg;
 			}
 		else
 			{
-			_LIT(KErrMsgFmt, "Can`t delete file \"%S\"!");
-			RBuf msg;
-			msg.CreateL(KErrMsgFmt().Length() + fileName->Length());
-			msg.Format(KErrMsgFmt, &(*fileName));
-			appUi->ShowError(msg, r);
-			msg.Close();
+			HBufC* errMsg = StringLoader::LoadL(R_TRACK_LIST_BOX_FILE_DELETION_ERROR_TEXT, *fileName, iEikonEnv);
+			appUi->ShowError(*errMsg, r);
+			delete errMsg;
 			}
 		}
 	
@@ -502,8 +500,9 @@ TBool CTrackListBoxView::HandleRenameTrackMenuItemSelectedL( TInt /*aCommand*/ )
 		// Check if filename is correct
 		if (!fs.IsValidName(/*newFileFullName*/ newFileName))
 			{
-			_LIT(KErrMsg, "Incorrect file name!");
-			appUi->ShowError(KErrMsg);
+			HBufC* errMsg = StringLoader::LoadL(R_TRACK_LIST_BOX_INCORRECT_FILE_NAME_ERROR_TEXT, iEikonEnv);
+			appUi->ShowError(*errMsg);
+			delete errMsg;
 			}
 		else
 			{
@@ -517,17 +516,15 @@ TBool CTrackListBoxView::HandleRenameTrackMenuItemSelectedL( TInt /*aCommand*/ )
 				{
 				if (r == KErrInUse)
 					{
-					_LIT(KErrMsg, "Can`t rename active track file!");
-					appUi->ShowError(KErrMsg);
+					HBufC* errMsg = StringLoader::LoadL(R_TRACK_LIST_BOX_ACTIVE_FILE_RENAMING_ERROR_TEXT, iEikonEnv);
+					appUi->ShowError(*errMsg);
+					delete errMsg;
 					}
 				else
 					{
-					_LIT(KErrMsgFmt, "Can`t rename file \"%S\"!");
-					RBuf msg;
-					msg.CreateL(KErrMsgFmt().Length() + oldFileName->Length());
-					msg.Format(KErrMsgFmt, &(*oldFileName));
-					appUi->ShowError(msg, r);
-					msg.Close();
+					HBufC* errMsg = StringLoader::LoadL(R_TRACK_LIST_BOX_FILE_RENAMING_ERROR_TEXT, *oldFileName, iEikonEnv);
+					appUi->ShowError(*errMsg, r);
+					delete errMsg;
 					}
 				}
 			}

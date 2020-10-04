@@ -7,7 +7,11 @@
 ========================================================================
 */
 // localized strings for language: Russian (16)
+
+CHARACTER_SET UTF8
 #define STR_GPSTrackerApplication_1 ""
 #define STR_GPSTrackerApplication_2 ""
 #define STR_GPSTrackerApplication_3 "GPSTracker"
 #define STR_GPSTrackerApplication_4 "GPSTracker"
+#define STR_GPSTrackerApplication_ErrorCode "Код ошибки: %N"
+#define STR_GPSTrackerApplication_GPXWriteError "Ошибка записи GPX файла"
