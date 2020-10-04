@@ -429,7 +429,6 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
 	{
 	// ToDo: Allow to mark multiple items for deletion
-	// ToDo: Delete with "C" key
 	
 	// Confirmation dialog
 	if (RunDeleteConfQueryL(NULL) != EAknSoftkeyYes)
