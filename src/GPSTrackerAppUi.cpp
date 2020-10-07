@@ -324,7 +324,7 @@ void CGPSTrackerAppUi::ShowDataL()
 		}
 		
 	
-	// Sattelite info
+	// Satellite info
 	if (posInfo->PositionClassType() & EPositionSatelliteInfoClass)
 		{
 		const TPositionSatelliteInfoExtended* satelliteInfo = static_cast<const TPositionSatelliteInfoExtended*>(posInfo);
