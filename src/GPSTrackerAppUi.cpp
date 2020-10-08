@@ -389,6 +389,10 @@ void CGPSTrackerAppUi::OnPositionLost()
 		{
 		LOG(_L8("Error start new segment in gpx with code %d"), ret);
 		
+		// Stop track recording
+		StopTracking();
+
+		// Display error message		
 		HBufC* errMsg;
 		TRAPD(r, errMsg = StringLoader::LoadL(R_APPLICATION_GPX_WRITE_ERROR_TEXT, iEikonEnv));
 		if (r == KErrNone)
@@ -397,7 +401,7 @@ void CGPSTrackerAppUi::OnPositionLost()
 			delete errMsg;
 			}
 		
-		Exit(); // fixme
+		//Exit();
 		}
 	}
 
@@ -432,7 +436,7 @@ void CGPSTrackerAppUi::OnPositionUpdated()
 	TRAPD(ret, iTrackWriter->AddPointL(posInfo));
 	LOG(_L8("After add point"));
 	//////////
-	if (iTotalPointsCount >= 10) ret = KErrUnknown; // Imitate error after some time after start
+	//if (iTotalPointsCount >= 15) ret = KErrUnknown; // Imitate error after some time after start
 	//////////
 	if (ret != KErrNone)
 		{
@@ -441,7 +445,7 @@ void CGPSTrackerAppUi::OnPositionUpdated()
 		// Stop track recording
 		StopTracking();
 
-		// Display message
+		// Display error message
 		HBufC* errMsg;
 		TRAPD(r, errMsg = StringLoader::LoadL(R_APPLICATION_GPX_WRITE_ERROR_TEXT, iEikonEnv));
 		if (r == KErrNone)
@@ -450,7 +454,7 @@ void CGPSTrackerAppUi::OnPositionUpdated()
 			delete errMsg;
 			}
 		
-		//Exit(); // fixme
+		//Exit();
 		}
 	
 	// Write position to the screen	
