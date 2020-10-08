@@ -382,9 +382,6 @@ void CGPSTrackerAppUi::OnPositionLost()
 	TRAP_IGNORE(ShowDataL());
 	
 	TRAPD(ret, iTrackWriter->StartNewSegmentL());
-	//////////
-	//ret = KErrUnknown;
-	//////////
 	if (ret != KErrNone)
 		{
 		LOG(_L8("Error start new segment in gpx with code %d"), ret);
@@ -435,9 +432,6 @@ void CGPSTrackerAppUi::OnPositionUpdated()
 	LOG(_L8("Before add point"));
 	TRAPD(ret, iTrackWriter->AddPointL(posInfo));
 	LOG(_L8("After add point"));
-	//////////
-	//if (iTotalPointsCount >= 15) ret = KErrUnknown; // Imitate error after some time after start
-	//////////
 	if (ret != KErrNone)
 		{
 		LOG(_L8("Error write position to the file with code %d"), ret);
