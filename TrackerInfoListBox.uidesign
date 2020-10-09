@@ -284,7 +284,7 @@
       <string id="STR_TrackerInfoListBoxView_22"/>
       <string id="STR_TrackerInfoListBoxView_25">Сохранено точек:</string>
       <string id="STR_TrackerInfoListBoxView_26"/>
-      <string id="STR_TrackerInfoListBoxView_28">Обновление каждые:</string>
+      <string id="STR_TrackerInfoListBoxView_28">Частота обновления:</string>
       <string id="STR_TrackerInfoListBoxView_29"/>
       <string id="STR_TrackerInfoListBoxView_39">Пауза записи трека</string>
       <string id="STR_TrackerInfoListBoxView_40">Продолжить запись трека</string>
@@ -310,11 +310,11 @@
       <resourceMapping instanceName="title">r_tracker_info_list_box_title_resource</resourceMapping>
     </resourceMappings>
     <enumMappings>
-      <enumMapping instanceName="tracksListMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewTracksListMenuItemCommand</enumMapping>
       <enumMapping instanceName="continueTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewContinueTrackRecordingMenuItemCommand</enumMapping>
-      <enumMapping instanceName="TrackerInfoListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
-      <enumMapping instanceName="pauseTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand</enumMapping>
+      <enumMapping instanceName="tracksListMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewTracksListMenuItemCommand</enumMapping>
       <enumMapping instanceName="tracksMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewTracksMenuItemCommand</enumMapping>
+      <enumMapping instanceName="pauseTrackRecordingMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackerInfoListBoxViewPauseTrackRecordingMenuItemCommand</enumMapping>
+      <enumMapping instanceName="TrackerInfoListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackerInfoListBoxViewId</enumMapping>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
       <enumMapping instanceName="controlPane" propertyId="leftId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyOptions</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>

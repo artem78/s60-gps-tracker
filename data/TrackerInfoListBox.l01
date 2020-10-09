@@ -29,4 +29,4 @@
 #define STR_TrackerInfoListBoxView_4 "Tracks"
 #define STR_TrackerInfoListBoxView_MetersUnit "m"
 #define STR_TrackerInfoListBoxView_KilometersPerHourUnit "km/h"
-#define STR_TrackerInfoListBoxView_SecondsUnit "s"
+#define STR_TrackerInfoListBoxView_SecondsUnit "sec"

@@ -116,8 +116,8 @@
   <macroTable/>
   <sourceMappingState>
     <resourceMappings>
-      <resourceMapping instanceName="aknViewReference1" rsrcId="tabText">r_application_akn_view_reference1</resourceMapping>
       <resourceMapping instanceName="GPSTrackerAppUi" rsrcId="localisable_app_info">r_localisable_app_info</resourceMapping>
+      <resourceMapping instanceName="aknViewReference1" rsrcId="tabText">r_application_akn_view_reference1</resourceMapping>
       <resourceMapping instanceName="GPSTrackerAppUi">r_application_gpstracker_app_ui</resourceMapping>
       <resourceMapping instanceName="aknViewReference2" rsrcId="tabText">r_application_akn_view_reference2</resourceMapping>
       <resourceMapping instanceName="statusPane">r_application_status_pane</resourceMapping>
