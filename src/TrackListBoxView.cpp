@@ -465,6 +465,8 @@ TBool CTrackListBoxView::HandleDeleteTrackMenuItemSelectedL( TInt /*aCommand*/ )
 			}
 		}
 	
+	CleanupStack::PopAndDestroy(fileName);
+	
 	return ETrue;
 	}
 				
@@ -528,6 +530,8 @@ TBool CTrackListBoxView::HandleRenameTrackMenuItemSelectedL( TInt /*aCommand*/ )
 				}
 			}
 		}
+	
+	CleanupStack::PopAndDestroy(oldFileName);
 	
 	return ETrue;
 	}
