@@ -122,6 +122,11 @@ void CTrackerInfoListBox::ConstructL(
 	iFocusControl = NULL;
 	iCommandObserver = aCommandObserver;
 	InitializeControlsL();
+	
+	// Set scrollbar for list view
+	CEikScrollBarFrame* scrollBar = iListBox->CreateScrollBarFrameL();
+	scrollBar->SetScrollBarVisibilityL(CEikScrollBarFrame::EOn, CEikScrollBarFrame::EOn);
+	
 	SetRect( aRect );
 	ActivateL();
 	// [[[ begin generated region: do not modify [Post-ActivateL initializations]
