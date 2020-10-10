@@ -120,6 +120,8 @@ public:
 	void DeleteAllTracks/*L*/();
 	inline void CancelCurrentFManOperation()
 		{ iAsyncFileMan->Cancel(); }
+	const TDesC& ProgramName() const;
+	const TDesC& ProgramVersion() const;
 	
 	// Events
 	void OnPositionUpdated();

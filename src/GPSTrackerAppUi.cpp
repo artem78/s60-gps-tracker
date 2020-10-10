@@ -727,3 +727,13 @@ void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
 	TInt r = iAsyncFileMan->Delete(path);
 	// ToDo: check r ...
 	}
+
+const TDesC& CGPSTrackerAppUi::ProgramName() const
+	{
+	return KProgramName;
+	}
+
+const TDesC& CGPSTrackerAppUi::ProgramVersion() const
+	{
+	return KProgramVersion;
+	}
