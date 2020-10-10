@@ -1,4 +1,4 @@
-GUI fork of [console GPS Tracker](https://github.com/artem78/s60-gps-tracker-cli) for Symbian OS.
+GUI fork of [console GPS Tracker](https://github.com/artem78/s60-gps-tracker-cli) for Symbian OS. This software allow you to record tracks using GPS in Nokia phones.
 
 ![](images/tracking_info.png) ![](images/track_list_with_menu.png)
 
