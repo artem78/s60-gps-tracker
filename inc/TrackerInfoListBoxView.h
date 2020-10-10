@@ -75,6 +75,7 @@ protected:
 	TBool HandlePauseTrackRecordingMenuItemSelectedL( TInt aCommand );
 	TBool HandleContinueTrackRecordingMenuItemSelectedL( TInt aCommand );
 	TBool HandleTracksListMenuItemSelectedL( TInt aCommand );
+	TBool HandleAboutMenuItemSelectedL( TInt aCommand );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]

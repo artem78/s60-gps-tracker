@@ -79,6 +79,11 @@ RESOURCE MENU_PANE r_tracker_info_list_box_menu_pane1_menu_pane
 			{
 			command = ETrackerInfoListBoxViewTracksListMenuItemCommand;
 			txt = STR_TrackerInfoListBoxView_4;
+			},
+		MENU_ITEM
+			{
+			command = ETrackerInfoListBoxViewAboutMenuItemCommand;
+			txt = STR_TrackerInfoListBoxView_5;
 			}
 		};
 	}
@@ -194,4 +199,9 @@ RESOURCE TBUF r_tracker_info_list_box_kilometers_per_hour_unit_text
 RESOURCE TBUF r_tracker_info_list_box_seconds_unit_text
 	{
 	buf = STR_TrackerInfoListBoxView_SecondsUnit;
+	}
+
+RESOURCE TBUF r_tracker_info_list_box_about_text
+	{
+	buf = STR_TrackerInfoListBoxView_AboutText;
 	}

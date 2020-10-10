@@ -32,3 +32,6 @@ CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_MetersUnit "м"
 #define STR_TrackerInfoListBoxView_KilometersPerHourUnit "км/ч"
 #define STR_TrackerInfoListBoxView_SecondsUnit "сек"
+#define STR_TrackerInfoListBoxView_5 "О программе"
+#define STR_TrackerInfoListBoxView_AboutText "%0U для Symbian OS\nВерсия: %1U\nСоздатель: artem78\nЭл. почта: megabyte1024@ya.ru"
+

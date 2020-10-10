@@ -135,6 +135,9 @@ void CTrackerInfoListBoxView::HandleCommandL( TInt aCommand )
 		case ETrackerInfoListBoxViewTracksListMenuItemCommand:
 			commandHandled = HandleTracksListMenuItemSelectedL( aCommand );
 			break;
+		case ETrackerInfoListBoxViewAboutMenuItemCommand:
+			commandHandled = HandleAboutMenuItemSelectedL( aCommand );
+			break;
 		default:
 			break;
 		}
@@ -425,3 +428,27 @@ TBool CTrackerInfoListBoxView::HandleTracksListMenuItemSelectedL( TInt /*aComman
 	return ETrue;
 	}
 				
+
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackerInfoListBoxView::HandleAboutMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	
+	CDesCArrayFlat* strings = new (ELeave) CDesCArrayFlat(2);
+	CleanupStack::PushL(strings);
+	strings->AppendL(appUi->ProgramName());
+	strings->AppendL(appUi->ProgramVersion());
+	
+	HBufC* msg = StringLoader::LoadL(R_TRACKER_INFO_LIST_BOX_ABOUT_TEXT, *strings, iEikonEnv);
+	
+	iEikonEnv->AlertWin(*msg);
+	
+	delete msg;
+	CleanupStack::PopAndDestroy(strings);
+	
+	return ETrue;
+	}
