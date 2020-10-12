@@ -30,6 +30,6 @@
 #define STR_TrackerInfoListBoxView_4 "Tracks"
 #define STR_TrackerInfoListBoxView_MetersUnit "m"
 #define STR_TrackerInfoListBoxView_KilometersPerHourUnit "km/h"
-#define STR_TrackerInfoListBoxView_SecondsUnit "sec"
+#define STR_TrackerInfoListBoxView_SecondsUnit "sec(s)"
 #define STR_TrackerInfoListBoxView_5 "About"
 #define STR_TrackerInfoListBoxView_AboutText "%0U for Symbian OS\nVersion: %1U\nAuthor: artem78\nEmail: megabyte1024@ya.ru"
