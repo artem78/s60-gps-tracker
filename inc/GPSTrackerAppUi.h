@@ -106,6 +106,7 @@ private:
 	
 public:
 	void ShowError(const TDesC &aMsg, TInt anErrCode = KErrNone);
+	void ShowMsgL(const TDesC &aTitle, const TDesC &aMsg);
 	
 public:	
 	void StartTracking();

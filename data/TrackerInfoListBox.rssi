@@ -205,3 +205,8 @@ RESOURCE TBUF r_tracker_info_list_box_about_text
 	{
 	buf = STR_TrackerInfoListBoxView_AboutText;
 	}
+
+RESOURCE TBUF r_tracker_info_about_dialog_title
+	{
+	buf = STR_TrackerInfoListBoxView_5;
+	}

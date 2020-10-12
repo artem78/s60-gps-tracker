@@ -57,6 +57,32 @@ RESOURCE TBUF r_application_gpx_write_error_text
 	buf = STR_GPSTrackerApplication_GPXWriteError; 
 	}
 
+RESOURCE DIALOG r_application_main_query_dialog
+	{
+	flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items=
+		{
+		DLG_LINE 
+			{
+			type = EAknCtPopupHeadingPane;
+			id = EAknMessageQueryHeaderId;
+			itemflags = EEikDlgItemNonFocusing;
+			control = AVKON_HEADING
+				{
+				};
+			},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				};
+			}
+		};
+	}
+
 
 #include "TrackerInfoListBox.rssi"
 #include "TrackListBox.rssi"

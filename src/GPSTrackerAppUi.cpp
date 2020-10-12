@@ -26,6 +26,7 @@
 #include "LBSSatelliteExtended.h"
 #include <bautils.h>
 #include <stringloader.h>
+#include <aknmessagequerydialog.h>
 
 //  Constants
 
@@ -641,6 +642,15 @@ void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
 		
 		delete errCodeText;		
 		}
+	}
+
+void CGPSTrackerAppUi::ShowMsgL(const TDesC &aTitle, const TDesC &aMsg)
+	{
+	CAknMessageQueryDialog* dlg = new (ELeave) CAknMessageQueryDialog();
+	dlg->PrepareLC(R_APPLICATION_MAIN_QUERY_DIALOG);
+	dlg->QueryHeading()->SetTextL(aTitle);
+	dlg->SetMessageTextL(aMsg);
+	dlg->RunLD();
 	}
 
 void CGPSTrackerAppUi::StartTracking()
