@@ -378,12 +378,14 @@ TBool CTrackListBoxView::HandleControlPaneRightSoftKeyPressedL( TInt aCommand )
  */
 TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ )
 	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	
 	// Read track file information
 	HBufC* fileName = iTrackListBox->GetCurrentListBoxItemTextLC();
 	/*if (fileName == NULL)
 		return; // No selected item, exit*/
 	TFileName fileFullName;
-	static_cast<CGPSTrackerAppUi *>(AppUi())->TrackDir(fileFullName);
+	appUi->TrackDir(fileFullName);
 	fileFullName.Append(*fileName);
 	TEntry fileEntry;
 	User::LeaveIfError(iEikonEnv->FsSession().Entry(fileFullName, fileEntry));
@@ -413,8 +415,7 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	// Create and show message window
 	HBufC* titleBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TITLE, iEikonEnv);
 	HBufC* textBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TEXT, *strings, iEikonEnv);
-	//iEikonEnv->AlertWin(*titleBuff, *textBuff);
-	iEikonEnv->InfoWinL(*titleBuff, *textBuff);
+	appUi->ShowMsgL(*titleBuff, *textBuff);
 	CleanupStack::PopAndDestroy(4, fileName);	
 	
 	
