@@ -37,7 +37,7 @@ CAsyncFileMan* CAsyncFileMan::NewL(RFs &aFs, MAsyncFileManObserver* aObserver)
 
 void CAsyncFileMan::ConstructL(RFs &aFs)
 	{	
-	iFileMan = CFileMan::NewL(aFs, this);
+	iFileMan = /*CFileMan*/ (CFileManExtended*)CFileManExtended::NewL(aFs, this);
 	
 	CActiveScheduler::Add(this); // Add to scheduler
 	}
@@ -107,8 +107,14 @@ MFileManObserver::TControl CAsyncFileMan::NotifyFileManEnded()
 		}
 	
 	DEBUG(_L("NotifyFileManEnded"));
+	iProcessedCount++;
 	return iObserver->OnFileManEnded();
 	}
+
+//TInt CAsyncFileMan::GetAmountOfFiles(const TDesC &aPath/*, TBool anIsRecursive*/)
+//	{
+//	return iFileMan->iDirList->Count();
+//	}
 
 TInt CAsyncFileMan::Delete(const TDesC& aName, TUint aSwitch)
 	{
@@ -116,6 +122,8 @@ TInt CAsyncFileMan::Delete(const TDesC& aName, TUint aSwitch)
 	if (IsActive())
 		return KErrInUse;
 	iCancelOperation = EFalse;
+	iProcessedCount = 0;
+	//iTotalCount = GetAmountOfFiles(aName);
 	TInt r = iFileMan->Delete(aName, aSwitch, iStatus); // ToDo: Check r
 	SetActive();
 	INFO(_L("Delete operation started"));

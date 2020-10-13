@@ -23,6 +23,15 @@ class MAsyncFileManObserver;
 
 // Classes
 
+class CFileManExtended : public CFileMan
+	{
+public:
+	inline TInt ProcessedFiles() { return iNumberOfFilesProcessed; };
+	//inline TInt TotalFiles() { return iDirList->Count(); };
+	inline TInt TotalFiles() { return iDirList != NULL ? iDirList->Count() : 0; };
+	};
+
+
 class CAsyncFileMan : public CActive, public MFileManObserver
 // FixMe: Memory leak when cancel delete operation
 	{
@@ -67,13 +76,20 @@ public:
 	MFileManObserver::TControl NotifyFileManEnded();
 
 private:
-	CFileMan* iFileMan;
+	/*CFileMan**/ CFileManExtended* iFileMan;
 	MAsyncFileManObserver* iObserver;
 	TBool iCancelOperation; // Used for cancel current operation in file manager
+	TInt iProcessedCount/*, iTotalCount*/; // Amount of processed and total files
+	
+//	TInt GetAmountOfFiles(const TDesC &aPath/*, TBool anIsRecursive=EFalse*/);
 	
 public:
 	// ToDo: Add other operations (rename, copy, etc...)
 	TInt Delete(const TDesC& aName, TUint aSwitch=0);
+	
+	inline TInt ProcessedFiles() { return iFileMan->ProcessedFiles(); };
+	//inline TInt TotalFiles() { return iTotalCount; };
+	inline TInt TotalFiles() { return iFileMan->TotalFiles(); };
 	
 	};
 

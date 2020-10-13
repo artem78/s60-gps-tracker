@@ -11,8 +11,9 @@
 
 // [[[ begin generated region: do not modify [Generated Includes]
 #include <aknview.h>
-#include <aknwaitdialog.h>
 // ]]] end generated region [Generated Includes]
+
+#include <aknprogressdialog.h>
 
 
 // [[[ begin [Event Handler Includes]
@@ -58,8 +59,6 @@ public:
 			TDes& aData, 
 			TBool aUseDefaults = ETrue, 
 			const TDesC* aOverridePrompt = NULL );
-	void ExecuteDeletionWaitDialogLD( const TDesC* aOverrideText = NULL );
-	void RemoveDeletionWaitDialogL();
 	static TInt RunDeleteConfQueryL( const TDesC* aOverrideText = NULL );
 	// ]]] end generated region [Generated Methods]
 	
@@ -101,10 +100,10 @@ private:
 	// any current navi decorator
 	CAknNavigationDecorator* iNaviDecorator_;
 	CTrackListBox* iTrackListBox;
-	CAknWaitDialog* iDeletionWaitDialog;
-	class CProgressDialogCallback;
-	CProgressDialogCallback* iDeletionWaitDialogCallback;
 	// ]]] end generated region [Generated Instance Variables]
+	
+	CAknProgressDialog* iProgressDlg;
+	CPeriodic* iProgressDlgUpdateTimer;
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
 	// ]]] end generated region [Generated Methods]
@@ -126,7 +125,8 @@ public:
 	
 	void ShowDeletionDialogL();
 	void HideDeletionDialogL();
-	//void SetTrackDeletionProgress(TInt aCount);
+//	void SetTrackDeletionProgressL(TInt aProcessedCount, TInt aTotalCount);
+	static TInt UpdateTrackDeletionProgress(TAny* anObject);
 	
 	
 	// [[[ begin [MProgressDialogCallback support]
