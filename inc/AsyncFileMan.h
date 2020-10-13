@@ -79,16 +79,12 @@ private:
 	/*CFileMan**/ CFileManExtended* iFileMan;
 	MAsyncFileManObserver* iObserver;
 	TBool iCancelOperation; // Used for cancel current operation in file manager
-	TInt iProcessedCount/*, iTotalCount*/; // Amount of processed and total files
-	
-//	TInt GetAmountOfFiles(const TDesC &aPath/*, TBool anIsRecursive=EFalse*/);
 	
 public:
 	// ToDo: Add other operations (rename, copy, etc...)
 	TInt Delete(const TDesC& aName, TUint aSwitch=0);
 	
 	inline TInt ProcessedFiles() { return iFileMan->ProcessedFiles(); };
-	//inline TInt TotalFiles() { return iTotalCount; };
 	inline TInt TotalFiles() { return iFileMan->TotalFiles(); };
 	
 	};
