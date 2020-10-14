@@ -103,6 +103,8 @@ private:
 	// ]]] end generated region [Generated Instance Variables]
 	
 	CAknProgressDialog* iProgressDlg;
+	class CProgressDialogCallback;
+	CProgressDialogCallback* iDeletionWaitDialogCallback;
 	CPeriodic* iProgressDlgUpdateTimer;
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
