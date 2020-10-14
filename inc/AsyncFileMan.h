@@ -23,11 +23,16 @@ class MAsyncFileManObserver;
 
 // Classes
 
+// Wrapper for provide public access to some protected members of CFileMan class  
 class CFileManExtended : public CFileMan
 	{
 public:
+// Constructors / destructors
+	static CFileManExtended* NewL(RFs& aFs);
+	static CFileManExtended* NewL(RFs& aFs,MFileManObserver* anObserver);
+	
+// New methods
 	inline TInt ProcessedFiles() { return iNumberOfFilesProcessed; };
-	//inline TInt TotalFiles() { return iDirList->Count(); };
 	inline TInt TotalFiles() { return iDirList != NULL ? iDirList->Count() : 0; };
 	};
 
@@ -76,7 +81,7 @@ public:
 	MFileManObserver::TControl NotifyFileManEnded();
 
 private:
-	/*CFileMan**/ CFileManExtended* iFileMan;
+	CFileManExtended* iFileMan;
 	MAsyncFileManObserver* iObserver;
 	TBool iCancelOperation; // Used for cancel current operation in file manager
 	
