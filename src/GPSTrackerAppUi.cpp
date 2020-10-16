@@ -613,7 +613,7 @@ void CGPSTrackerAppUi::OnFileManFinished(TInt aStatus)
 	//		{
 			DEBUG(_L("Deletion ended"));
 			if (aStatus != KErrCancel)
-				TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
+				TRAP_IGNORE(iTrackListBoxView->RemoveDeletionProgressDlgL());
 			UpdateTrackListL();
 	//		}
 	}
@@ -738,7 +738,7 @@ void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
 	path.Append(KTrackFileMask);
 	
 	// Start delete files	
-	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL()); // ToDo: Also show progress
+	TRAP_IGNORE(iTrackListBoxView->ExecuteDeletionProgressDlgL());
 	TInt r = iAsyncFileMan->Delete(path);
 	// ToDo: check r ...
 	}

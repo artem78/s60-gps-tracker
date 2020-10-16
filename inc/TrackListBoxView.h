@@ -102,10 +102,10 @@ private:
 	CTrackListBox* iTrackListBox;
 	// ]]] end generated region [Generated Instance Variables]
 	
-	CAknProgressDialog* iProgressDlg;
+	CAknProgressDialog* iDeletionProgressDlg; // Tracks deletion dialog with progress bar
 	class CProgressDialogCallback;
-	CProgressDialogCallback* iDeletionWaitDialogCallback;
-	CPeriodic* iProgressDlgUpdateTimer;
+	CProgressDialogCallback* iDeletionProgressDlgCallback; // Callback for cancel deletion dialog 
+	CPeriodic* iDeletionProgressDlgRefreshTimer; // For periodically refresh progress bar position
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
 	// ]]] end generated region [Generated Methods]
@@ -125,9 +125,8 @@ public:
 	void SetNaviPaneTextL(const TDesC& aNaviText);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
 	
-	void ShowDeletionDialogL();
-	void HideDeletionDialogL();
-//	void SetTrackDeletionProgressL(TInt aProcessedCount, TInt aTotalCount);
+	void ExecuteDeletionProgressDlgL();
+	void RemoveDeletionProgressDlgL();
 	static TInt UpdateTrackDeletionProgress(TAny* anObject);
 	
 	

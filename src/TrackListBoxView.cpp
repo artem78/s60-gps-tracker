@@ -56,7 +56,6 @@ CTrackListBoxView::CTrackListBoxView()
 	iTrackListBox = NULL;
 	// ]]] end generated region [Generated Contents]
 	
-	iProgressDlg = NULL;
 	}
 
 /** 
@@ -75,10 +74,7 @@ CTrackListBoxView::~CTrackListBoxView()
 	iTrackListBox = NULL;
 	// ]]] end generated region [Generated Contents]
 	
-	delete iProgressDlgUpdateTimer;
-	if (iProgressDlg != NULL)
-		TRAP_IGNORE(iProgressDlg->ProcessFinishedL());
-	iProgressDlg = NULL;
+	TRAP_IGNORE(RemoveDeletionProgressDlgL());
 	}
 
 /**
@@ -120,7 +116,7 @@ void CTrackListBoxView::ConstructL()
 				
 	// ]]] end generated region [Generated Code]
 	
-	iProgressDlgUpdateTimer = CPeriodic::New(EPriorityNormal);
+	// add your own initialization code here
 	
 	}
 
@@ -591,72 +587,76 @@ TBool CTrackListBoxView::HandleDeleteAllTracksMenuItemSelectedL( TInt /*aCommand
 	return ETrue;
 	}
 				
-void CTrackListBoxView::ShowDeletionDialogL()
+void CTrackListBoxView::ExecuteDeletionProgressDlgL()
 	{
-	DEBUG(_L("Show waiting dialog"));
-	
-	if (iProgressDlg == NULL)
+	if (iDeletionProgressDlg == NULL)
 		{
-		// Initialization of deletion progress dialog
-		iProgressDlg = new (ELeave) CAknProgressDialog(REINTERPRET_CAST(CEikDialog**, &iProgressDlg));
-		iProgressDlg->PrepareLC(R_TRACK_LIST_BOX_DELETION_PROGRESS_DIALOG);
-		CEikProgressInfo* progressInfo = iProgressDlg->GetProgressInfoL();
+		DEBUG(_L("Show tracks deletion dialog"));
+		
+		// Initialization of tracks deletion progress dialog
+		iDeletionProgressDlg = new (ELeave) CAknProgressDialog(REINTERPRET_CAST(CEikDialog**, &iDeletionProgressDlg));
+		iDeletionProgressDlg->PrepareLC(R_TRACK_LIST_BOX_DELETION_PROGRESS_DIALOG);
+		CEikProgressInfo* progressInfo = iDeletionProgressDlg->GetProgressInfoL();
 		CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 		/*TInt totalCount = appUi->iAsyncFileMan->TotalFiles();
 		progressInfo->SetFinalValue(totalCount);*/
-		//iProgressDlg->ExecuteLD(R_TRACK_LIST_BOX_DELETION_PROGRESS_DIALOG);
-		iProgressDlg->RunLD();
-		
-		// Dialog callback for cancel
-		iDeletionWaitDialogCallback = new (ELeave) CProgressDialogCallback(this,
-				iProgressDlg, &CTrackListBoxView::HandleDeletionWaitDialogCanceledL);
-		iProgressDlg->SetCallback(iDeletionWaitDialogCallback);
-		
-		// Callback for periodic progress bar update 
-		TCallBack callback(UpdateTrackDeletionProgress, this);
-		iProgressDlgUpdateTimer->Start(0 /*KSecond*/, KSecond, callback);
+		//iDeletionProgressDlg->ExecuteLD(R_TRACK_LIST_BOX_DELETION_PROGRESS_DIALOG);
+		iDeletionProgressDlg->RunLD();
 		}
-	}
-
-void CTrackListBoxView::HideDeletionDialogL()
-	{
-	DEBUG(_L("Hide waiting dialog"));
 	
-	if (iProgressDlg != NULL)
+	if  (iDeletionProgressDlgCallback == NULL)
 		{
-		iProgressDlgUpdateTimer->Cancel();
+		// Dialog callback for cancel
+		iDeletionProgressDlgCallback = new (ELeave) CProgressDialogCallback(this,
+				iDeletionProgressDlg, &CTrackListBoxView::HandleDeletionWaitDialogCanceledL);
+		iDeletionProgressDlg->SetCallback(iDeletionProgressDlgCallback);
+		}
 		
-		iProgressDlg->SetCallback(NULL);
-		iProgressDlg->ProcessFinishedL();
-		iProgressDlg = NULL;
-		
-		delete iDeletionWaitDialogCallback;
-		iDeletionWaitDialogCallback = NULL;
-		
-		iProgressDlgUpdateTimer->Cancel();
+	if (iDeletionProgressDlgRefreshTimer == NULL)
+		{
+		// Starts periodic progress bar update
+		TTimeIntervalMicroSeconds32 updateInterval = KSecond / 5;
+		TCallBack callback(UpdateTrackDeletionProgress, this);
+		iDeletionProgressDlgRefreshTimer = CPeriodic::New(EPriorityNormal);
+		iDeletionProgressDlgRefreshTimer->Start(0 /*updateInterval*/, updateInterval, callback);
 		}
 	}
 
-//void CTrackListBoxView::SetTrackDeletionProgressL(TInt aProcessedCount, TInt aTotalCount)
-//	{
-//	if (iProgressDlg == NULL)
-//		return;
-//	
-//	CEikProgressInfo* progressInfo = iProgressDlg->GetProgressInfoL();
-//	//progressInfo->SetFinalValue(aTotalCount);
-//	progressInfo->SetAndDraw(aProcessedCount);
-//	}
+void CTrackListBoxView::RemoveDeletionProgressDlgL()
+	{
+	// Dialog
+	if (iDeletionProgressDlg != NULL)
+		{
+		DEBUG(_L("Hide tracks deletion dialog"));
+		
+		iDeletionProgressDlg->SetCallback(NULL);
+		iDeletionProgressDlg->ProcessFinishedL();
+		iDeletionProgressDlg = NULL;
+		}
+		
+	// Dialog cancel callback
+	delete iDeletionProgressDlgCallback;
+	iDeletionProgressDlgCallback = NULL;
+	
+	// Progress refresh timer
+	if (iDeletionProgressDlgRefreshTimer != NULL)
+		{
+		iDeletionProgressDlgRefreshTimer->Cancel();
+		delete iDeletionProgressDlgRefreshTimer;
+		iDeletionProgressDlgRefreshTimer = NULL;
+		}
+	}
 
 TInt CTrackListBoxView::UpdateTrackDeletionProgress(TAny* anObject)
 	{
 	CTrackListBoxView* view = static_cast<CTrackListBoxView*>(anObject);
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi*>(view->AppUi());
 	
-	if (view->iProgressDlg == NULL)
-		return (TInt) ETrue /* ??? */;
+	if (view->iDeletionProgressDlg == NULL)
+		return (TInt) ETrue;
 	
 	CEikProgressInfo* progressInfo = NULL;
-	TRAPD(r, progressInfo = view->iProgressDlg->GetProgressInfoL());
+	TRAPD(r, progressInfo = view->iDeletionProgressDlg->GetProgressInfoL());
 	if (r == KErrNone && progressInfo != NULL)
 		{
 		/////////
@@ -675,12 +675,10 @@ TInt CTrackListBoxView::UpdateTrackDeletionProgress(TAny* anObject)
  */
 void CTrackListBoxView::HandleDeletionWaitDialogCanceledL( CAknProgressDialog* /* aDialog */ )
 	{
-	// iDeletionWaitDialog destroys automatically when cancelled, but not iDeletionWaitDialogCallback
-	// ToDo: Is it safe to delete callback here? Current method has been called from it.
-	delete iDeletionWaitDialogCallback;
-	iDeletionWaitDialogCallback = NULL;
-	
-	iProgressDlgUpdateTimer->Cancel();
+	// iDeletionProgressDlg destroys automatically when cancelled,
+	// but iDeletionProgressDlgCallback and iDeletionProgressDlgRefreshTimer
+	// must be frees manually.
+	RemoveDeletionProgressDlgL();
 	
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 	appUi->CancelCurrentFManOperation();
