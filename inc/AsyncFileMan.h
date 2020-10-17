@@ -23,6 +23,20 @@ class MAsyncFileManObserver;
 
 // Classes
 
+// Wrapper for provide public access to some protected members of CFileMan class  
+class CFileManExtended : public CFileMan
+	{
+public:
+// Constructors / destructors
+	static CFileManExtended* NewL(RFs& aFs);
+	static CFileManExtended* NewL(RFs& aFs,MFileManObserver* anObserver);
+	
+// New methods
+	inline TInt ProcessedFiles() { return iNumberOfFilesProcessed; };
+	inline TInt TotalFiles() { return iDirList != NULL ? iDirList->Count() : 0; };
+	};
+
+
 class CAsyncFileMan : public CActive, public MFileManObserver
 // FixMe: Memory leak when cancel delete operation
 	{
@@ -67,13 +81,16 @@ public:
 	MFileManObserver::TControl NotifyFileManEnded();
 
 private:
-	CFileMan* iFileMan;
+	CFileManExtended* iFileMan;
 	MAsyncFileManObserver* iObserver;
 	TBool iCancelOperation; // Used for cancel current operation in file manager
 	
 public:
 	// ToDo: Add other operations (rename, copy, etc...)
 	TInt Delete(const TDesC& aName, TUint aSwitch=0);
+	
+	inline TInt ProcessedFiles() { return iFileMan->ProcessedFiles(); };
+	inline TInt TotalFiles() { return iFileMan->TotalFiles(); };
 	
 	};
 

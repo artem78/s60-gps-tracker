@@ -150,6 +150,10 @@ public:
 	MFileManObserver::TControl OnFileManEnded();
 	void OnFileManFinished(TInt aStatus);
 	
+	
+	
+	friend CTrackListBoxView;
+	
 	};
 
 #endif // GPSTRACKERAPPUI_H			

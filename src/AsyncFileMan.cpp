@@ -12,6 +12,21 @@
 #include "Logger.h"
 
 
+// 	CFileManExtended
+
+CFileManExtended* CFileManExtended::NewL(RFs& aFs)
+	{
+	// Just change class of returned pointer from parent
+	return static_cast<CFileManExtended*>(CFileMan::NewL(aFs));
+	}
+
+CFileManExtended* CFileManExtended::NewL(RFs& aFs,MFileManObserver* anObserver)
+	{
+	// Just change class of returned pointer from parent
+	return static_cast<CFileManExtended*>(CFileMan::NewL(aFs, anObserver));
+	}
+
+
 // CAsyncFileMan
 
 CAsyncFileMan::CAsyncFileMan(MAsyncFileManObserver* aObserver) :
@@ -37,7 +52,7 @@ CAsyncFileMan* CAsyncFileMan::NewL(RFs &aFs, MAsyncFileManObserver* aObserver)
 
 void CAsyncFileMan::ConstructL(RFs &aFs)
 	{	
-	iFileMan = CFileMan::NewL(aFs, this);
+	iFileMan = CFileManExtended::NewL(aFs, this);
 	
 	CActiveScheduler::Add(this); // Add to scheduler
 	}
