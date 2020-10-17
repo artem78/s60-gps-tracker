@@ -591,16 +591,15 @@ void CTrackListBoxView::ExecuteDeletionProgressDlgL()
 	{
 	if (iDeletionProgressDlg == NULL)
 		{
-		DEBUG(_L("Show tracks deletion dialog"));
+		DEBUG(_L("Execute tracks deletion dialog"));
 		
 		// Initialization of tracks deletion progress dialog
 		iDeletionProgressDlg = new (ELeave) CAknProgressDialog(REINTERPRET_CAST(CEikDialog**, &iDeletionProgressDlg));
 		iDeletionProgressDlg->PrepareLC(R_TRACK_LIST_BOX_DELETION_PROGRESS_DIALOG);
 		CEikProgressInfo* progressInfo = iDeletionProgressDlg->GetProgressInfoL();
 		CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
-		/*TInt totalCount = appUi->iAsyncFileMan->TotalFiles();
+		/*TInt totalCount = appUi->iAsyncFileMan->TotalFiles(); // equals to 0
 		progressInfo->SetFinalValue(totalCount);*/
-		//iDeletionProgressDlg->ExecuteLD(R_TRACK_LIST_BOX_DELETION_PROGRESS_DIALOG);
 		iDeletionProgressDlg->RunLD();
 		}
 	
@@ -617,21 +616,24 @@ void CTrackListBoxView::ExecuteDeletionProgressDlgL()
 		// Starts periodic progress bar update
 		TTimeIntervalMicroSeconds32 updateInterval = KSecond / 5;
 		TCallBack callback(UpdateTrackDeletionProgress, this);
-		iDeletionProgressDlgRefreshTimer = CPeriodic::New(EPriorityNormal);
+		iDeletionProgressDlgRefreshTimer = CPeriodic::NewL(EPriorityNormal);
 		iDeletionProgressDlgRefreshTimer->Start(0 /*updateInterval*/, updateInterval, callback);
 		}
 	}
 
-void CTrackListBoxView::RemoveDeletionProgressDlgL()
+void CTrackListBoxView::RemoveDeletionProgressDlgL(TBool anExceptDialog)
 	{
 	// Dialog
-	if (iDeletionProgressDlg != NULL)
+	if (!anExceptDialog)
 		{
-		DEBUG(_L("Hide tracks deletion dialog"));
-		
-		iDeletionProgressDlg->SetCallback(NULL);
-		iDeletionProgressDlg->ProcessFinishedL();
-		iDeletionProgressDlg = NULL;
+		if (iDeletionProgressDlg != NULL)
+			{
+			DEBUG(_L("Remove tracks deletion dialog"));
+			
+			iDeletionProgressDlg->SetCallback(NULL);
+			iDeletionProgressDlg->ProcessFinishedL();
+			iDeletionProgressDlg = NULL;
+			}
 		}
 		
 	// Dialog cancel callback
@@ -659,10 +661,9 @@ TInt CTrackListBoxView::UpdateTrackDeletionProgress(TAny* anObject)
 	TRAPD(r, progressInfo = view->iDeletionProgressDlg->GetProgressInfoL());
 	if (r == KErrNone && progressInfo != NULL)
 		{
-		/////////
 		TInt totalCount = appUi->iAsyncFileMan->TotalFiles();
-		progressInfo->SetFinalValue(totalCount);
-		//////////
+		progressInfo->SetFinalValue(totalCount); // ToDo: May be done one time after deletion started
+		
 		TInt processedCount = appUi->iAsyncFileMan->ProcessedFiles();
 		progressInfo->SetAndDraw(processedCount);
 		}
@@ -675,13 +676,13 @@ TInt CTrackListBoxView::UpdateTrackDeletionProgress(TAny* anObject)
  */
 void CTrackListBoxView::HandleDeletionWaitDialogCanceledL( CAknProgressDialog* /* aDialog */ )
 	{
-	// iDeletionProgressDlg destroys automatically when cancelled,
-	// but iDeletionProgressDlgCallback and iDeletionProgressDlgRefreshTimer
-	// must be frees manually.
-	RemoveDeletionProgressDlgL();
-	
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 	appUi->CancelCurrentFManOperation();
+	
+	// iDeletionProgressDlg destroys automatically when cancelled,
+	// but iDeletionProgressDlgCallback and iDeletionProgressDlgRefreshTimer
+	// need to be free manually.
+	RemoveDeletionProgressDlgL(ETrue);
 	}
 				
 // [[[ begin generated function: do not modify

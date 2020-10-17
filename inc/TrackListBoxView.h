@@ -126,7 +126,10 @@ public:
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
 	
 	void ExecuteDeletionProgressDlgL();
-	void RemoveDeletionProgressDlgL();
+	
+	// If called from Cancel callback, anExceptDialog must be set to ETrue, because
+	// the dialog already has been destroyed by ui framework
+	void RemoveDeletionProgressDlgL(TBool anExceptDialog=EFalse);
 	static TInt UpdateTrackDeletionProgress(TAny* anObject);
 	
 	

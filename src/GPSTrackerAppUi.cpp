@@ -587,11 +587,6 @@ MFileManObserver::TControl CGPSTrackerAppUi::OnFileManEnded()
 		INFO(_L("File deleted"));
 	//
 	
-	//CTrackListBoxView* tracksView = static_cast<CTrackListBoxView*>(View(TUid::Uid(ETrackListBoxViewId)));
-	//TInt processedCount = iAsyncFileMan->ProcessedFiles();
-	//TInt totalCount = iAsyncFileMan->TotalFiles();
-	//TRAP_IGNORE(tracksView->SetTrackDeletionProgressL(processedCount, totalCount));
-		
 	return MFileManObserver::EContinue;
 	}
 	
