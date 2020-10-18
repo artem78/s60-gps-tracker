@@ -1,15 +1,15 @@
 /*
  ============================================================================
- Name		: AsyncFileMan.h
+ Name		: FileUtils.h
  Author	  : artem78
  Version	 : 1.0
  Copyright   : 
- Description : CAsyncFileMan declaration
+ Description : Collection of file utilites
  ============================================================================
  */
 
-#ifndef ASYNCFILEMAN_H
-#define ASYNCFILEMAN_H
+#ifndef FILEUTILS_H
+#define FILEUTILS_H
 
 // Includes
 
@@ -22,6 +22,14 @@
 class MAsyncFileManObserver;
 
 // Classes
+
+class FileUtils
+	{
+public:
+	static void FileSizeToReadableString(/*TUint64*/ TInt aBytes, TDes &aDes);
+
+	};
+
 
 // Wrapper for provide public access to some protected members of CFileMan class  
 class CFileManExtended : public CFileMan
@@ -104,4 +112,4 @@ public:
 	virtual void OnFileManFinished(TInt aStatus);
 	};
 
-#endif // ASYNCFILEMAN_H
+#endif // FILEUTILS_H

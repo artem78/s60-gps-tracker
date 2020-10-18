@@ -6,7 +6,7 @@ TARGETTYPE		exe
 EPOCSTACKSIZE	 0x5000
 
 SYSTEMINCLUDE \epoc32\include \epoc32\include\variant \epoc32\include\ecom
-USERINCLUDE	   ..\inc ..\data ..\modules\Logger ..\modules\Positioning
+USERINCLUDE	   ..\inc ..\data ..\modules\Logger ..\modules\Positioning ..\modules\FileUtils
 
 SOURCEPATH		..\data
 START RESOURCE GPSTracker.rss
@@ -49,4 +49,6 @@ CAPABILITY Location
 SOURCEPATH ..\modules\Positioning
 SOURCE Positioning.cpp
 SOURCEPATH ..\src
-SOURCE TrackListBox.cpp TrackListBoxView.cpp AsyncFileMan.cpp MiscUtils.cpp
+SOURCE TrackListBox.cpp TrackListBoxView.cpp MiscUtils.cpp
+SOURCEPATH ..\modules\FileUtils
+SOURCE FileUtils.cpp

@@ -400,7 +400,7 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	// File name
 	strings->AppendL(fileEntry.iName);
 	// File size
-	MiscUtils::FileSizeToReadableString(fileEntry.iSize, tmp);
+	FileUtils::FileSizeToReadableString(fileEntry.iSize, tmp);
 	strings->AppendL(tmp);
 	// File modify date
 	// ToDo: I think, it will be better to get time from first (or last?) <trkpt> tag in GPX

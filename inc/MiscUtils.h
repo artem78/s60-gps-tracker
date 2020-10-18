@@ -17,11 +17,11 @@
 
 // CLASS DECLARATION
 
-class MiscUtils
-	{
-public:
-	static void FileSizeToReadableString(/*TUint64*/ TInt aBytes, TDes &aDes);
-
-	};
+//class MiscUtils
+//	{
+//public:
+//	...
+//
+//	};
 
 #endif // MISCUTILS_H
