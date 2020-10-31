@@ -13,8 +13,6 @@
 #include <aknview.h>
 // ]]] end generated region [Generated Includes]
 
-#include <aknprogressdialog.h>
-
 
 // [[[ begin [Event Handler Includes]
 // ]]] end [Event Handler Includes]
@@ -85,7 +83,7 @@ protected:
 	TBool HandleDeleteTrackMenuItemSelectedL( TInt aCommand );
 	TBool HandleRenameTrackMenuItemSelectedL( TInt aCommand );
 	TBool HandleDeleteAllTracksMenuItemSelectedL( TInt aCommand );
-	void HandleDeletionWaitDialogCanceledL( CAknProgressDialog* aDialog );
+	//void HandleDeletionWaitDialogCanceledL( CAknProgressDialog* aDialog );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]
@@ -101,11 +99,6 @@ private:
 	CAknNavigationDecorator* iNaviDecorator_;
 	CTrackListBox* iTrackListBox;
 	// ]]] end generated region [Generated Instance Variables]
-	
-	CAknProgressDialog* iDeletionProgressDlg; // Tracks deletion dialog with progress bar
-	class CProgressDialogCallback;
-	CProgressDialogCallback* iDeletionProgressDlgCallback; // Callback for cancel deletion dialog 
-	CPeriodic* iDeletionProgressDlgRefreshTimer; // For periodically refresh progress bar position
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
 	// ]]] end generated region [Generated Methods]
@@ -124,46 +117,41 @@ private:
 public:
 	void SetNaviPaneTextL(const TDesC& aNaviText);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
+
+	//static TInt UpdateTrackDeletionProgress(TAny* anObject);
 	
-	void ExecuteDeletionProgressDlgL();
-	
-	// If called from Cancel callback, anExceptDialog must be set to ETrue, because
-	// the dialog already has been destroyed by ui framework
-	void RemoveDeletionProgressDlgL(TBool anExceptDialog=EFalse);
-	static TInt UpdateTrackDeletionProgress(TAny* anObject);
-	
-	
-	// [[[ begin [MProgressDialogCallback support]
-private: 
-	typedef void ( CTrackListBoxView::*ProgressDialogEventHandler )( 
-			CAknProgressDialog* aProgressDialog );
-	
-	/**
-	 * This is a helper class for progress/wait dialog callbacks. It routes the dialog's
-	 * cancel notification to the handler function for the cancel event.
-	 */
-	class CProgressDialogCallback : public CBase, public MProgressDialogCallback
-		{ 
-		public:
-			CProgressDialogCallback( 
-					CTrackListBoxView* aHandlerObj, 
-					CAknProgressDialog* aDialog, 
-					ProgressDialogEventHandler aHandler ) :
-				handlerObj( aHandlerObj ), dialog( aDialog ), handler( aHandler )
-				{}
-				
-			void DialogDismissedL( TInt aButtonId ) 
-				{
-				( handlerObj->*handler )( dialog );
-				}
-		private:
-			CTrackListBoxView* handlerObj;
-			CAknProgressDialog* dialog;
-			ProgressDialogEventHandler handler;
-		};
-		
-	// ]]] end [MProgressDialogCallback support]
-	
+//	
+//	// [[[ begin [MProgressDialogCallback support]
+//private: 
+//	typedef void ( CTrackListBoxView::*ProgressDialogEventHandler )( 
+//			CAknProgressDialog* aProgressDialog );
+//	
+//	/**
+//	 * This is a helper class for progress/wait dialog callbacks. It routes the dialog's
+//	 * cancel notification to the handler function for the cancel event.
+//	 */
+//	class CProgressDialogCallback : public CBase, public MProgressDialogCallback
+//		{ 
+//		public:
+//			CProgressDialogCallback( 
+//					CTrackListBoxView* aHandlerObj, 
+//					CAknProgressDialog* aDialog, 
+//					ProgressDialogEventHandler aHandler ) :
+//				handlerObj( aHandlerObj ), dialog( aDialog ), handler( aHandler )
+//				{}
+//				
+//			void DialogDismissedL( TInt aButtonId ) 
+//				{
+//				( handlerObj->*handler )( dialog );
+//				}
+//		private:
+//			CTrackListBoxView* handlerObj;
+//			CAknProgressDialog* dialog;
+//			ProgressDialogEventHandler handler;
+//		};
+//		
+//	// ]]] end [MProgressDialogCallback support]
+//	
 	};
 
 #endif // TRACKLISTBOXVIEW_H

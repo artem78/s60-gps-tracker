@@ -52,3 +52,7 @@ SOURCEPATH ..\src
 SOURCE TrackListBox.cpp TrackListBoxView.cpp MiscUtils.cpp
 SOURCEPATH ..\modules\FileUtils
 SOURCE FileUtils.cpp
+START RESOURCE FileUtils.rss
+	TARGETPATH resource\apps
+	HEADER
+END

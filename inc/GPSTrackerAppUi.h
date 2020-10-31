@@ -119,8 +119,8 @@ public:
 	void TrackDir(TDes &aDes);
 	void LogDir(TDes &aDes);
 	void DeleteAllTracks/*L*/();
-	inline void CancelCurrentFManOperation()
-		{ iAsyncFileMan->Cancel(); }
+//	inline void CancelCurrentFManOperation()
+//		{ iAsyncFileMan->Cancel(); }
 	const TDesC& ProgramName() const;
 	const TDesC& ProgramVersion() const;
 	
@@ -151,9 +151,9 @@ public:
 	void OnFileManFinished(TInt aStatus);
 	
 	
-	
-	friend CTrackListBoxView;
-	
+//	
+//	friend CTrackListBoxView;
+//	
 	};
 
 #endif // GPSTRACKERAPPUI_H			

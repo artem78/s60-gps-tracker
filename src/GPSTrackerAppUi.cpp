@@ -602,13 +602,13 @@ MFileManObserver::TControl CGPSTrackerAppUi::OnFileManEnded()
 //		}
 //	}
 
-void CGPSTrackerAppUi::OnFileManFinished(TInt aStatus)
+void CGPSTrackerAppUi::OnFileManFinished(TInt /*aStatus*/)
 	{
 	//	if (iFileMan->CurrentAction() == CFileMan::EDelete)
 	//		{
 			DEBUG(_L("Deletion ended"));
-			if (aStatus != KErrCancel)
-				TRAP_IGNORE(iTrackListBoxView->RemoveDeletionProgressDlgL());
+//			if (aStatus != KErrCancel)
+//				TRAP_IGNORE(iTrackListBoxView->RemoveDeletionProgressDlgL());
 			UpdateTrackListL();
 	//		}
 	}
@@ -733,8 +733,7 @@ void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
 	path.Append(KTrackFileMask);
 	
 	// Start delete files	
-	TRAP_IGNORE(iTrackListBoxView->ExecuteDeletionProgressDlgL());
-	TInt r = iAsyncFileMan->Delete(path);
+	TInt r = iAsyncFileMan->Delete(path, 0, ETrue);
 	// ToDo: check r ...
 	}
 
