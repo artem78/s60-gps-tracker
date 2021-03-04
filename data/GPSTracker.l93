@@ -1,0 +1,17 @@
+/*
+========================================================================
+ Name        : GPSTracker.l93
+ Author      : Konstantin Baranovskiy <baranovskiykonstantin@gmail.com>
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: Ukrainian (93)
+
+CHARACTER_SET UTF8
+#define STR_GPSTrackerApplication_1 ""
+#define STR_GPSTrackerApplication_2 ""
+#define STR_GPSTrackerApplication_3 "GPSTracker"
+#define STR_GPSTrackerApplication_4 "GPSTracker"
+#define STR_GPSTrackerApplication_ErrorCode "Код помилки: %N"
+#define STR_GPSTrackerApplication_GPXWriteError "Помилка запису GPX файлу"

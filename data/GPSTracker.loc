@@ -12,3 +12,6 @@
 #ifdef LANGUAGE_16
 #include "GPSTracker.l16"
 #endif
+#ifdef LANGUAGE_93
+#include "GPSTracker.l93"
+#endif

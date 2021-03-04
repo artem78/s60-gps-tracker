@@ -12,3 +12,6 @@
 #ifdef LANGUAGE_16
 #include "TrackListBox.l16"
 #endif
+#ifdef LANGUAGE_93
+#include "TrackListBox.l93"
+#endif
