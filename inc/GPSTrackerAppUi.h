@@ -152,7 +152,7 @@ public:
 	
 	
 	
-	friend CTrackListBoxView;
+	friend class CTrackListBoxView;
 	
 	};
 
