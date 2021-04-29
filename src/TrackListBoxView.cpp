@@ -614,7 +614,7 @@ void CTrackListBoxView::ExecuteDeletionProgressDlgL()
 	if (iDeletionProgressDlgRefreshTimer == NULL)
 		{
 		// Starts periodic progress bar update
-		TTimeIntervalMicroSeconds32 updateInterval = KSecond / 5;
+		TTimeIntervalMicroSeconds32 updateInterval = KSecond / 15;
 		TCallBack callback(UpdateTrackDeletionProgress, this);
 		iDeletionProgressDlgRefreshTimer = CPeriodic::NewL(EPriorityNormal);
 		iDeletionProgressDlgRefreshTimer->Start(0 /*updateInterval*/, updateInterval, callback);
