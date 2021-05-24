@@ -23,7 +23,7 @@ LIBRARY			euser.lib apparc.lib cone.lib eikcore.lib avkon.lib
 LIBRARY			commonengine.lib efsrv.lib estor.lib eikcoctl.lib eikdlg.lib 
 LIBRARY			eikctl.lib bafl.lib fbscli.lib aknnotify.lib aknicon.lib
 LIBRARY			etext.lib gdi.lib egul.lib insock.lib
-LIBRARY			ecom.lib InetProtUtil.lib http.lib esock.lib lbs.lib charconv.lib
+LIBRARY			ecom.lib InetProtUtil.lib http.lib esock.lib lbs.lib charconv.lib hash.lib
 
 LANG 				01 16 93
 
