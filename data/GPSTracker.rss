@@ -36,7 +36,8 @@ RESOURCE LOCALISABLE_APP_INFO r_localisable_app_info
 	caption_and_icon = CAPTION_AND_ICON_INFO
 		{
 		caption = STR_GPSTrackerApplication_3;
-		number_of_icons = 0;
+		number_of_icons = 1;
+		icon_file = "\\resource\\apps\\GPSTracker_aif.mif";
 		};
 	}
 RESOURCE TBUF r_application_akn_view_reference1
