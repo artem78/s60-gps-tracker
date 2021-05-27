@@ -34,7 +34,7 @@ Start application. Track recording will start automatically when position from s
    
 ## See also
 ### Useful tools:
- - [GPS Tack Editor](http://www.gpstrackeditor.com/)
+ - [GPS Track Editor](http://www.gpstrackeditor.com/)
  - https://maplorer.com/view_gpx.html
  - https://www.mygpsfiles.com/app/
  - https://gpxstudio.github.io/
