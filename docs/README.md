@@ -8,6 +8,7 @@ GUI fork of [console GPS Tracker](https://github.com/artem78/s60-gps-tracker-cli
 ## Localization
 * English
 * Russian (Русский)
+* Ukrainian (thanks to [baranovskiykonstantin](https://github.com/baranovskiykonstantin))
 
 ## Tasks
 * List of tracks
