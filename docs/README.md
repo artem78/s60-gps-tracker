@@ -8,7 +8,7 @@ From recorded track you can know travelled distance, average speed, elevation an
 
 ![](images/20210527_210321.png "View of recorded track in GPS Track Editor") ![](images/20210527_214913_2.png "View of recorded track in GPS Studio")
 
-This application is GUI fork of my previous [console version](https://github.com/artem78/s60-gps-tracker-cli).
+This application is GUI fork of my previous [console version](https://github.com/artem78/s60-gps-tracker-cli). Initially created for Symbian 9.2, probably can works with Symbian 9.1—9.4. Installer package is **unsigned**, so you need to sign it first or install on hacked phone. You can download latest stable version from [this link](https://github.com/artem78/s60-gps-tracker/releases/latest).
 
 ## Using
 Start application. Track recording will start automatically when position from satellites will be recieved. You can pause track recording (for example: when you have a rest). All tracks save in [GPX](https://en.wikipedia.org/wiki/GPS_Exchange_Format) format in `c: or e:\data\GPSTracker\tracks` directory. Close program for stop track writing. After this you may transfer GPX-file to your PC for future use.
