@@ -2,28 +2,24 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="128" version="1.1" viewBox="0 0 128 128" width="128">
 <defs>
-<linearGradient id="linearGradient1000">
-<stop offset="0" style="stop-color:#2c2c2c;stop-opacity:1"/>
-<stop offset="1" style="stop-color:#6e6e6e;stop-opacity:1"/>
+<linearGradient gradientTransform="matrix(0.9457911,0,0,0.9457911,9.7362058,2.2149342)" gradientUnits="userSpaceOnUse" id="linearGradient930" x1="57.92955" x2="73.742126" y1="37.336212" y2="68.145866">
+	<stop offset="0" style="stop-color:#c2c2c2;stop-opacity:1"/>
+	<stop offset="0.33160147" style="stop-color:#e4e4e4;stop-opacity:1"/>
+	<stop offset="1" style="stop-color:#666666;stop-opacity:1"/>
 </linearGradient>
-<linearGradient id="linearGradient990">
-<stop offset="0" style="stop-color:#838383;stop-opacity:1"/>
-<stop offset="1" style="stop-color:#3a3a3a;stop-opacity:1"/>
+<radialGradient cx="-12.312339" cy="81.26767" fx="-12.312339" fy="81.26767" gradientTransform="matrix(1.4397629,0.15277859,-0.12920339,2.1938238,24.34757,-91.130241)" gradientUnits="userSpaceOnUse" id="radialGradient958" r="12.751748">
+	<stop offset="0" style="stop-color:#f7f7f7;stop-opacity:1"/>
+	<stop offset="0.53688443" style="stop-color:#e0e0e0;stop-opacity:1;"/>
+	<stop offset="1" style="stop-color:#b0b0b0;stop-opacity:1"/>
+</radialGradient>
+<linearGradient gradientTransform="matrix(0.9457911,0,0,0.9457911,9.3984231,-5.554064)" gradientUnits="userSpaceOnUse" id="linearGradient992" x1="75.923355" x2="88.795044" y1="43.380875" y2="61.059444">
+	<stop offset="0" style="stop-color:#838383;stop-opacity:1"/>
+	<stop offset="1" style="stop-color:#3a3a3a;stop-opacity:1"/>
 </linearGradient>
-<linearGradient id="linearGradient954">
-<stop offset="0" style="stop-color:#f7f7f7;stop-opacity:1"/>
-<stop offset="0.53688443" style="stop-color:#e0e0e0;stop-opacity:1;"/>
-<stop offset="1" style="stop-color:#b0b0b0;stop-opacity:1"/>
-</linearGradient>
-<linearGradient id="linearGradient926">
-<stop offset="0" style="stop-color:#c2c2c2;stop-opacity:1"/>
-<stop offset="0.33160147" style="stop-color:#e4e4e4;stop-opacity:1"/>
-<stop offset="1" style="stop-color:#666666;stop-opacity:1"/>
-</linearGradient>
-<linearGradient gradientTransform="matrix(0.9457911,0,0,0.9457911,9.7362058,2.2149342)" gradientUnits="userSpaceOnUse" id="linearGradient930" x1="57.92955" x2="73.742126" xlink:href="#linearGradient926" y1="37.336212" y2="68.145866"/>
-<radialGradient cx="-12.312339" cy="81.26767" fx="-12.312339" fy="81.26767" gradientTransform="matrix(1.4397629,0.15277859,-0.12920339,2.1938238,24.34757,-91.130241)" gradientUnits="userSpaceOnUse" id="radialGradient958" r="12.751748" xlink:href="#linearGradient954"/>
-<linearGradient gradientTransform="matrix(0.9457911,0,0,0.9457911,9.3984231,-5.554064)" gradientUnits="userSpaceOnUse" id="linearGradient992" x1="75.923355" x2="88.795044" xlink:href="#linearGradient990" y1="43.380875" y2="61.059444"/>
-<radialGradient cx="44.685776" cy="77.935577" fx="44.685776" fy="77.935577" gradientTransform="matrix(1.4821885,0.05299328,-0.05838413,1.6329673,-12.576066,-60.24397)" gradientUnits="userSpaceOnUse" id="radialGradient1078" r="14.372123" xlink:href="#linearGradient1000"/>
+<radialGradient cx="44.685776" cy="77.935577" fx="44.685776" fy="77.935577" gradientTransform="matrix(1.4821885,0.05299328,-0.05838413,1.6329673,-12.576066,-60.24397)" gradientUnits="userSpaceOnUse" id="radialGradient1078" r="14.372123">
+	<stop offset="0" style="stop-color:#2c2c2c;stop-opacity:1"/>
+	<stop offset="1" style="stop-color:#6e6e6e;stop-opacity:1"/>
+</radialGradient>
 </defs>
 <g transform="translate(-12.292286,-3.8454044)">
 <path d="M 34.028984,13.114208 L 62.064936,29.158877 L 55.647068,60.403762 L 30.651161,41.319048 Z" style="fill:#4a5878;fill-opacity:1;stroke:none;stroke-width:0.945792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
