@@ -2,7 +2,7 @@
 ========================================================================
  Name        : TrackerInfoListBox.loc
  Author      : artem78
- Copyright   : General Public License v3.0
+ Copyright   : 
  Description : 
 ========================================================================
 */
@@ -11,4 +11,7 @@
 #endif
 #ifdef LANGUAGE_16
 #include "TrackerInfoListBox.l16"
+#endif
+#ifdef LANGUAGE_83
+#include "TrackerInfoListBox.l83"
 #endif
