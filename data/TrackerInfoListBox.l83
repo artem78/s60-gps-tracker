@@ -32,5 +32,5 @@
 #define STR_TrackerInfoListBoxView_KilometersPerHourUnit "km/h"
 #define STR_TrackerInfoListBoxView_SecondsUnit "seg"
 #define STR_TrackerInfoListBoxView_5 "Versión"
-//Remove the yellow warning sign (!).
+/*Remove the yellow warning sign (!). I think there should be a blue icon.*/
 #define STR_TrackerInfoListBoxView_AboutText "%0U para Symbian\nVersión: %1U\nAutor: artem78\nCorreo: megabyte1024@ya.ru"
