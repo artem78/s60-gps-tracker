@@ -1,0 +1,36 @@
+/*
+========================================================================
+ Name        : TrackerInfoListBox.l83
+ Author      : 
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: Latin American Spanish (83)
+
+#define STR_TrackerInfoListBoxView_1 "Menú"
+#define STR_TrackerInfoListBoxView_2 "Salir"
+#define STR_TrackerInfoListBoxView_3 "Rastreador GPS"
+#define STR_TrackerInfoListBoxView_12 ""
+#define STR_TrackerInfoListBoxView_28 "Actualizar posición:"
+#define STR_TrackerInfoListBoxView_29 ""
+#define STR_TrackerInfoListBoxView_18 "Velocidad:"
+#define STR_TrackerInfoListBoxView_19 ""
+#define STR_TrackerInfoListBoxView_7 "Latitud:"
+#define STR_TrackerInfoListBoxView_21 "Satélites:"
+#define STR_TrackerInfoListBoxView_8 ""
+#define STR_TrackerInfoListBoxView_22 ""
+#define STR_TrackerInfoListBoxView_9 "Longitud:"
+#define STR_TrackerInfoListBoxView_10 ""
+#define STR_TrackerInfoListBoxView_25 "Ubicac. guardadas:"
+#define STR_TrackerInfoListBoxView_11 "Altitud:"
+#define STR_TrackerInfoListBoxView_26 ""
+#define STR_TrackerInfoListBoxView_40 "Continuar grabando ubicac."
+#define STR_TrackerInfoListBoxView_39 "Pausar la grabación de ubicac."
+#define STR_TrackerInfoListBoxView_4 "Posicionamientos"
+#define STR_TrackerInfoListBoxView_MetersUnit "m"
+#define STR_TrackerInfoListBoxView_KilometersPerHourUnit "km/h"
+#define STR_TrackerInfoListBoxView_SecondsUnit "seg"
+#define STR_TrackerInfoListBoxView_5 "Versión"
+//Remove the yellow warning sign (!).
+#define STR_TrackerInfoListBoxView_AboutText "%0U para Symbian\nVersión: %1U\nAutor: artem78\nCorreo: megabyte1024@ya.ru"
