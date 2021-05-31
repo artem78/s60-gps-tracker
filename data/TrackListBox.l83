@@ -1,0 +1,28 @@
+/*
+========================================================================
+ Name        : TrackListBox.l83
+ Author      : 
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: Latin American Spanish (83)
+#define STR_TrackListBoxView_1 ""
+#define STR_TrackListBoxView_2 ""
+#define STR_TrackListBoxView_3 "Ubicaciones"
+#define STR_TrackListBoxView_4 "Rastreadores"
+#define STR_TrackListBoxView_5 "Detalles"
+//#define STR_TrackListBoxView_6 "Detalles del archivo:"
+#define STR_TrackListBoxView_7 "Nombre: %0U\nFecha: %2U\nTamaño: %1U"
+#define STR_TrackListBoxView_8 "Eliminar"
+#define STR_TrackListBoxView_9 "Renombrar"
+#define STR_TrackListBoxView_10 "Nuevo nombre:"
+#define STR_TrackListBoxView_11 ""
+#define STR_TrackListBoxView_12 "Eliminar todo"
+#define STR_TrackListBoxView_13 "Eliminando archivos..."
+#define STR_TrackListBoxView_14 "¿Eliminar archivo(s)?"
+#define STR_TrackListBoxView_ActiveFileDeletionError "¡No se puede eliminar! archivo en uso"
+#define STR_TrackListBoxView_FileDeletionError "No se puede eliminar el archivo \"%U\"!"
+#define STR_TrackListBoxView_ActiveFileRenamingError "¡No se puede renombrar! archivo en uso"
+#define STR_TrackListBoxView_FileRenamingError "No se puede renombrar el archivo \"%U\"!"
+#define STR_TrackListBoxView_IncorrectFileNameError "¡Nombre de archivo incorrecto!"
