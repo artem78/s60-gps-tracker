@@ -14,7 +14,7 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_3 "Ubicaciones"
 #define STR_TrackListBoxView_4 "%N rastreadores"
 #define STR_TrackListBoxView_5 "Detalles"
-//#define STR_TrackListBoxView_6 "Detalles del archivo:"
+#define STR_TrackListBoxView_6 "Detalles del archivo"
 #define STR_TrackListBoxView_7 "Nombre: %0U\nFecha: %2U\nTamaño: %1U"
 #define STR_TrackListBoxView_8 "Eliminar"
 #define STR_TrackListBoxView_9 "Renombrar"
