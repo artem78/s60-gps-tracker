@@ -289,7 +289,7 @@
       <string id="STR_TrackListBoxView_1"></string>
       <string id="STR_TrackListBoxView_2"></string>
       <string id="STR_TrackListBoxView_3">Ubicaciones</string>
-      <string id="STR_TrackListBoxView_4">Rastreadores</string>
+      <string id="STR_TrackListBoxView_4">%N rastreadores</string>
       <string id="STR_TrackListBoxView_5">Detalles</string>
       <string id="STR_TrackListBoxView_8">Eliminar</string>
       <string id="STR_TrackListBoxView_9">Renombrar</string>
