@@ -103,14 +103,14 @@
     <stringTable language="LANG_English">
       <string id="STR_GPSTrackerApplication_1"/>
       <string id="STR_GPSTrackerApplication_2"/>
-      <string id="STR_GPSTrackerApplication_3">GPSTracker</string>
-      <string id="STR_GPSTrackerApplication_4">GPSTracker</string>
+      <string id="STR_GPSTrackerApplication_3">GPS Track Recorder</string>
+      <string id="STR_GPSTrackerApplication_4">GPS Track Recorder</string>
     </stringTable>
     <stringTable language="LANG_Russian">
       <string id="STR_GPSTrackerApplication_1"/>
       <string id="STR_GPSTrackerApplication_2"/>
-      <string id="STR_GPSTrackerApplication_3">GPSTracker</string>
-      <string id="STR_GPSTrackerApplication_4">GPSTracker</string>
+      <string id="STR_GPSTrackerApplication_3">GPS Track Recorder</string>
+      <string id="STR_GPSTrackerApplication_4">GPS Track Recorder</string>
     </stringTable>
   </stringBundle>
   <macroTable/>

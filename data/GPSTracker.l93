@@ -11,7 +11,7 @@
 CHARACTER_SET UTF8
 #define STR_GPSTrackerApplication_1 ""
 #define STR_GPSTrackerApplication_2 ""
-#define STR_GPSTrackerApplication_3 "GPSTracker"
-#define STR_GPSTrackerApplication_4 "GPSTracker"
+#define STR_GPSTrackerApplication_3 "GPS Track Recorder"
+#define STR_GPSTrackerApplication_4 "GPS Track Recorder"
 #define STR_GPSTrackerApplication_ErrorCode "Код помилки: %N"
 #define STR_GPSTrackerApplication_GPXWriteError "Помилка запису GPX файлу"

@@ -30,7 +30,7 @@
 
 //  Constants
 
-_LIT(KProgramName, "GPS Tracker");
+_LIT(KProgramName, "GPS Track Recorder");
 _LIT(KProgramVersion, "1.2.0");
 _LIT(KTracksDirRel, "tracks\\");
 _LIT(KLogsDirRel, "logs\\");

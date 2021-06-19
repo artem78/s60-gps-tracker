@@ -24,7 +24,7 @@ CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_18 "Скорость:"
 #define STR_TrackerInfoListBoxView_2 "Выйти"
 #define STR_TrackerInfoListBoxView_19 ""
-#define STR_TrackerInfoListBoxView_3 "GPS Tracker"
+#define STR_TrackerInfoListBoxView_3 "GPS Track Recorder"
 #define STR_TrackerInfoListBoxView_4 "Треки"
 #define STR_TrackerInfoListBoxView_7 "Широта:"
 #define STR_TrackerInfoListBoxView_8 ""
