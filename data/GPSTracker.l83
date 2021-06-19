@@ -7,6 +7,8 @@
 ========================================================================
 */
 // localized strings for language: Latin American Spanish (83)
+
+CHARACTER_SET UTF8
 #define STR_GPSTrackerApplication_1 ""
 #define STR_GPSTrackerApplication_2 ""
 #define STR_GPSTrackerApplication_3 "GPSTracker"

@@ -8,6 +8,7 @@
 */
 // localized strings for language: Latin American Spanish (83)
 
+CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_1 "Menú"
 #define STR_TrackerInfoListBoxView_2 "Salir"
 #define STR_TrackerInfoListBoxView_3 "Rastreador GPS"
