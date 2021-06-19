@@ -18,7 +18,7 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_5 "Деталі"
 #define STR_TrackListBoxView_12 "Видалити все"
 #define STR_TrackListBoxView_13 "Видалення..."
-#define STR_TrackListBoxView_6 "Деталі треку:"
+#define STR_TrackListBoxView_6 "Деталі треку"
 #define STR_TrackListBoxView_14 "Ви дійсно бажаєте видалити файл(и)?"
 #define STR_TrackListBoxView_7 "Файл: %0U\nРозмір: %1U\nДата: %2U"
 #define STR_TrackListBoxView_8 "Видалити"
