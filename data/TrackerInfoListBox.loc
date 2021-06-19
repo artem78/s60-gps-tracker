@@ -15,3 +15,6 @@
 #ifdef LANGUAGE_83
 #include "TrackerInfoListBox.l83"
 #endif
+#ifdef LANGUAGE_93
+#include "TrackerInfoListBox.l93"
+#endif

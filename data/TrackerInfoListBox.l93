@@ -1,0 +1,37 @@
+/*
+========================================================================
+ Name        : TrackerInfoListBox.l93
+ Author      : Konstantin Baranovskiy <baranovskiykonstantin@gmail.com>
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: Ukrainian (93)
+CHARACTER_SET UTF8
+
+#define STR_TrackerInfoListBoxView_40 "Продовжити запис треку"
+#define STR_TrackerInfoListBoxView_21 "Супутники:"
+#define STR_TrackerInfoListBoxView_22 ""
+#define STR_TrackerInfoListBoxView_39 "Пауза запису треку"
+#define STR_TrackerInfoListBoxView_10 ""
+#define STR_TrackerInfoListBoxView_25 "Збережено точок:"
+#define STR_TrackerInfoListBoxView_11 "Висота:"
+#define STR_TrackerInfoListBoxView_26 ""
+#define STR_TrackerInfoListBoxView_12 ""
+#define STR_TrackerInfoListBoxView_28 "Частота обновлення:"
+#define STR_TrackerInfoListBoxView_29 ""
+#define STR_TrackerInfoListBoxView_1 "Меню"
+#define STR_TrackerInfoListBoxView_18 "Швидкість:"
+#define STR_TrackerInfoListBoxView_2 "Вийти"
+#define STR_TrackerInfoListBoxView_19 ""
+#define STR_TrackerInfoListBoxView_3 "GPS Track Recorder"
+#define STR_TrackerInfoListBoxView_4 "Треки"
+#define STR_TrackerInfoListBoxView_7 "Широта:"
+#define STR_TrackerInfoListBoxView_8 ""
+#define STR_TrackerInfoListBoxView_9 "Довгота:"
+#define STR_TrackerInfoListBoxView_MetersUnit "м"
+#define STR_TrackerInfoListBoxView_KilometersPerHourUnit "км/год"
+#define STR_TrackerInfoListBoxView_SecondsUnit "сек"
+#define STR_TrackerInfoListBoxView_5 "Про програму"
+#define STR_TrackerInfoListBoxView_AboutText "%0U для Symbian OS\nВерсія: %1U\nТворець: artem78\nЕл. пошта: megabyte1024@ya.ru"
+

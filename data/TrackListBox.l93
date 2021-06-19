@@ -1,0 +1,30 @@
+/*
+========================================================================
+ Name        : TrackListBox.l93
+ Author      : Konstantin Baranovskiy <baranovskiykonstantin@gmail.com
+ Copyright   : 
+ Description : 
+========================================================================
+*/
+// localized strings for language: Ukrainian (93)
+CHARACTER_SET UTF8
+
+#define STR_TrackListBoxView_1 ""
+#define STR_TrackListBoxView_2 ""
+#define STR_TrackListBoxView_3 "Треки"
+#define STR_TrackListBoxView_10 "Введіть ім'я файлу:"
+#define STR_TrackListBoxView_4 "%N треків"
+#define STR_TrackListBoxView_11 ""
+#define STR_TrackListBoxView_5 "Деталі"
+#define STR_TrackListBoxView_12 "Видалити все"
+#define STR_TrackListBoxView_13 "Видалення..."
+#define STR_TrackListBoxView_6 "Деталі треку:"
+#define STR_TrackListBoxView_14 "Ви дійсно бажаєте видалити файл(и)?"
+#define STR_TrackListBoxView_7 "Файл: %0U\nРозмір: %1U\nДата: %2U"
+#define STR_TrackListBoxView_8 "Видалити"
+#define STR_TrackListBoxView_9 "Перейменувати"
+#define STR_TrackListBoxView_ActiveFileDeletionError "Неможливо видалити активний файл треку!"
+#define STR_TrackListBoxView_FileDeletionError "Неможливо видалити файл \"%U\"!"
+#define STR_TrackListBoxView_ActiveFileRenamingError "Неможливо перейменувати активний файл треку!"
+#define STR_TrackListBoxView_FileRenamingError "Неможливо перейменувати файл \"%U\"!"
+#define STR_TrackListBoxView_IncorrectFileNameError "Неправильне ім'я файлу!"

@@ -19,6 +19,7 @@ Run application. Track recording will start automatically when position from sat
 ## Localization
 * English
 * Russian (Русский)
+* Ukrainian (thanks to [baranovskiykonstantin](https://github.com/baranovskiykonstantin))
 
 ## Tasks
 * List of tracks

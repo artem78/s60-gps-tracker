@@ -128,25 +128,26 @@ RESOURCE TBUF r_track_list_box_edit1
 	{
 	buf = STR_TrackListBoxView_11;
 	}
-RESOURCE DIALOG r_track_list_box_deletion_wait_dialog
-	{
-	flags = EAknWaitNoteFlags;
-	buttons = R_AVKON_SOFTKEYS_CANCEL;
-	items =
-		{
-		DLG_LINE
-			{
-			type = EAknCtNote;
-			id = ETrackListBoxViewDeletionWaitDialog;
-			control = AVKON_NOTE
-				{
-				layout = EWaitLayout;
-				singular_label = STR_TrackListBoxView_13;
-				animation = R_QGN_GRAF_WAIT_BAR_ANIM;
-				};
-			}
-		};
-	}
+
+RESOURCE DIALOG r_track_list_box_deletion_progress_dialog
+    {
+    flags = EAknProgressNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = ETrackListBoxViewDeletionProgressDialog;
+            control = AVKON_NOTE
+                {
+                layout = EProgressLayout;
+                singular_label = STR_TrackListBoxView_13;
+                };
+            }
+        };
+    }
+
 RESOURCE DIALOG r_track_list_box_delete_conf_query
 	{
 	flags = EAknGeneralQueryFlags;

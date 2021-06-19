@@ -11,8 +11,9 @@
 
 // [[[ begin generated region: do not modify [Generated Includes]
 #include <aknview.h>
-#include <aknwaitdialog.h>
 // ]]] end generated region [Generated Includes]
+
+#include <aknprogressdialog.h>
 
 
 // [[[ begin [Event Handler Includes]
@@ -58,8 +59,6 @@ public:
 			TDes& aData, 
 			TBool aUseDefaults = ETrue, 
 			const TDesC* aOverridePrompt = NULL );
-	void ExecuteDeletionWaitDialogLD( const TDesC* aOverrideText = NULL );
-	void RemoveDeletionWaitDialogL();
 	static TInt RunDeleteConfQueryL( const TDesC* aOverrideText = NULL );
 	// ]]] end generated region [Generated Methods]
 	
@@ -101,10 +100,12 @@ private:
 	// any current navi decorator
 	CAknNavigationDecorator* iNaviDecorator_;
 	CTrackListBox* iTrackListBox;
-	CAknWaitDialog* iDeletionWaitDialog;
-	class CProgressDialogCallback;
-	CProgressDialogCallback* iDeletionWaitDialogCallback;
 	// ]]] end generated region [Generated Instance Variables]
+	
+	CAknProgressDialog* iDeletionProgressDlg; // Tracks deletion dialog with progress bar
+	class CProgressDialogCallback;
+	CProgressDialogCallback* iDeletionProgressDlgCallback; // Callback for cancel deletion dialog 
+	CPeriodic* iDeletionProgressDlgRefreshTimer; // For periodically refresh progress bar position
 	
 	// [[[ begin generated region: do not modify [Generated Methods]
 	// ]]] end generated region [Generated Methods]
@@ -124,9 +125,12 @@ public:
 	void SetNaviPaneTextL(const TDesC& aNaviText);
 	void SetTrackArrayL(const CDesCArray &aTrackArr);
 	
-	void ShowDeletionDialogL();
-	void HideDeletionDialogL();
-	//void SetTrackDeletionProgress(TInt aCount);
+	void ExecuteDeletionProgressDlgL();
+	
+	// If called from Cancel callback, anExceptDialog must be set to ETrue, because
+	// the dialog already has been destroyed by ui framework
+	void RemoveDeletionProgressDlgL(TBool anExceptDialog=EFalse);
+	static TInt UpdateTrackDeletionProgress(TAny* anObject);
 	
 	
 	// [[[ begin [MProgressDialogCallback support]

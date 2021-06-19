@@ -36,7 +36,8 @@ RESOURCE LOCALISABLE_APP_INFO r_localisable_app_info
 	caption_and_icon = CAPTION_AND_ICON_INFO
 		{
 		caption = STR_GPSTrackerApplication_3;
-		number_of_icons = 0;
+		number_of_icons = 1;
+		icon_file = "\\resource\\apps\\GPSTracker_aif.mif";
 		};
 	}
 RESOURCE TBUF r_application_akn_view_reference1
@@ -55,6 +56,32 @@ RESOURCE TBUF r_application_error_code_text
 RESOURCE TBUF r_application_gpx_write_error_text
 	{
 	buf = STR_GPSTrackerApplication_GPXWriteError; 
+	}
+
+RESOURCE DIALOG r_application_main_query_dialog
+	{
+	flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items=
+		{
+		DLG_LINE 
+			{
+			type = EAknCtPopupHeadingPane;
+			id = EAknMessageQueryHeaderId;
+			itemflags = EEikDlgItemNonFocusing;
+			control = AVKON_HEADING
+				{
+				};
+			},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				};
+			}
+		};
 	}
 
 

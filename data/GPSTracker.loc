@@ -15,3 +15,6 @@
 #ifdef LANGUAGE_83
 #include "GPSTracker.l83"
 #endif
+#ifdef LANGUAGE_93
+#include "GPSTracker.l93"
+#endif

@@ -26,10 +26,11 @@
 #include "LBSSatelliteExtended.h"
 #include <bautils.h>
 #include <stringloader.h>
+#include <aknmessagequerydialog.h>
 
 //  Constants
 
-_LIT(KProgramName, "GPS Tracker");
+_LIT(KProgramName, "GPS Track Recorder");
 _LIT(KProgramVersion, "1.2.0");
 _LIT(KTracksDirRel, "tracks\\");
 _LIT(KLogsDirRel, "logs\\");
@@ -607,7 +608,7 @@ void CGPSTrackerAppUi::OnFileManFinished(TInt aStatus)
 	//		{
 			DEBUG(_L("Deletion ended"));
 			if (aStatus != KErrCancel)
-				TRAP_IGNORE(iTrackListBoxView->HideDeletionDialogL());
+				TRAP_IGNORE(iTrackListBoxView->RemoveDeletionProgressDlgL());
 			UpdateTrackListL();
 	//		}
 	}
@@ -641,6 +642,15 @@ void CGPSTrackerAppUi::ShowError(const TDesC &aMsg, TInt anErrCode)
 		
 		delete errCodeText;		
 		}
+	}
+
+void CGPSTrackerAppUi::ShowMsgL(const TDesC &aTitle, const TDesC &aMsg)
+	{
+	CAknMessageQueryDialog* dlg = new (ELeave) CAknMessageQueryDialog();
+	dlg->PrepareLC(R_APPLICATION_MAIN_QUERY_DIALOG);
+	dlg->QueryHeading()->SetTextL(aTitle);
+	dlg->SetMessageTextL(aMsg);
+	dlg->RunLD();
 	}
 
 void CGPSTrackerAppUi::StartTracking()
@@ -723,7 +733,7 @@ void CGPSTrackerAppUi::DeleteAllTracks/*L*/()
 	path.Append(KTrackFileMask);
 	
 	// Start delete files	
-	TRAP_IGNORE(iTrackListBoxView->ShowDeletionDialogL()); // ToDo: Also show progress
+	TRAP_IGNORE(iTrackListBoxView->ExecuteDeletionProgressDlgL());
 	TInt r = iAsyncFileMan->Delete(path);
 	// ToDo: check r ...
 	}

@@ -17,7 +17,7 @@
 #include "Logger.h"
 #include "Positioning.h"
 #include "TrackWriter.h"
-#include "AsyncFileMan.h"
+#include "FileUtils.h"
 
 // Constants
 
@@ -106,6 +106,7 @@ private:
 	
 public:
 	void ShowError(const TDesC &aMsg, TInt anErrCode = KErrNone);
+	void ShowMsgL(const TDesC &aTitle, const TDesC &aMsg);
 	
 public:	
 	void StartTracking();
@@ -148,6 +149,10 @@ public:
 //	MFileManObserver::TControl OnFileManOperation();
 	MFileManObserver::TControl OnFileManEnded();
 	void OnFileManFinished(TInt aStatus);
+	
+	
+	
+	friend class CTrackListBoxView;
 	
 	};
 

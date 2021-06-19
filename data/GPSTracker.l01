@@ -9,7 +9,7 @@
 // localized strings for language: UK English (01)
 #define STR_GPSTrackerApplication_1 ""
 #define STR_GPSTrackerApplication_2 ""
-#define STR_GPSTrackerApplication_3 "GPSTracker"
-#define STR_GPSTrackerApplication_4 "GPSTracker"
+#define STR_GPSTrackerApplication_3 "GPS Track Recorder"
+#define STR_GPSTrackerApplication_4 "GPS Track Recorder"
 #define STR_GPSTrackerApplication_ErrorCode "Error code: %N"
 #define STR_GPSTrackerApplication_GPXWriteError "GPX file write error"

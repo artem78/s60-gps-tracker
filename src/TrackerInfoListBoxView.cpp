@@ -438,17 +438,20 @@ TBool CTrackerInfoListBoxView::HandleAboutMenuItemSelectedL( TInt /*aCommand*/ )
 	{
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 	
+	// Title
+	HBufC* title = StringLoader::LoadLC(R_TRACKER_INFO_ABOUT_DIALOG_TITLE, iEikonEnv);
+	
+	// Main text
 	CDesCArrayFlat* strings = new (ELeave) CDesCArrayFlat(2);
 	CleanupStack::PushL(strings);
 	strings->AppendL(appUi->ProgramName());
 	strings->AppendL(appUi->ProgramVersion());
 	
-	HBufC* msg = StringLoader::LoadL(R_TRACKER_INFO_LIST_BOX_ABOUT_TEXT, *strings, iEikonEnv);
+	HBufC* msg = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_ABOUT_TEXT, *strings, iEikonEnv);
 	
-	iEikonEnv->AlertWin(*msg);
+	appUi->ShowMsgL(*title, *msg);
 	
-	delete msg;
-	CleanupStack::PopAndDestroy(strings);
+	CleanupStack::PopAndDestroy(3, title); // title, msg, strings
 	
 	return ETrue;
 	}
