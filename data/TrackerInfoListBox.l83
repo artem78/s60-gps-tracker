@@ -11,7 +11,8 @@
 CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_1 "Menú"
 #define STR_TrackerInfoListBoxView_2 "Salir"
-#define STR_TrackerInfoListBoxView_3 "Rastreador GPS"
+//#define STR_TrackerInfoListBoxView_3 "Rastreador GPS"
+#define STR_TrackerInfoListBoxView_3 "GPS Track Recorder"
 #define STR_TrackerInfoListBoxView_12 ""
 #define STR_TrackerInfoListBoxView_28 "Actualizar posición:"
 #define STR_TrackerInfoListBoxView_29 ""
