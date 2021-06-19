@@ -33,6 +33,7 @@
 ; ToDo: Choose language while installing or in program settings
 "$(EPOCROOT)Epoc32\data\z\resource\apps\GPSTracker.r01"		-"!:\resource\apps\GPSTracker.r01"
 "$(EPOCROOT)Epoc32\data\z\resource\apps\GPSTracker.r16"		-"!:\resource\apps\GPSTracker.r16"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\GPSTracker.r83"		-"!:\resource\apps\GPSTracker.r83"
 "$(EPOCROOT)Epoc32\data\z\resource\apps\GPSTracker.r93"		-"!:\resource\apps\GPSTracker.r93"
 "$(EPOCROOT)Epoc32\data\z\private\10003a3f\apps\GPSTracker_reg.r01"	-"!:\private\10003a3f\import\apps\GPSTracker_reg.r01"
 "$(EPOCROOT)epoc32\data\z\resource\apps\GPSTracker_aif.mif" -"!:\resource\apps\GPSTracker_aif.mif"
