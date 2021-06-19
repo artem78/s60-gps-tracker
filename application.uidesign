@@ -118,6 +118,12 @@
       <string id="STR_GPSTrackerApplication_3">GPS Track Recorder</string>
       <string id="STR_GPSTrackerApplication_4">GPS Track Recorder</string>
     </stringTable>
+    <stringTable language="LANG_LatinAmericanSpanish">
+      <string id="STR_GPSTrackerApplication_1"/>
+      <string id="STR_GPSTrackerApplication_2"/>
+      <string id="STR_GPSTrackerApplication_3">GPS Track Recorder</string>
+      <string id="STR_GPSTrackerApplication_4">GPS Track Recorder</string>
+    </stringTable>
   </stringBundle>
   <macroTable/>
   <sourceMappingState>
@@ -157,14 +163,17 @@
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
     <file>data/gpstracker.l16</file>
+    <file>data/gpstracker.l83</file>
     <file>data/gpstracker.l93</file>
     <file>data/trackerinfolistbox.loc</file>
     <file>data/trackerinfolistbox.l01</file>
     <file>data/trackerinfolistbox.l16</file>
+    <file>data/trackerinfolistbox.l83</file>
     <file>data/trackerinfolistbox.l93</file>
     <file>data/tracklistbox.loc</file>
     <file>data/tracklistbox.l01</file>
     <file>data/tracklistbox.l16</file>
+    <file>data/tracklistbox.l83</file>
     <file>data/tracklistbox.l93</file>
   </generatedFiles>
 </designerData>

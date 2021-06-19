@@ -285,22 +285,34 @@
       <string id="STR_TrackListBoxView_12">Видалити все</string>
       <string id="STR_TrackListBoxView_14">Ви дійсно бажаєте видалити файл(и)?</string>
     </stringTable>
+    <stringTable language="LANG_LatinAmericanSpanish">
+      <string id="STR_TrackListBoxView_1"></string>
+      <string id="STR_TrackListBoxView_2"></string>
+      <string id="STR_TrackListBoxView_3">Ubicaciones</string>
+      <string id="STR_TrackListBoxView_4">Rastreadores</string>
+      <string id="STR_TrackListBoxView_5">Detalles</string>
+      <string id="STR_TrackListBoxView_8">Eliminar</string>
+      <string id="STR_TrackListBoxView_9">Renombrar</string>
+      <string id="STR_TrackListBoxView_10">Nuevo nombre:</string>
+      <string id="STR_TrackListBoxView_11"></string>
+      <string id="STR_TrackListBoxView_12">Eliminar todo</string>
+      <string id="STR_TrackListBoxView_14">¿Eliminar archivo(s)?</string>
+    </stringTable>
   </stringBundle>
   <macroTable/>
   <sourceMappingState>
     <resourceMappings>
-      <resourceMapping instanceName="title">r_track_list_box_title_resource</resourceMapping>
-      <resourceMapping instanceName="optionsMenu">r_track_list_box_options_menu</resourceMapping>
-      <resourceMapping instanceName="edit1" rsrcId="text">r_track_list_box_edit1</resourceMapping>
-      <resourceMapping instanceName="naviText" rsrcId="text">r_track_list_box_navi_text</resourceMapping>
-      <resourceMapping instanceName="naviText">r_track_list_box_navi_text_resource</resourceMapping>
       <resourceMapping instanceName="statusPane">r_track_list_box_status_pane</resourceMapping>
       <resourceMapping instanceName="listBox">r_track_list_box_list_box</resourceMapping>
+      <resourceMapping instanceName="title">r_track_list_box_title_resource</resourceMapping>
       <resourceMapping instanceName="menuPane1">r_track_list_box_menu_pane1_menu_pane</resourceMapping>
       <resourceMapping instanceName="renameQuery">r_track_list_box_rename_query</resourceMapping>
       <resourceMapping instanceName="TrackListBoxView">r_track_list_box_track_list_box_view</resourceMapping>
-      <resourceMapping instanceName="controlPane">r_track_list_box_control_pane</resourceMapping>
+      <resourceMapping instanceName="optionsMenu">r_track_list_box_options_menu</resourceMapping>
       <resourceMapping instanceName="deleteConfQuery">r_track_list_box_delete_conf_query</resourceMapping>
+      <resourceMapping instanceName="edit1" rsrcId="text">r_track_list_box_edit1</resourceMapping>
+      <resourceMapping instanceName="naviText" rsrcId="text">r_track_list_box_navi_text</resourceMapping>
+      <resourceMapping instanceName="naviText">r_track_list_box_navi_text_resource</resourceMapping>
     </resourceMappings>
     <enumMappings>
       <enumMapping instanceName="renameTrackMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewRenameTrackMenuItemCommand</enumMapping>
@@ -315,10 +327,10 @@
       <enumMapping instanceName="edit1" propertyId="numericKeymap">EAknEditorStandardNumberModeKeymap</enumMapping>
       <enumMapping instanceName="deleteTrackMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewDeleteTrackMenuItemCommand</enumMapping>
       <enumMapping instanceName="edit1" propertyId="defaultCase">EAknEditorTextCase</enumMapping>
-      <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidNavi</enumMapping>
-      <enumMapping instanceName="edit1" propertyId="defaultInputMode">EAknEditorTextInputMode</enumMapping>
+      <enumMapping instanceName="TrackListBoxView" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_VIEW_UID">ETrackListBoxViewId</enumMapping>
       <enumMapping instanceName="edit1" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_DIALOG_LINE_ID">ETrackListBoxViewEdit1</enumMapping>
+      <enumMapping instanceName="edit1" propertyId="defaultInputMode">EAknEditorTextInputMode</enumMapping>
       <enumMapping instanceName="controlPane" propertyId="rightId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyBack</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtTitlePane</enumMapping>
     </enumMappings>
@@ -334,22 +346,25 @@
     <file>src/tracklistboxview.cpp</file>
     <file>inc/tracklistboxview.h</file>
     <file>data/gpstracker.rss</file>
-    <file>data/trackerinfolistbox.rssi</file>
     <file>inc/gpstracker.hrh</file>
+    <file>data/trackerinfolistbox.rssi</file>
     <file>inc/trackerinfolistbox.hrh</file>
     <file>data/tracklistbox.rssi</file>
     <file>inc/tracklistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
     <file>data/gpstracker.l16</file>
+    <file>data/gpstracker.l83</file>
     <file>data/gpstracker.l93</file>
     <file>data/trackerinfolistbox.loc</file>
     <file>data/trackerinfolistbox.l01</file>
     <file>data/trackerinfolistbox.l16</file>
+    <file>data/trackerinfolistbox.l83</file>
     <file>data/trackerinfolistbox.l93</file>
     <file>data/tracklistbox.loc</file>
     <file>data/tracklistbox.l01</file>
     <file>data/tracklistbox.l16</file>
+    <file>data/tracklistbox.l83</file>
     <file>data/tracklistbox.l93</file>
   </generatedFiles>
 </designerData>
