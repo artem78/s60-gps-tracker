@@ -1,3 +1,5 @@
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/artem78/s60-gps-tracker?style=plastic)](https://github.com/artem78/s60-gps-tracker/releases/latest)&nbsp;&nbsp;&nbsp;[![GitHub license](https://img.shields.io/github/license/artem78/s60-gps-tracker?style=plastic)](https://github.com/artem78/s60-gps-tracker/blob/master/LICENSE.txt)&nbsp;&nbsp;&nbsp;![GitHub All Releases](https://img.shields.io/github/downloads/artem78/s60-gps-tracker/total?style=plastic)&nbsp;&nbsp;&nbsp;![GitHub last commit](https://img.shields.io/github/last-commit/artem78/s60-gps-tracker?style=plastic)
+
 # GPS track recorder for Symbian OS based phones
 
 This software allows you to record your trip using Nokia phone.
