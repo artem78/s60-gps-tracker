@@ -96,4 +96,48 @@ private:
 
 	};
 
+
+
+const TInt KNMEAChecksumLength = 2;
+typedef TBuf8<KNMEAChecksumLength> TNMEAChecksum;
+const TInt KMaxNMEALineLength = 82;
+
+/*
+ * Class for writing track in NMEA 0183 format
+ */
+class CNMEATrackWriter : public CTrackWriterBase
+	{
+	
+	// Constructors and destructor
+public:
+	~CNMEATrackWriter();
+	static CNMEATrackWriter* NewL(RFile &aFile/*, TBool anIsWriteExtendedData = EFalse*/);
+	static CNMEATrackWriter* NewLC(RFile &aFile/*, TBool anIsWriteExtendedData = EFalse*/);
+
+private:
+	CNMEATrackWriter(RFile &aFile/*, TBool anIsWriteExtendedData*/);
+	void ConstructL();
+	
+	
+	// From CTrackWriterBase
+public:
+	void AddPointL(const TPositionInfo* aPosInfo);
+	
+	
+	// Custom properties and methods
+private:
+	//TRealFormat iGeneralRealFormat;
+	//TBool iIsWriteExtendedData;
+
+	static void TimeToDes8L(const TTime &aTime, TDes8 &aDes);
+	static void DateToDes8L(const TTime &aTime, TDes8 &aDes);
+	static void DegreesToDes8(const TReal64 &aDegs, TInt aDigits,
+			TChar aPositiveDirection, TChar aNegativeDirection, TDes8 &aDes);
+	static void LatitudeToDes8(const TReal64 &aLat, TDes8 &aDes);
+	static void LongitudeToDes8(const TReal64 &aLon, TDes8 &aDes);
+	static TNMEAChecksum Checksum(const TDesC8 &aDes);
+	void WriteSentence(const TDesC8 &aSentence);
+	
+	};
+
 #endif // TRACKWRITER_H
