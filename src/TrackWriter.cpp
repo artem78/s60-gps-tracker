@@ -293,7 +293,7 @@ void CNMEATrackWriter::AddPointL(const TPositionInfo* aPosInfo)
 	
 	
 	// Constants
-	_LIT8(KRMCSentenceFmt, "GPRMC,%S,A,%S,%S,%.1f,%.1f,%S,,,");
+	_LIT8(KRMCSentenceFmt, "GPRMC,%S,A,%S,%S,%S,%S,%S,,,");
 	TReal32 KMetersPerSecondToKnots = 1.9438444924406046;
 	
 	
@@ -312,8 +312,7 @@ void CNMEATrackWriter::AddPointL(const TPositionInfo* aPosInfo)
 	
 	
 	// Process extended position information
-	TReal32 speed = /*KNaN*/ 0.0 / 0.0;
-	TReal32 heading = /*KNaN*/ 0.0 / 0.0;
+	TBuf8<8> speedBuff, headingBuff;
 	
 	if (/*iIsWriteExtendedData*/ 1)
 		{
@@ -325,22 +324,29 @@ void CNMEATrackWriter::AddPointL(const TPositionInfo* aPosInfo)
 			TCourse course;
 			courseInfo->GetCourse(course);
 			
+			TRealFormat realFmt;
+			realFmt.iType = KRealFormatFixed;
+			realFmt.iPoint = '.';
+			realFmt.iPlaces = 1;
+			realFmt.iTriLen = 0;
+			realFmt.iWidth = /*KDefaultRealWidth*/ 8;
+			
 			// Course
 			if (!Math::IsNaN(course.Heading()))
 				{
-				heading = course.Heading(); 
+				headingBuff.Num(course.Heading(), realFmt);
 				}
 			
 			// Speed
 			if (!Math::IsNaN(course.Speed()))
 				{
-				speed = course.Speed() * KMetersPerSecondToKnots;
+				speedBuff.Num(course.Speed() * KMetersPerSecondToKnots, realFmt);
 				}
 			}
 		}
 	
 	TBuf8<KMaxNMEALineLength> buff;
-	buff.Format(KRMCSentenceFmt, &timeBuff, &latBuff, &lonBuff, speed, heading, &dateBuff);
+	buff.Format(KRMCSentenceFmt, &timeBuff, &latBuff, &lonBuff, &speedBuff, &headingBuff, &dateBuff);
 	
 	// Write to the file
 	WriteSentence(buff);
@@ -374,19 +380,19 @@ void CNMEATrackWriter::DegreesToDes8(const TReal64 &aDegs, TInt aDigits,
 	Math::Frac(minutes, minutes); // ToDo: check error code
 	minutes *= KSecondsInMinute;
 	TChar directionChar = aDegs > 0 ? aPositiveDirection : aNegativeDirection;
-	/*TRealFormat realFmt;
+	TRealFormat realFmt;
 	realFmt.iType = KRealFormatFixed;
 	realFmt.iPoint = '.';
 	realFmt.iPlaces = 4;
 	realFmt.iTriLen = 0;
-	realFmt.iWidth = KDefaultRealWidth;*/
+	realFmt.iWidth = /*KDefaultRealWidth*/ 10;
 	aDes.Zero();
 	aDes.AppendNumFixedWidth(degrees, EDecimal, aDigits);
 	if (minutes < 10)
 		{ // Add leading zero
 		aDes.Append('0');
 		}
-	TInt r = aDes.AppendNum(minutes, /*realFmt*/ TRealFormat(10, 4)); // ToDo: check error code
+	TInt r = aDes.AppendNum(minutes, realFmt /*TRealFormat(10, 4)*/); // ToDo: check error code
 	aDes.Append(',');
 	aDes.Append(directionChar);
 	}
