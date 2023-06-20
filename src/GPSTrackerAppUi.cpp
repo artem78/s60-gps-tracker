@@ -270,7 +270,11 @@ void CGPSTrackerAppUi::InitializeTrackL()
 	TBuf<100> programFullName;
 	programFullName.Append(KProgramName);
 	programFullName.Append(KSpace);
+	programFullName.Append('v');
 	programFullName.Append(KProgramVersion);
+	programFullName.Append(KSpace);
+	_LIT(KForSymStr, "for Symbian OS");
+	programFullName.Append(KForSymStr);
 	iTrackWriter = CGPXTrackWriter::NewL(iTrackFile, ETrue, programFullName);
 	}
 
