@@ -197,6 +197,7 @@ void CGPSTrackerAppUi::ConstructL()
 	InitializeTrackL();
 	
 	iPosRequestor = CDynamicPositionRequestor::NewL(this, KProgramName);
+	iPosRequestor->iPositionMaxUpdateInterval = 15 * KSecond;
 	iPosRequestor->Start();
 	
 	}
