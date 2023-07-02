@@ -191,6 +191,11 @@ RESOURCE TBUF r_tracker_info_list_box_meters_unit_text
 	buf = STR_TrackerInfoListBoxView_MetersUnit;
 	}
 
+RESOURCE TBUF r_tracker_info_list_box_kilometers_unit_text
+	{
+	buf = STR_TrackerInfoListBoxView_KilometersUnit;
+	}
+
 RESOURCE TBUF r_tracker_info_list_box_kilometers_per_hour_unit_text
 	{
 	buf = STR_TrackerInfoListBoxView_KilometersPerHourUnit;
@@ -209,4 +214,18 @@ RESOURCE TBUF r_tracker_info_list_box_about_text
 RESOURCE TBUF r_tracker_info_about_dialog_title
 	{
 	buf = STR_TrackerInfoListBoxView_5;
+	}
+RESOURCE ARRAY r_tracker_info_list_box_total_distance_listbox_item
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_6;
+			},
+		LBUF
+			{
+			txt = STR_TrackerInfoListBoxView_13;
+			}
+		};
 	}

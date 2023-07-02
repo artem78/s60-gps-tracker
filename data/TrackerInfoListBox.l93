@@ -30,8 +30,11 @@ CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_8 ""
 #define STR_TrackerInfoListBoxView_9 "Довгота:"
 #define STR_TrackerInfoListBoxView_MetersUnit "м"
+#define STR_TrackerInfoListBoxView_KilometersUnit "км"
 #define STR_TrackerInfoListBoxView_KilometersPerHourUnit "км/год"
 #define STR_TrackerInfoListBoxView_SecondsUnit "сек"
 #define STR_TrackerInfoListBoxView_5 "Про програму"
 #define STR_TrackerInfoListBoxView_AboutText "%0U для Symbian OS\nВерсія: %1U\nТворець: artem78\nЕл. пошта: megabyte1024@ya.ru"
+#define STR_TrackerInfoListBoxView_6 "Total distance:"
+#define STR_TrackerInfoListBoxView_13 ""
 

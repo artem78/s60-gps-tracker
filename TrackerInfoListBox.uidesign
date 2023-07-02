@@ -176,6 +176,18 @@
           <compoundProperty id="location">
             <property id="y">318</property>
           </compoundProperty>
+          <property id="name">totalDistanceListboxItem</property>
+          <property id="text" type="i18n">STR_TrackerInfoListBoxView_6</property>
+          <compoundProperty id="size">
+            <property id="width">240</property>
+            <property id="height">53</property>
+          </compoundProperty>
+          <property id="secondaryText" type="i18n">STR_TrackerInfoListBoxView_13</property>
+        </component>
+        <component id="com.nokia.sdt.series60.ListBoxItem">
+          <compoundProperty id="location">
+            <property id="y">371</property>
+          </compoundProperty>
           <property id="name">refreshListboxItem</property>
           <property id="text" type="i18n">STR_TrackerInfoListBoxView_28</property>
           <compoundProperty id="size">
@@ -281,6 +293,8 @@
       <string id="STR_TrackerInfoListBoxView_40">Continue track recording</string>
       <string id="STR_TrackerInfoListBoxView_4">Tracks</string>
       <string id="STR_TrackerInfoListBoxView_5">About</string>
+      <string id="STR_TrackerInfoListBoxView_6">Total distance:</string>
+      <string id="STR_TrackerInfoListBoxView_13"/>
     </stringTable>
     <stringTable language="LANG_Russian">
       <string id="STR_TrackerInfoListBoxView_1">Меню</string>
@@ -304,29 +318,33 @@
       <string id="STR_TrackerInfoListBoxView_40">Продолжить запись трека</string>
       <string id="STR_TrackerInfoListBoxView_4">Треки</string>
       <string id="STR_TrackerInfoListBoxView_5">О программе</string>
+      <string id="STR_TrackerInfoListBoxView_6">Пройдено:</string>
+      <string id="STR_TrackerInfoListBoxView_13"/>
     </stringTable>
     <stringTable language="LANG_Ukrainian">
       <string id="STR_TrackerInfoListBoxView_1">Меню</string>
       <string id="STR_TrackerInfoListBoxView_2">Вийти</string>
       <string id="STR_TrackerInfoListBoxView_3">GPS Track Recorder</string>
       <string id="STR_TrackerInfoListBoxView_7">Широта:</string>
-      <string id="STR_TrackerInfoListBoxView_8"></string>
+      <string id="STR_TrackerInfoListBoxView_8"/>
       <string id="STR_TrackerInfoListBoxView_9">Довгота:</string>
-      <string id="STR_TrackerInfoListBoxView_10"></string>
+      <string id="STR_TrackerInfoListBoxView_10"/>
       <string id="STR_TrackerInfoListBoxView_11">Висота:</string>
-      <string id="STR_TrackerInfoListBoxView_12"></string>
+      <string id="STR_TrackerInfoListBoxView_12"/>
       <string id="STR_TrackerInfoListBoxView_18">Швидкість:</string>
-      <string id="STR_TrackerInfoListBoxView_19"></string>
+      <string id="STR_TrackerInfoListBoxView_19"/>
       <string id="STR_TrackerInfoListBoxView_21">Супутники:</string>
-      <string id="STR_TrackerInfoListBoxView_22"></string>
+      <string id="STR_TrackerInfoListBoxView_22"/>
       <string id="STR_TrackerInfoListBoxView_25">Збережено точок:</string>
-      <string id="STR_TrackerInfoListBoxView_26"></string>
+      <string id="STR_TrackerInfoListBoxView_26"/>
       <string id="STR_TrackerInfoListBoxView_28">Частота обновлення:</string>
-      <string id="STR_TrackerInfoListBoxView_29"></string>
+      <string id="STR_TrackerInfoListBoxView_29"/>
       <string id="STR_TrackerInfoListBoxView_39">Пауза запису треку</string>
       <string id="STR_TrackerInfoListBoxView_40">Продовжити запис треку</string>
       <string id="STR_TrackerInfoListBoxView_4">Треки</string>
       <string id="STR_TrackerInfoListBoxView_5">Про програму</string>
+      <string id="STR_TrackerInfoListBoxView_6">??item</string>
+      <string id="STR_TrackerInfoListBoxView_13">??secondary</string>
     </stringTable>
     <stringTable language="LANG_LatinAmericanSpanish">
       <string id="STR_TrackerInfoListBoxView_1">Menú</string>
@@ -350,6 +368,8 @@
       <string id="STR_TrackerInfoListBoxView_40">Continuar grabando ubicac.</string>
       <string id="STR_TrackerInfoListBoxView_4">Posicionamientos</string>
       <string id="STR_TrackerInfoListBoxView_5">Versión</string>
+      <string id="STR_TrackerInfoListBoxView_6">Total distance:</string>
+      <string id="STR_TrackerInfoListBoxView_13"/>
     </stringTable>
   </stringBundle>
   <macroTable/>
@@ -365,6 +385,7 @@
       <resourceMapping instanceName="latListboxItem">r_tracker_info_list_box_lat_listbox_item</resourceMapping>
       <resourceMapping instanceName="lonListboxItem">r_tracker_info_list_box_lon_listbox_item</resourceMapping>
       <resourceMapping instanceName="speedListboxItem">r_tracker_info_list_box_speed_listbox_item</resourceMapping>
+      <resourceMapping instanceName="totalDistanceListboxItem">r_tracker_info_list_box_total_distance_listbox_item</resourceMapping>
       <resourceMapping instanceName="satListboxItem">r_tracker_info_list_box_sat_listbox_item</resourceMapping>
       <resourceMapping instanceName="pointsListboxItem">r_tracker_info_list_box_points_listbox_item</resourceMapping>
       <resourceMapping instanceName="optionsMenu">r_tracker_info_list_box_options_menu</resourceMapping>

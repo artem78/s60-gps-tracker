@@ -52,7 +52,8 @@ public:
 	// ]]] end generated region [Generated Methods]
 	
 	void SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal aSpeed, TInt aSatUsed,
-			TInt aSatTotal, TInt aSavedPoints, TTimeIntervalMicroSeconds aPosRefreshRate);
+			TInt aSatTotal, TInt aSavedPoints, TReal aTotalDistance,
+			TTimeIntervalMicroSeconds aPosRefreshRate);
 	
 	// ]]] end [Public Section]
 	
@@ -104,6 +105,7 @@ private:
 		ESpeedItem,
 		ESatellitesItem,
 		ESavedPointsItem,
+		ETotalDistanceItem,
 		EPositionRefreshRateItem
 		};
 

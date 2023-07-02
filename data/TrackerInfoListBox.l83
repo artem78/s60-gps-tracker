@@ -9,6 +9,7 @@
 // localized strings for language: Latin American Spanish (83)
 
 CHARACTER_SET UTF8
+
 #define STR_TrackerInfoListBoxView_1 "Menú"
 #define STR_TrackerInfoListBoxView_2 "Salir"
 //#define STR_TrackerInfoListBoxView_3 "Rastreador GPS"
@@ -31,8 +32,11 @@ CHARACTER_SET UTF8
 #define STR_TrackerInfoListBoxView_39 "Pausar la grabación de ubicac."
 #define STR_TrackerInfoListBoxView_4 "Posicionamientos"
 #define STR_TrackerInfoListBoxView_MetersUnit "m"
+#define STR_TrackerInfoListBoxView_KilometersUnit "km"
 #define STR_TrackerInfoListBoxView_KilometersPerHourUnit "km/h"
 #define STR_TrackerInfoListBoxView_SecondsUnit "seg"
 #define STR_TrackerInfoListBoxView_5 "Versión"
 // Remove the yellow warning sign (!). I think there should be a blue icon.
 #define STR_TrackerInfoListBoxView_AboutText "%0U para Symbian\nVersión: %1U\nAutor: artem78"
+#define STR_TrackerInfoListBoxView_6 "Total distance:"
+#define STR_TrackerInfoListBoxView_13 ""

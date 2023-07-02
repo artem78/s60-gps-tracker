@@ -346,7 +346,7 @@ void CGPSTrackerAppUi::ShowDataL()
 
 	// Write information to listbox	
 	iTrackerInfoListBoxView->SetDataL(lat, lon, alt, speed, satUsed, satTotal,
-			iTotalPointsCount, posRefreshInterval);
+			iTotalPointsCount, iTotalDistance, posRefreshInterval);
 
 		
 	LOG(_L8("End show data"));
