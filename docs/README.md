@@ -2,7 +2,7 @@
 
 This software allows you to record your trip using Nokia phone.
 
-![](images/tracking_info.png) ![](images/track_list_with_menu.png)
+![](images/tracking_info.png) ![](images/track_list_with_menu.png) ![](images/track_info.png)
 
 From recorded track you can know travelled distance, average speed, elevation and many other information using [miscellaneous tools](#see-also).
 
