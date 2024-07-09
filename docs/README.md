@@ -14,7 +14,7 @@ This application is GUI fork of my previous [console version](https://github.com
 First go out into the open space. Positioning probably will not work or accuracy will be poor indors or near buildings. Run application. Track recording will start automatically when position from satellites will be recieved (often this takes some time up to several minutes). When it happened you will see your coordinates, speed, traveled distance, amount of recorded points and etc. At any time you can pause track recording (for example: when you stopped for a rest or entered the building). All tracks save in [GPX](https://en.wikipedia.org/wiki/GPS_Exchange_Format) format in `[C or E]:\data\GPSTracker\tracks` directory. Close program for stop track writing. After this you may transfer GPX-file(s) to your PC for future use.
 
 ## Track samples
-* Car driving - [https://www.openstreetmap.org/user/artem78/traces/3391464](https://www.openstreetmap.org/user/artem78/traces/3391464)
+* [Car driving](https://trackprofiler.com/track:1720528508189968369)
 
 ## Localization
 * English
