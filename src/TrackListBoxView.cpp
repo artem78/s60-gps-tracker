@@ -398,10 +398,12 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	
 	
 	// Prepare strings
-	// ToDo: Add points count, distance info
+	// ToDo: Add distance info
 	TBuf<64> tmp;	
-	CDesCArrayFlat* strings = new CDesCArrayFlat(3);
+	CDesCArrayFlat* strings = new (ELeave) CDesCArrayFlat(3);
 	CleanupStack::PushL(strings);
+	CArrayFixFlat<TInt>* nums = new (ELeave) CArrayFixFlat<TInt>(1);
+	CleanupStack::PushL(nums);
 	// File name
 	strings->AppendL(fileEntry.iName);
 	// File size
@@ -417,12 +419,72 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	modTime.FormatL(tmp, KDateFmt);
 	strings->AppendL(tmp);
 	
+	// Points count
+	RFile file;
+	User::LeaveIfError(file.Open(iCoeEnv->FsSession(), fileFullName, EFileRead));
+	CleanupClosePushL(file);
+	/*TFileText fileText;
+	fileText.Set(file);
+	fileText.Seek(ESeekStart);
+	TBuf<256> buf;
+	_LIT(KSearch, "<trkpt ");
+	TInt points = 0;
+	while (fileText.Read(buf) != KErrEof)
+	{
+		if (buf.Find(KSearch) != KErrNotFound)
+			{
+				points++;
+			}
+	}*/
+	TInt points = 0;
+	HBufC8* bufc = NULL;
+	TInt len = 0;
+	if (file.Size(len) == KErrNone && len > 0)
+	{
+		bufc = HBufC8::NewL(len);
+		TPtr8 buf(bufc->Des());
+		if (file.Read(0, buf) == KErrNone)
+		{
+			_LIT8(KSearch, "<trkpt ");
+			TPtrC8 ptr(bufc->Des());
+			while (true)
+			{
+				if (ptr.Length() < 1)
+				{
+					break;
+				}
+				
+				TInt pos = ptr.Find(KSearch);
+				if (pos == KErrNotFound)
+				{
+					break;
+				}
+				else
+				{
+					points++;
+					ptr.Set(ptr.Right(ptr.Length() - pos - KSearch().Length()));
+				}
+			}
+		}
+		else
+		{
+			// something wrong...
+		}
+		delete bufc;
+	}
+	else
+	{
+		// something wrong...
+	}
+	CleanupStack::PopAndDestroy(&file);
+	nums->AppendL(points);
+	
 	
 	// Create and show message window
 	HBufC* titleBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TITLE, iEikonEnv);
-	HBufC* textBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TEXT, *strings, iEikonEnv);
+	HBufC* textBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TEXT, *strings, *nums, iEikonEnv);
 	appUi->ShowMsgL(*titleBuff, *textBuff);
-	CleanupStack::PopAndDestroy(4, fileName);	
+	CleanupStack::PopAndDestroy(5, fileName);	
 	
 	
 	return ETrue;
