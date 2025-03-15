@@ -26,3 +26,4 @@
 #define STR_TrackListBoxView_ActiveFileRenamingError "Can`t rename active track file!"
 #define STR_TrackListBoxView_FileRenamingError "Can`t rename file \"%U\"!"
 #define STR_TrackListBoxView_IncorrectFileNameError "Incorrect file name!"
+#define STR_TrackListBoxView_15 "Send"

@@ -28,3 +28,4 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_ActiveFileRenamingError "Неможливо перейменувати активний файл треку!"
 #define STR_TrackListBoxView_FileRenamingError "Неможливо перейменувати файл \"%U\"!"
 #define STR_TrackListBoxView_IncorrectFileNameError "Неправильне ім'я файлу!"
+#define STR_TrackListBoxView_15 "Отправить"

@@ -25,7 +25,7 @@ LIBRARY			eikctl.lib bafl.lib fbscli.lib aknnotify.lib aknicon.lib
 LIBRARY			etext.lib gdi.lib egul.lib insock.lib
 LIBRARY			ecom.lib InetProtUtil.lib http.lib esock.lib lbs.lib charconv.lib hash.lib
 
-LIBRARY			ecom.lib InetProtUtil.lib http.lib esock.lib lbs.lib charconv.lib
+LIBRARY			ecom.lib InetProtUtil.lib http.lib esock.lib lbs.lib charconv.lib sendui.lib
 
 LANG 				01 16 83 93
 
@@ -46,7 +46,7 @@ SOURCE TrackerInfoListBoxView.cpp TrackerInfoListBox.cpp GPSTrackerDocument.cpp 
 SOURCEPATH ..\modules\Logger
 SOURCE Logger.cpp
 
-CAPABILITY Location
+CAPABILITY LocalServices Location NetworkServices ReadDeviceData ReadUserData WriteDeviceData WriteUserData
 
 SOURCEPATH ..\modules\Positioning
 SOURCE Positioning.cpp

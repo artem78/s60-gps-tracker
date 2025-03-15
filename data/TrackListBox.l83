@@ -9,6 +9,7 @@
 // localized strings for language: Latin American Spanish (83)
 
 CHARACTER_SET UTF8
+
 #define STR_TrackListBoxView_1 ""
 #define STR_TrackListBoxView_2 ""
 #define STR_TrackListBoxView_3 "Ubicaciones"
@@ -28,3 +29,4 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_ActiveFileRenamingError "¡No se puede renombrar! archivo en uso"
 #define STR_TrackListBoxView_FileRenamingError "No se puede renombrar el archivo \"%U\"!"
 #define STR_TrackListBoxView_IncorrectFileNameError "¡Nombre de archivo incorrecto!"
+#define STR_TrackListBoxView_15 "Send"

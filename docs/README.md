@@ -24,7 +24,7 @@ Run application. Track recording will start automatically when position from sat
 ## Tasks
 * List of tracks
    * [x] Show track info: file size, distance, points count, date, etc...
-   * [ ] Send track file via sms/email/bluetooth
+   * [x] Send track file via sms/email/bluetooth
    * [x] Delete files
 * File formats
    * [ ] KML

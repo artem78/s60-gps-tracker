@@ -44,6 +44,8 @@
 #include "Logger.h"
 #include "MiscUtils.h"
 #include <eikprogi.h> // For CEikProgressInfo
+#include <sendui.h>
+#include <cmessagedata.h>
 
 /**
  * First phase of Symbian two-phase construction. Should not contain any
@@ -144,6 +146,9 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 			break;
 		case ETrackListBoxViewTrackDetailsMenuItemCommand:
 			commandHandled = HandleTrackDetailsMenuItemSelectedL( aCommand );
+			break;
+		case ETrackListBoxViewSendMenuItemCommand:
+			commandHandled = HandleSendTrackMenuItemSelectedL( aCommand );
 			break;
 		case ETrackListBoxViewRenameTrackMenuItemCommand:
 			commandHandled = HandleRenameTrackMenuItemSelectedL( aCommand );
@@ -704,3 +709,36 @@ TInt CTrackListBoxView::RunDeleteConfQueryL( const TDesC* aOverrideText )
 	}
 // ]]] end generated function
 
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleSendTrackMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	
+	// Read track file information
+	HBufC* fileName = iTrackListBox->GetCurrentListBoxItemTextLC();
+	/*if (fileName == NULL)
+		return; // No selected item, exit*/
+	TFileName fileFullName;
+	appUi->TrackDir(fileFullName);
+	fileFullName.Append(*fileName);
+	TEntry fileEntry;
+	User::LeaveIfError(iEikonEnv->FsSession().Entry(fileFullName, fileEntry));
+	
+	// Send
+	CSendUi* sendUi = CSendUi::NewLC();
+	CMessageData* message = CMessageData::NewLC();
+	TSendingCapabilities sendCaps;
+	sendCaps.iFlags = TSendingCapabilities::ESupportsAttachments;
+	message->AppendAttachmentL(fileFullName);
+	
+	sendUi->ShowQueryAndSendL(message, sendCaps);
+	
+	CleanupStack::PopAndDestroy(3, sendUi);
+	
+	return ETrue;
+	}
+				

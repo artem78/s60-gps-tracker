@@ -128,18 +128,18 @@
     <component id="com.nokia.sdt.series60.MenuBar">
       <compoundProperty id="location">
         <property id="x">5</property>
-        <property id="y">165</property>
+        <property id="y">107</property>
       </compoundProperty>
       <property id="name">optionsMenu</property>
       <compoundProperty id="size">
-        <property id="height">123</property>
+        <property id="height">181</property>
         <property id="width">229</property>
       </compoundProperty>
       <component id="com.nokia.sdt.series60.MenuPane">
         <compoundProperty id="location"/>
         <property id="name">menuPane1</property>
         <compoundProperty id="size">
-          <property id="height">123</property>
+          <property id="height">181</property>
           <property id="width">229</property>
         </compoundProperty>
         <component id="com.nokia.sdt.series60.MenuItem">
@@ -160,6 +160,19 @@
             <property id="x">5</property>
             <property id="y">31</property>
           </compoundProperty>
+          <property id="name">sendMenuItem</property>
+          <property id="text" type="i18n">STR_TrackListBoxView_15</property>
+          <compoundProperty id="size">
+            <property id="width">214</property>
+            <property id="height">27</property>
+          </compoundProperty>
+          <eventBinding id="selected" handlerDisplay="HandleSendTrackMenuItemSelectedL" handlerSymbol="cpp@src//TrackListBoxView.cpp/function(CTrackListBoxView::HandleSendTrackMenuItemSelectedL(TInt))"/>
+        </component>
+        <component id="com.nokia.sdt.series60.MenuItem">
+          <compoundProperty id="location">
+            <property id="x">5</property>
+            <property id="y">60</property>
+          </compoundProperty>
           <property id="name">renameTrackMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_9</property>
           <compoundProperty id="size">
@@ -171,7 +184,7 @@
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">60</property>
+            <property id="y">89</property>
           </compoundProperty>
           <property id="name">deleteTrackMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_8</property>
@@ -184,7 +197,7 @@
         <component id="com.nokia.sdt.series60.MenuItem">
           <compoundProperty id="location">
             <property id="x">5</property>
-            <property id="y">89</property>
+            <property id="y">118</property>
           </compoundProperty>
           <property id="name">deleteAllTracksMenuItem</property>
           <property id="text" type="i18n">STR_TrackListBoxView_12</property>
@@ -255,8 +268,8 @@
       <string id="STR_TrackListBoxView_10">Enter file name:</string>
       <string id="STR_TrackListBoxView_11"/>
       <string id="STR_TrackListBoxView_12">Delete all</string>
-      <string id="STR_TrackListBoxView_13">Deleting files...</string>
       <string id="STR_TrackListBoxView_14">Are you sure to delete file(s)?</string>
+      <string id="STR_TrackListBoxView_15">Send</string>
     </stringTable>
     <stringTable language="LANG_Russian">
       <string id="STR_TrackListBoxView_1"/>
@@ -269,56 +282,59 @@
       <string id="STR_TrackListBoxView_10">Введите имя файла:</string>
       <string id="STR_TrackListBoxView_11"/>
       <string id="STR_TrackListBoxView_12">Удалить все</string>
-      <string id="STR_TrackListBoxView_13">Удаление...</string>
       <string id="STR_TrackListBoxView_14">Вы действительно хотите удалить файл(ы)?</string>
+      <string id="STR_TrackListBoxView_15">Отправить</string>
     </stringTable>
     <stringTable language="LANG_Ukrainian">
-      <string id="STR_TrackListBoxView_1"></string>
-      <string id="STR_TrackListBoxView_2"></string>
+      <string id="STR_TrackListBoxView_1"/>
+      <string id="STR_TrackListBoxView_2"/>
       <string id="STR_TrackListBoxView_3">Треки</string>
       <string id="STR_TrackListBoxView_4">%N треків</string>
       <string id="STR_TrackListBoxView_5">Деталі</string>
       <string id="STR_TrackListBoxView_8">Видалити</string>
       <string id="STR_TrackListBoxView_9">Перейменувати</string>
-      <string id="STR_TrackListBoxView_10">Введіть ім'я файлу:</string>
-      <string id="STR_TrackListBoxView_11"></string>
+      <string id="STR_TrackListBoxView_10">Введіть ім&apos;я файлу:</string>
+      <string id="STR_TrackListBoxView_11"/>
       <string id="STR_TrackListBoxView_12">Видалити все</string>
       <string id="STR_TrackListBoxView_14">Ви дійсно бажаєте видалити файл(и)?</string>
+      <string id="STR_TrackListBoxView_15">Отправить</string>
     </stringTable>
     <stringTable language="LANG_LatinAmericanSpanish">
-      <string id="STR_TrackListBoxView_1"></string>
-      <string id="STR_TrackListBoxView_2"></string>
+      <string id="STR_TrackListBoxView_1"/>
+      <string id="STR_TrackListBoxView_2"/>
       <string id="STR_TrackListBoxView_3">Ubicaciones</string>
       <string id="STR_TrackListBoxView_4">%N rastreadores</string>
       <string id="STR_TrackListBoxView_5">Detalles</string>
       <string id="STR_TrackListBoxView_8">Eliminar</string>
       <string id="STR_TrackListBoxView_9">Renombrar</string>
       <string id="STR_TrackListBoxView_10">Nuevo nombre:</string>
-      <string id="STR_TrackListBoxView_11"></string>
+      <string id="STR_TrackListBoxView_11"/>
       <string id="STR_TrackListBoxView_12">Eliminar todo</string>
       <string id="STR_TrackListBoxView_14">¿Eliminar archivo(s)?</string>
+      <string id="STR_TrackListBoxView_15">Send</string>
     </stringTable>
   </stringBundle>
   <macroTable/>
   <sourceMappingState>
     <resourceMappings>
-      <resourceMapping instanceName="statusPane">r_track_list_box_status_pane</resourceMapping>
-      <resourceMapping instanceName="listBox">r_track_list_box_list_box</resourceMapping>
       <resourceMapping instanceName="title">r_track_list_box_title_resource</resourceMapping>
-      <resourceMapping instanceName="menuPane1">r_track_list_box_menu_pane1_menu_pane</resourceMapping>
-      <resourceMapping instanceName="renameQuery">r_track_list_box_rename_query</resourceMapping>
-      <resourceMapping instanceName="TrackListBoxView">r_track_list_box_track_list_box_view</resourceMapping>
       <resourceMapping instanceName="optionsMenu">r_track_list_box_options_menu</resourceMapping>
-      <resourceMapping instanceName="deleteConfQuery">r_track_list_box_delete_conf_query</resourceMapping>
       <resourceMapping instanceName="edit1" rsrcId="text">r_track_list_box_edit1</resourceMapping>
       <resourceMapping instanceName="naviText" rsrcId="text">r_track_list_box_navi_text</resourceMapping>
       <resourceMapping instanceName="naviText">r_track_list_box_navi_text_resource</resourceMapping>
+      <resourceMapping instanceName="statusPane">r_track_list_box_status_pane</resourceMapping>
+      <resourceMapping instanceName="listBox">r_track_list_box_list_box</resourceMapping>
+      <resourceMapping instanceName="menuPane1">r_track_list_box_menu_pane1_menu_pane</resourceMapping>
+      <resourceMapping instanceName="renameQuery">r_track_list_box_rename_query</resourceMapping>
+      <resourceMapping instanceName="TrackListBoxView">r_track_list_box_track_list_box_view</resourceMapping>
+      <resourceMapping instanceName="deleteConfQuery">r_track_list_box_delete_conf_query</resourceMapping>
     </resourceMappings>
     <enumMappings>
       <enumMapping instanceName="renameTrackMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewRenameTrackMenuItemCommand</enumMapping>
       <enumMapping instanceName="deleteAllTracksMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewDeleteAllTracksMenuItemCommand</enumMapping>
       <enumMapping instanceName="listBox" propertyId="type">EAknListBoxSelectionList</enumMapping>
       <enumMapping instanceName="controlPane" propertyId="leftId" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">EAknSoftkeyOptions</enumMapping>
+      <enumMapping instanceName="sendMenuItem" propertyId="command" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_COMMANDS">ETrackListBoxViewSendMenuItemCommand</enumMapping>
       <enumMapping instanceName="naviText" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_CONTROL_TYPE">EAknCtNaviPane</enumMapping>
       <enumMapping instanceName="title" propertyId="" nameAlgorithm="com.nokia.sdt.component.symbian.NAME_ALG_STATUS_PANE_ID">EEikStatusPaneUidTitle</enumMapping>
       <enumMapping instanceName="renameQuery" propertyId="[parent].type">EDataLayout</enumMapping>
@@ -346,10 +362,10 @@
     <file>src/tracklistboxview.cpp</file>
     <file>inc/tracklistboxview.h</file>
     <file>data/gpstracker.rss</file>
+    <file>data/tracklistbox.rssi</file>
     <file>inc/gpstracker.hrh</file>
     <file>data/trackerinfolistbox.rssi</file>
     <file>inc/trackerinfolistbox.hrh</file>
-    <file>data/tracklistbox.rssi</file>
     <file>inc/tracklistbox.hrh</file>
     <file>data/gpstracker.loc</file>
     <file>data/gpstracker.l01</file>
