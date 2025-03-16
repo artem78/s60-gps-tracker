@@ -12,8 +12,8 @@
 &EN
 
 ; standard SIS file header
-#{"GPS Tracker"},(0xE959FFAC),1,3,0
-;;; #{"GPS Track Recorder"},(0xE959FFAC),1,3,0
+#{"GPS Tracker"},(0xE959FFAC),1,4,0
+;;; #{"GPS Track Recorder"},(0xE959FFAC),1,4,0
 ;;; Update fails if package name is changed
 
 ;Localised Vendor name

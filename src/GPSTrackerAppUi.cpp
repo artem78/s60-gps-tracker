@@ -31,7 +31,7 @@
 //  Constants
 
 _LIT(KProgramName, "GPS Track Recorder");
-_LIT(KProgramVersion, "1.3.0");
+_LIT(KProgramVersion, "1.4.0");
 _LIT(KTracksDirRel, "tracks\\");
 _LIT(KLogsDirRel, "logs\\");
 _LIT(KTimeFormatForFileName, "%F%Y%M%D_%H%T%S");
