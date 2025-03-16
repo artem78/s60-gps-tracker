@@ -858,6 +858,8 @@ TInt CTrackListBoxView::RunDeleteConfQueryL( const TDesC* aOverrideText )
  */
 TBool CTrackListBoxView::HandleSendTrackMenuItemSelectedL( TInt /*aCommand*/ )
 	{
+	// ToDo: Allow to mark multiple items for sending
+	
 	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
 	
 	// Read track file information
