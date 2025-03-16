@@ -13,7 +13,7 @@
 #define STR_TrackListBoxView_4 "%N tracks"
 #define STR_TrackListBoxView_5 "Details"
 #define STR_TrackListBoxView_6 "Track details"
-#define STR_TrackListBoxView_7 "File: %0U\nPoints: %0N\nSize: %1U\nDate: %2U"
+#define STR_TrackListBoxView_7 "File: %0U\nPoints: %0N\nLength: %3U\nSize: %1U\nDate: %2U"
 #define STR_TrackListBoxView_8 "Delete"
 #define STR_TrackListBoxView_9 "Rename"
 #define STR_TrackListBoxView_10 "Enter file name:"

@@ -20,7 +20,7 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_13 "Видалення..."
 #define STR_TrackListBoxView_6 "Деталі треку"
 #define STR_TrackListBoxView_14 "Ви дійсно бажаєте видалити файл(и)?"
-#define STR_TrackListBoxView_7 "Файл: %0U\nКол-во точек: %0N\nРозмір: %1U\nДата: %2U"
+#define STR_TrackListBoxView_7 "Файл: %0U\nКол-во точек: %0N\nДлина: %3U\nРозмір: %1U\nДата: %2U"
 #define STR_TrackListBoxView_8 "Видалити"
 #define STR_TrackListBoxView_9 "Перейменувати"
 #define STR_TrackListBoxView_ActiveFileDeletionError "Неможливо видалити активний файл треку!"

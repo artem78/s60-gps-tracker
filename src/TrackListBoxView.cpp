@@ -398,9 +398,8 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	
 	
 	// Prepare strings
-	// ToDo: Add distance info
 	TBuf<64> tmp;	
-	CDesCArrayFlat* strings = new (ELeave) CDesCArrayFlat(3);
+	CDesCArrayFlat* strings = new (ELeave) CDesCArrayFlat(4);
 	CleanupStack::PushL(strings);
 	CArrayFixFlat<TInt>* nums = new (ELeave) CArrayFixFlat<TInt>(1);
 	CleanupStack::PushL(nums);
@@ -419,7 +418,7 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	modTime.FormatL(tmp, KDateFmt);
 	strings->AppendL(tmp);
 	
-	// Points count
+	// Points count and distance
 	RFile file;
 	User::LeaveIfError(file.Open(iCoeEnv->FsSession(), fileFullName, EFileRead));
 	CleanupClosePushL(file);
@@ -437,15 +436,22 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 			}
 	}*/
 	TInt points = 0;
+	TReal32 distance = 0;
 	HBufC8* bufc = NULL;
 	TInt len = 0;
+	TCoordinate coord, prevCoord;
+	const TReal KNaN = 0.0 / 0.0;
+	coord.SetCoordinate(KNaN, KNaN);
+	prevCoord.SetCoordinate(KNaN, KNaN);
 	if (file.Size(len) == KErrNone && len > 0)
 	{
 		bufc = HBufC8::NewL(len);
 		TPtr8 buf(bufc->Des());
 		if (file.Read(0, buf) == KErrNone)
 		{
-			_LIT8(KSearch, "<trkpt ");
+			_LIT8(KSearchTrkpt, "<trkpt ");
+			_LIT8(KSearchLat, "lat=\"");
+			_LIT8(KSearchLon, "lon=\"");
 			TPtrC8 ptr(bufc->Des());
 			while (true)
 			{
@@ -454,15 +460,85 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 					break;
 				}
 				
-				TInt pos = ptr.Find(KSearch);
+				TInt pos = ptr.Find(KSearchTrkpt);
 				if (pos == KErrNotFound)
 				{
 					break;
 				}
 				else
 				{
+					TInt latPos = ptr.Find(KSearchLat);
+					TInt lonPos = ptr.Find(KSearchLon);
+					if (latPos != KErrNotFound and lonPos != KErrNotFound)
+						{
+						latPos += KSearchLat().Length();
+						lonPos += KSearchLon().Length();
+						TPtrC8 latPtr = ptr.Mid(latPos, 16);
+						TPtrC8 lonPtr = ptr.Mid(lonPos, 16);
+						
+						TInt latQuotePos = latPtr.Locate('"');
+						TInt lonQuotePos = lonPtr.Locate('"');
+						if (latQuotePos != KErrNotFound && lonQuotePos != KErrNotFound)
+							{
+							latPtr.Set(latPtr.Left(latQuotePos));
+							lonPtr.Set(lonPtr.Left(lonQuotePos));
+							
+							TReal64 lat = /*0*/ KNaN;
+							TReal64 lon = /*0*/ KNaN;
+							TLex8 lex;
+							lex.Assign(latPtr);
+							if (lex.Val(lat) == KErrNone)
+								{
+								
+								}
+							else
+								{
+								// something wrong...
+								}
+							
+							lex.Assign(lonPtr);
+							if (lex.Val(lon) == KErrNone)
+								{
+								
+								}
+							else
+								{
+								// something wrong...
+								}
+							
+							coord.SetCoordinate(lat, lon);
+
+							
+							}
+						else
+							{
+							// something wrong...
+							}
+						
+						}
+					else
+						{
+						// something wrong...
+						}
+						
+					
+					if (points > 0)
+						{
+						TReal32 chunkDist = 0;
+						if (coord.Distance(prevCoord, chunkDist) == KErrNone)
+							{
+							distance += chunkDist;
+							}
+						else
+							{
+							// something wrong...
+							}
+						}
+					
+					ptr.Set(ptr.Right(ptr.Length() - pos - KSearchTrkpt().Length()));
+					
 					points++;
-					ptr.Set(ptr.Right(ptr.Length() - pos - KSearch().Length()));
+					prevCoord = coord;
 				}
 			}
 		}
@@ -478,6 +554,10 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	}
 	CleanupStack::PopAndDestroy(&file);
 	nums->AppendL(points);
+	tmp.Num((TInt) distance);
+	tmp.Append(' ');
+	tmp.Append('m');
+	strings->AppendL(tmp);
 	
 	
 	// Create and show message window
