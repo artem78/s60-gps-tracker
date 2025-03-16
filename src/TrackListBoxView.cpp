@@ -444,11 +444,12 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	coord.SetCoordinate(KNaN, KNaN);
 	prevCoord.SetCoordinate(KNaN, KNaN);
 	if (file.Size(len) == KErrNone && len > 0)
-	{
+	{ // todo: refactoring needed
 		bufc = HBufC8::NewL(len);
 		TPtr8 buf(bufc->Des());
-		if (file.Read(0, buf) == KErrNone)
+		if (file.Read(0, buf) == KErrNone) // fixme: no memory error when reading big files
 		{
+			_LIT8(KSearchTrkseg, "<trkseg>");
 			_LIT8(KSearchTrkpt, "<trkpt ");
 			_LIT8(KSearchLat, "lat=\"");
 			_LIT8(KSearchLon, "lon=\"");
@@ -522,7 +523,12 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 						}
 						
 					
-					if (points > 0)
+					TInt pos2 = ptr.Find(KSearchTrkseg);
+					if (pos2 == KErrNotFound)
+						{
+						pos2 = 9999999;
+						}
+					if (pos < pos2) // skip track breaks
 						{
 						TReal32 chunkDist = 0;
 						if (coord.Distance(prevCoord, chunkDist) == KErrNone)
