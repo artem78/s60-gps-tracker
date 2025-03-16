@@ -9,13 +9,14 @@
 // localized strings for language: Latin American Spanish (83)
 
 CHARACTER_SET UTF8
+
 #define STR_TrackListBoxView_1 ""
 #define STR_TrackListBoxView_2 ""
 #define STR_TrackListBoxView_3 "Ubicaciones"
 #define STR_TrackListBoxView_4 "%N rastreadores"
 #define STR_TrackListBoxView_5 "Detalles"
 #define STR_TrackListBoxView_6 "Detalles del archivo"
-#define STR_TrackListBoxView_7 "Nombre: %0U\nFecha: %2U\nTamaño: %1U"
+#define STR_TrackListBoxView_7 "Nombre: %0U\nPoints: %0N\nLength: %3U\nFecha: %2U\nTamaño: %1U"
 #define STR_TrackListBoxView_8 "Eliminar"
 #define STR_TrackListBoxView_9 "Renombrar"
 #define STR_TrackListBoxView_10 "Nuevo nombre:"
@@ -28,3 +29,4 @@ CHARACTER_SET UTF8
 #define STR_TrackListBoxView_ActiveFileRenamingError "¡No se puede renombrar! archivo en uso"
 #define STR_TrackListBoxView_FileRenamingError "No se puede renombrar el archivo \"%U\"!"
 #define STR_TrackListBoxView_IncorrectFileNameError "¡Nombre de archivo incorrecto!"
+#define STR_TrackListBoxView_15 "Send"

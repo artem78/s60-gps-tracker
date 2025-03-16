@@ -313,7 +313,8 @@ void CTrackerInfoListBoxView::DynInitMenuPaneL(TInt aMenuID, CEikMenuPane* aMenu
 	}
 
 void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal aSpeed,
-		TInt aSatUsed, TInt aSatTotal, TInt aSavedPoints, TTimeIntervalMicroSeconds aPosRefreshRate)
+		TInt aSatUsed, TInt aSatTotal, TInt aSavedPoints, TReal aTotalDistance,
+		TTimeIntervalMicroSeconds aPosRefreshRate)
 	{
 	if (!iTrackerInfoListBox) // Check that list box created
 		return;
@@ -324,6 +325,7 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	_LIT(KTextNoValue, "-----");
 	const TChar KDegree = TChar(0xB0);
 	const TInt KMicroSecondsPerSecond = 1000000;
+	const /*TInt*/ TReal KMetersInKilometer = 1000.0;
 
 	const TRealFormat KShortRealFmt = TRealFormat(10, 1);
 	const TRealFormat KLongRealFmt = TRealFormat(10, 5);
@@ -334,6 +336,7 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	
 	// Localization strings
 	HBufC* metersUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_METERS_UNIT_TEXT, iEikonEnv);
+	HBufC* kilometersUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_KILOMETERS_UNIT_TEXT, iEikonEnv);
 	HBufC* kilometersPerHourUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_KILOMETERS_PER_HOUR_UNIT_TEXT, iEikonEnv);
 	HBufC* secondsUnit = StringLoader::LoadLC(R_TRACKER_INFO_LIST_BOX_SECONDS_UNIT_TEXT, iEikonEnv);
 
@@ -398,6 +401,21 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	valBuff.AppendNum(aSavedPoints);
 	iTrackerInfoListBox->SetItemValueL(ESavedPointsItem, valBuff);
 	
+	// Total distance
+	if (aTotalDistance < KMetersInKilometer) // For <1km show distance in tens of meters
+		{
+		valBuff.Num((TInt) /*(*/ aTotalDistance /*+ 5)*/ / 10 * 10);
+		valBuff.Append(KSpace);
+		valBuff.Append(*metersUnit);
+		}
+	else // Show distance in kilometers
+		{
+		valBuff.Num(aTotalDistance / KMetersInKilometer, KShortRealFmt);
+		valBuff.Append(KSpace);
+		valBuff.Append(*kilometersUnit);
+		}
+	iTrackerInfoListBox->SetItemValueL(ETotalDistanceItem, valBuff);
+	
 	// Position update interval
 	valBuff.Zero();
 	valBuff.AppendNum(aPosRefreshRate.Int64() / TReal(KMicroSecondsPerSecond), KShortRealFmt);
@@ -411,7 +429,7 @@ void CTrackerInfoListBoxView::SetDataL(TReal aLat, TReal aLon, TReal aAlt, TReal
 	
 	
 	// Frees resources
-	CleanupStack::PopAndDestroy(3, metersUnit);
+	CleanupStack::PopAndDestroy(4, metersUnit);
 	}
 
 				

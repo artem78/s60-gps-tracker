@@ -44,6 +44,8 @@
 #include "Logger.h"
 #include "MiscUtils.h"
 #include <eikprogi.h> // For CEikProgressInfo
+#include <sendui.h>
+#include <cmessagedata.h>
 
 /**
  * First phase of Symbian two-phase construction. Should not contain any
@@ -144,6 +146,9 @@ void CTrackListBoxView::HandleCommandL( TInt aCommand )
 			break;
 		case ETrackListBoxViewTrackDetailsMenuItemCommand:
 			commandHandled = HandleTrackDetailsMenuItemSelectedL( aCommand );
+			break;
+		case ETrackListBoxViewSendMenuItemCommand:
+			commandHandled = HandleSendTrackMenuItemSelectedL( aCommand );
 			break;
 		case ETrackListBoxViewRenameTrackMenuItemCommand:
 			commandHandled = HandleRenameTrackMenuItemSelectedL( aCommand );
@@ -393,10 +398,11 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	
 	
 	// Prepare strings
-	// ToDo: Add points count, distance info
 	TBuf<64> tmp;	
-	CDesCArrayFlat* strings = new CDesCArrayFlat(3);
+	CDesCArrayFlat* strings = new (ELeave) CDesCArrayFlat(4);
 	CleanupStack::PushL(strings);
+	CArrayFixFlat<TInt>* nums = new (ELeave) CArrayFixFlat<TInt>(1);
+	CleanupStack::PushL(nums);
 	// File name
 	strings->AppendL(fileEntry.iName);
 	// File size
@@ -412,12 +418,153 @@ TBool CTrackListBoxView::HandleTrackDetailsMenuItemSelectedL( TInt /*aCommand*/ 
 	modTime.FormatL(tmp, KDateFmt);
 	strings->AppendL(tmp);
 	
+	// Points count and distance
+	RFile file;
+	User::LeaveIfError(file.Open(iCoeEnv->FsSession(), fileFullName, EFileRead));
+	CleanupClosePushL(file);
+	/*TFileText fileText;
+	fileText.Set(file);
+	fileText.Seek(ESeekStart);
+	TBuf<256> buf;
+	_LIT(KSearch, "<trkpt ");
+	TInt points = 0;
+	while (fileText.Read(buf) != KErrEof)
+	{
+		if (buf.Find(KSearch) != KErrNotFound)
+			{
+				points++;
+			}
+	}*/
+	TInt points = 0;
+	TReal32 distance = 0;
+	HBufC8* bufc = NULL;
+	TInt len = 0;
+	TCoordinate coord, prevCoord;
+	const TReal KNaN = 0.0 / 0.0;
+	coord.SetCoordinate(KNaN, KNaN);
+	prevCoord.SetCoordinate(KNaN, KNaN);
+	if (file.Size(len) == KErrNone && len > 0)
+	{
+		bufc = HBufC8::NewL(len);
+		TPtr8 buf(bufc->Des());
+		if (file.Read(0, buf) == KErrNone)
+		{
+			_LIT8(KSearchTrkpt, "<trkpt ");
+			_LIT8(KSearchLat, "lat=\"");
+			_LIT8(KSearchLon, "lon=\"");
+			TPtrC8 ptr(bufc->Des());
+			while (true)
+			{
+				if (ptr.Length() < 1)
+				{
+					break;
+				}
+				
+				TInt pos = ptr.Find(KSearchTrkpt);
+				if (pos == KErrNotFound)
+				{
+					break;
+				}
+				else
+				{
+					TInt latPos = ptr.Find(KSearchLat);
+					TInt lonPos = ptr.Find(KSearchLon);
+					if (latPos != KErrNotFound and lonPos != KErrNotFound)
+						{
+						latPos += KSearchLat().Length();
+						lonPos += KSearchLon().Length();
+						TPtrC8 latPtr = ptr.Mid(latPos, 16);
+						TPtrC8 lonPtr = ptr.Mid(lonPos, 16);
+						
+						TInt latQuotePos = latPtr.Locate('"');
+						TInt lonQuotePos = lonPtr.Locate('"');
+						if (latQuotePos != KErrNotFound && lonQuotePos != KErrNotFound)
+							{
+							latPtr.Set(latPtr.Left(latQuotePos));
+							lonPtr.Set(lonPtr.Left(lonQuotePos));
+							
+							TReal64 lat = /*0*/ KNaN;
+							TReal64 lon = /*0*/ KNaN;
+							TLex8 lex;
+							lex.Assign(latPtr);
+							if (lex.Val(lat) == KErrNone)
+								{
+								
+								}
+							else
+								{
+								// something wrong...
+								}
+							
+							lex.Assign(lonPtr);
+							if (lex.Val(lon) == KErrNone)
+								{
+								
+								}
+							else
+								{
+								// something wrong...
+								}
+							
+							coord.SetCoordinate(lat, lon);
+
+							
+							}
+						else
+							{
+							// something wrong...
+							}
+						
+						}
+					else
+						{
+						// something wrong...
+						}
+						
+					
+					if (points > 0)
+						{
+						TReal32 chunkDist = 0;
+						if (coord.Distance(prevCoord, chunkDist) == KErrNone)
+							{
+							distance += chunkDist;
+							}
+						else
+							{
+							// something wrong...
+							}
+						}
+					
+					ptr.Set(ptr.Right(ptr.Length() - pos - KSearchTrkpt().Length()));
+					
+					points++;
+					prevCoord = coord;
+				}
+			}
+		}
+		else
+		{
+			// something wrong...
+		}
+		delete bufc;
+	}
+	else
+	{
+		// something wrong...
+	}
+	CleanupStack::PopAndDestroy(&file);
+	nums->AppendL(points);
+	tmp.Num((TInt) distance);
+	tmp.Append(' ');
+	tmp.Append('m');
+	strings->AppendL(tmp);
+	
 	
 	// Create and show message window
 	HBufC* titleBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TITLE, iEikonEnv);
-	HBufC* textBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TEXT, *strings, iEikonEnv);
+	HBufC* textBuff = StringLoader::LoadLC(R_TRACK_LIST_BOX_TRACK_DETAILS_TEXT, *strings, *nums, iEikonEnv);
 	appUi->ShowMsgL(*titleBuff, *textBuff);
-	CleanupStack::PopAndDestroy(4, fileName);	
+	CleanupStack::PopAndDestroy(5, fileName);	
 	
 	
 	return ETrue;
@@ -704,3 +851,38 @@ TInt CTrackListBoxView::RunDeleteConfQueryL( const TDesC* aOverrideText )
 	}
 // ]]] end generated function
 
+/** 
+ * Handle the selected event.
+ * @param aCommand the command id invoked
+ * @return ETrue if the command was handled, EFalse if not
+ */
+TBool CTrackListBoxView::HandleSendTrackMenuItemSelectedL( TInt /*aCommand*/ )
+	{
+	// ToDo: Allow to mark multiple items for sending
+	
+	CGPSTrackerAppUi* appUi = static_cast<CGPSTrackerAppUi *>(AppUi());
+	
+	// Read track file information
+	HBufC* fileName = iTrackListBox->GetCurrentListBoxItemTextLC();
+	/*if (fileName == NULL)
+		return; // No selected item, exit*/
+	TFileName fileFullName;
+	appUi->TrackDir(fileFullName);
+	fileFullName.Append(*fileName);
+	TEntry fileEntry;
+	User::LeaveIfError(iEikonEnv->FsSession().Entry(fileFullName, fileEntry));
+	
+	// Send
+	CSendUi* sendUi = CSendUi::NewLC();
+	CMessageData* message = CMessageData::NewLC();
+	TSendingCapabilities sendCaps;
+	sendCaps.iFlags = TSendingCapabilities::ESupportsAttachments;
+	message->AppendAttachmentL(fileFullName);
+	
+	sendUi->ShowQueryAndSendL(message, sendCaps);
+	
+	CleanupStack::PopAndDestroy(3, sendUi);
+	
+	return ETrue;
+	}
+				

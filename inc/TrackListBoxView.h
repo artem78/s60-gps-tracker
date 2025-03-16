@@ -86,6 +86,7 @@ protected:
 	TBool HandleRenameTrackMenuItemSelectedL( TInt aCommand );
 	TBool HandleDeleteAllTracksMenuItemSelectedL( TInt aCommand );
 	void HandleDeletionWaitDialogCanceledL( CAknProgressDialog* aDialog );
+	TBool HandleSendTrackMenuItemSelectedL( TInt aCommand );
 	// ]]] end [User Handlers]
 	
 	// ]]] end [Protected Section]

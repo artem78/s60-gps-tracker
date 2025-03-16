@@ -243,6 +243,7 @@ void CTrackerInfoListBox::InitializeControlsL()
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_SPEED_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_SAT_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_POINTS_LISTBOX_ITEM );
+	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_TOTAL_DISTANCE_LISTBOX_ITEM );
 	AddListBoxResourceArrayItemL( R_TRACKER_INFO_LIST_BOX_REFRESH_LISTBOX_ITEM );
 	
 	iListBox->SetFocus( ETrue );

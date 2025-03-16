@@ -270,7 +270,11 @@ void CGPSTrackerAppUi::InitializeTrackL()
 	TBuf<100> programFullName;
 	programFullName.Append(KProgramName);
 	programFullName.Append(KSpace);
+	programFullName.Append('v');
 	programFullName.Append(KProgramVersion);
+	programFullName.Append(KSpace);
+	_LIT(KForSymStr, "for Symbian OS");
+	programFullName.Append(KForSymStr);
 	iTrackWriter = CGPXTrackWriter::NewL(iTrackFile, ETrue, programFullName);
 	}
 
@@ -346,7 +350,7 @@ void CGPSTrackerAppUi::ShowDataL()
 
 	// Write information to listbox	
 	iTrackerInfoListBoxView->SetDataL(lat, lon, alt, speed, satUsed, satTotal,
-			iTotalPointsCount, posRefreshInterval);
+			iTotalPointsCount, iTotalDistance, posRefreshInterval);
 
 		
 	LOG(_L8("End show data"));

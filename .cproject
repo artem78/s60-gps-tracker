@@ -26,7 +26,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/variant;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/ecom;" macrosCache="_UNICODE;__SYMBIAN32__;__SERIES60_31__;__SUPPORT_CPP_EXCEPTIONS__;__EXE__;__SERIES60_3X__;__CW32__;__WINS__;__WINSCW__;_DEBUG;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1601831620417" useMmpMacrosCache="true"/>
+<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/FileUtils[LOCAL];C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/variant;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/ecom;" macrosCache="_UNICODE;__SYMBIAN32__;__SERIES60_31__;__SUPPORT_CPP_EXCEPTIONS__;__EXE__;__SERIES60_3X__;__CW32__;__WINS__;__WINSCW__;_DEBUG;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/FileUtils;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1742061240216" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
@@ -56,7 +56,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/variant;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/ecom;" macrosCache="_UNICODE;__SUPPORT_CPP_EXCEPTIONS__;__SERIES60_31__;__MARM_ARMV5__;__SYMBIAN32__;__GCCE__;__MARM__;__EXE__;__SERIES60_3X__;__GENERIC_MARM__;__EPOC32__;__EABI__;_DEBUG;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1601753056469" useMmpMacrosCache="true"/>
+<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/FileUtils[LOCAL];C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/variant;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/ecom;" macrosCache="_UNICODE;__SUPPORT_CPP_EXCEPTIONS__;__SERIES60_31__;__MARM_ARMV5__;__SYMBIAN32__;__GCCE__;__MARM__;__EXE__;__SERIES60_3X__;__GENERIC_MARM__;__EPOC32__;__EABI__;_DEBUG;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/FileUtils;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1742061240226" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -86,7 +86,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/variant;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/ecom;" macrosCache="_UNICODE;__SUPPORT_CPP_EXCEPTIONS__;__SERIES60_31__;__MARM_ARMV5__;NDEBUG;__SYMBIAN32__;__GCCE__;__MARM__;__EXE__;__SERIES60_3X__;__GENERIC_MARM__;__EPOC32__;__EABI__;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1601753056479" useMmpMacrosCache="true"/>
+<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/FileUtils[LOCAL];C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/variant;C:/Symbian/9.2/S60_3rd_FP1/Epoc32/include/ecom;" macrosCache="_UNICODE;__SUPPORT_CPP_EXCEPTIONS__;__SERIES60_31__;__MARM_ARMV5__;NDEBUG;__SYMBIAN32__;__GCCE__;__MARM__;__EXE__;__SERIES60_3X__;__GENERIC_MARM__;__EPOC32__;__EABI__;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/FileUtils;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1742061240226" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -143,6 +143,33 @@
 </storageModule>
 <storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/S60/devices/S60_5th_Edition_SDK_v1.0/epoc32/include;C:/S60/devices/S60_5th_Edition_SDK_v1.0/epoc32/include/variant;C:/S60/devices/S60_5th_Edition_SDK_v1.0/epoc32/include/ecom;" macrosCache="_UNICODE;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EXE__;__S60_3X__;__SERIES60_3X__;__S60_5X__;__CW32__;__WINS__;__WINSCW__;__S60_50__;_DEBUG;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1601753056499" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cconfiguration>
+<cconfiguration id="Emulator Debug (WINSCW) [dummy_ID]">
+<storageModule moduleId="CarbideConfigurationDataProvider">
+<ENV_VAR_DATA_ID/>
+<ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
+<ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
+</storageModule>
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [dummy_ID]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [dummy_ID]">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.cdt.debug.cw.symbian.SymbianE32" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.CarbideMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.SBSv2ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MWLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RCOMPErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MWCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakeDefErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule filesCache="C:\Symbian\Carbide\workspace\GPSTracker\group\bld.inf;C:\Symbian\Carbide\workspace\GPSTracker\group\GPSTracker.mmp;" includesCache="C:/Symbian/Carbide/workspace/GPSTracker/inc[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/data[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Logger[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/Positioning[LOCAL];C:/Symbian/Carbide/workspace/GPSTracker/modules/FileUtils[LOCAL];C:/epoc32/include;C:/epoc32/include/variant;C:/epoc32/include/ecom;" macrosCache="_UNICODE;__SYMBIAN32__;__EXE__;_DEBUG;" moduleId="configDataCache" sourcesCache="/GPSTracker/data;/GPSTracker/inc;/GPSTracker/modules/FileUtils;/GPSTracker/modules/Logger;/GPSTracker/modules/Positioning;/GPSTracker/src;" timestampCache="1742061198286" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
