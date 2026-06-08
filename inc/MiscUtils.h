@@ -17,11 +17,11 @@
 
 // CLASS DECLARATION
 
-//class MiscUtils
-//	{
-//public:
-//	...
-//
-//	};
+class MiscUtils
+	{
+public:
+	static void DistanceToDesL(TReal aMeters, TDes &aDes);
+
+	};
 
 #endif // MISCUTILS_H
